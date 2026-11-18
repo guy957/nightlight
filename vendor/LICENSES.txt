@@ -1,0 +1,3 @@
+fb.js bundles the Firebase JavaScript SDK (Apache License 2.0, Google LLC); its notices are at the end of fb.js.
+qr.js is qrcode-generator by Kazuhiko Arase (MIT License).
+Fonts: Atkinson Hyperlegible (Braille Institute) and Young Serif (Bastien Sozeau), both SIL Open Font License 1.1; see ../fonts.
