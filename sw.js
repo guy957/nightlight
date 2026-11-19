@@ -1,8 +1,9 @@
 /* Nightlight service worker: the app opens instantly and offline; Firestore keeps its own offline copy. */
-var VERSION = 'nightlight-f8d3a39a17';
+var VERSION = 'nightlight-5df7faf385';
 var ASSETS = ["./", "./index.html", "./config.js", "./manifest.webmanifest", "./vendor/fb.js", "./vendor/qr.js", "./fonts/AtkinsonHyperlegible-Bold.woff2", "./fonts/AtkinsonHyperlegible-Regular.woff2", "./fonts/YoungSerif-Regular.woff2", "./icons/apple-touch-icon.png", "./icons/badge-96.png", "./icons/favicon-64.png", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/maskable-512.png"];
 self.addEventListener('install', function (e) {
-  e.waitUntil(caches.open(VERSION).then(function (c) { return c.addAll(ASSETS); }).then(function () { return self.skipWaiting(); }));
+  // fetch fresh copies, not whatever the browser's own cache still holds from the last version
+  e.waitUntil(caches.open(VERSION).then(function (c) { return c.addAll(ASSETS.map(function (u) { return new Request(u, { cache: 'reload' }); })); }).then(function () { return self.skipWaiting(); }));
 });
 self.addEventListener('activate', function (e) {
   e.waitUntil(caches.keys().then(function (keys) {
@@ -12,6 +13,14 @@ self.addEventListener('activate', function (e) {
 self.addEventListener('fetch', function (e) {
   var req = e.request, url = new URL(req.url);
   if (req.method !== 'GET' || url.origin !== self.location.origin) return;
+  if (/\/config\.js$/.test(url.pathname)) {
+    // settings: newest when online, cached when not
+    e.respondWith(fetch(req, { cache: 'no-cache' }).then(function (res) {
+      if (res.ok) { var copy = res.clone(); caches.open(VERSION).then(function (c) { c.put(req, copy); }); }
+      return res;
+    }).catch(function () { return caches.match(req, { ignoreSearch: true }); }));
+    return;
+  }
   if (req.mode === 'navigate') {
     // newest app when online, cached app when not
     e.respondWith(fetch(req).then(function (res) {
