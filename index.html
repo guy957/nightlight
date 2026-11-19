@@ -312,6 +312,96 @@ body.sheet-open .toast { top: 12px; bottom: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
 
+
+/* child switcher in the header */
+.kid-btn { display: inline-flex; align-items: center; gap: 4px; background: none; border: 0; padding: 0; margin: 0; font: inherit; color: inherit; text-align: left; border-radius: 8px; }
+.kid-btn svg { width: 22px; height: 22px; color: var(--ink-3); flex-shrink: 0; margin-top: 2px; }
+.kid-btn[disabled] { cursor: default; }
+.kid-btn[disabled] svg { display: none; }
+.kids { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.kid-row { width: 100%; display: grid; grid-template-columns: 18px 1fr auto; align-items: center; gap: 12px; padding: 14px; border-radius: 14px; border: 1px solid var(--rule); background: var(--surface-2); text-align: left; }
+.kid-row[aria-pressed="true"] { border-color: var(--ink); background: var(--surface); }
+.kid-dot { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--ink-3); }
+.kid-row[aria-pressed="true"] .kid-dot { border-color: var(--ink); background: radial-gradient(circle, var(--ink) 0 4px, transparent 5px); }
+.kid-main { display: grid; gap: 2px; min-width: 0; }
+.kid-nm { font-weight: 700; font-size: 17px; }
+.kid-st { font-size: 13.5px; color: var(--ink-2); }
+.kid-on { font-size: 12.5px; font-weight: 700; color: var(--ink-2); }
+
+/* type or say */
+.qlog { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 50px; margin: 0 0 6px; padding: 6px 6px 6px 14px; border-radius: 14px; border: 1px dashed var(--ink-3); background: var(--surface); color: var(--ink-2); font-size: 15.5px; text-align: left; }
+.qlog-mic { width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; background: var(--surface-2); color: var(--ink); }
+.qlog-mic svg { width: 22px; height: 22px; }
+.ql-box { position: relative; }
+.ql-box textarea { width: 100%; min-height: 76px; padding: 12px 58px 12px 12px; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); font-size: 17px; resize: none; }
+.ql-mic { position: absolute; right: 8px; top: 8px; width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--rule); background: var(--surface-2); display: grid; place-items: center; color: var(--ink); }
+.ql-mic svg { width: 22px; height: 22px; }
+.ql-mic.on { background: var(--alert-wash); border-color: var(--alert); color: var(--alert); animation: ql-pulse 1.4s ease-in-out infinite; }
+@keyframes ql-pulse { 50% { box-shadow: 0 0 0 6px var(--alert-wash); } }
+.ql-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.ql-it { display: grid; grid-template-columns: 24px 1fr auto; gap: 10px; align-items: center; padding: 10px 12px; border-radius: 12px; background: var(--surface-2); font-size: 15px; }
+.ql-it.part { grid-template-columns: 1fr auto; background: var(--warn-wash); }
+.ql-it.bad { grid-template-columns: 24px 1fr; background: var(--alert-wash); }
+.ql-it .d span { color: var(--ink-2); }
+.ql-it .d em { font-style: normal; font-weight: 700; color: var(--ink); }
+.ql-it .d em.ql-err { color: var(--alert); }
+.ql-kid { display: inline-block; font-size: 12px; font-weight: 700; padding: 1px 8px; border-radius: 999px; background: var(--surface); border: 1px solid var(--rule); color: var(--ink) !important; margin-right: 2px; }
+.ql-ex { font-size: 14.5px; color: var(--ink-2); }
+.ql-ex summary { cursor: pointer; font-weight: 700; color: var(--ink); min-height: 40px; display: flex; align-items: center; }
+.ql-ex ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
+
+/* plan: schedule creator */
+.plan-in { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
+.plan-in .field input { min-height: 48px; font-size: 17px; padding: 10px 10px; }
+.plan-naps { display: flex; align-items: center; gap: 12px; margin-top: 12px; flex-wrap: wrap; }
+.plan-naps .lab { font-size: 14px; font-weight: 700; color: var(--ink-2); min-width: 44px; }
+.plan-auto { font-size: 14px; color: var(--ink-2); }
+.mini-step { display: inline-flex; align-items: center; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); min-height: 46px; }
+.mini-step button { width: 42px; min-height: 44px; border: 0; background: none; font-size: 21px; font-weight: 700; color: var(--ink); }
+.mini-step button[disabled] { color: var(--ink-3); opacity: 0.5; }
+.mini-step output { min-width: 34px; text-align: center; font-weight: 700; font-size: 16px; font-variant-numeric: tabular-nums; }
+.plan-meta { margin-top: 8px; font-size: 13.5px; color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 6px 10px; }
+ol.plan { list-style: none; margin: 16px 0 0; padding: 0; }
+ol.plan li { display: grid; grid-template-columns: 76px 1fr; gap: 12px; align-items: center; }
+ol.plan .pt { font-weight: 700; font-size: 15px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+ol.plan .pd { font-size: 15px; }
+.p-wake .pd, .p-bed .pd { padding: 8px 0; }
+.p-gap .pd { margin-left: 9px; padding: 4px 0 4px 16px; border-left: 2px dotted var(--ink-3); font-size: 13px !important; color: var(--ink-3); }
+.p-nap .pd { padding: 9px 12px; border-left: 4px solid var(--sleep); border-radius: 0 12px 12px 0; background: var(--sleep-wash); }
+.p-nap .pd strong, .p-bed .pd strong { margin-right: 4px; }
+.p-bed .pd strong { color: var(--sleep); }
+.plan-sum { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 14px; font-size: 14px; color: var(--ink-2); }
+.plan-sum strong { color: var(--ink); }
+.plan-src { margin-top: 10px; max-width: 62ch; }
+.facts.aw > div { grid-template-columns: 1fr auto; }
+.facts.aw dd { font-weight: 700; font-variant-numeric: tabular-nums; }
+.ww-rows { display: grid; gap: 4px; }
+.ww-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; padding: 10px 0; border-top: 1px solid var(--rule); }
+.ww-row:first-child { border-top: 0; }
+.ww-k { font-weight: 700; font-size: 15px; }
+.ww-row .mini-step output { min-width: 62px; }
+.flag { color: var(--warn); font-weight: 700; }
+
+/* reminders */
+.rm-head { display: grid; grid-template-columns: 26px 1fr; gap: 10px; align-items: start; font-size: 15px; }
+.rm-head .g { color: var(--ink-2); margin-top: 1px; }
+.toggles { list-style: none; margin: 0; padding: 0; }
+.toggles li { padding: 8px 0; border-top: 1px solid var(--rule); display: grid; gap: 6px; }
+.toggles li:first-child { border-top: 0; }
+.toggles .tiny { margin-left: 32px; }
+.small-seg { margin-left: 32px; justify-self: start; flex-wrap: wrap; border-radius: 14px; }
+.small-seg button { padding: 6px 11px; font-size: 13.5px; min-height: 34px; }
+.rem-row { width: 100%; display: grid; gap: 2px; background: none; border: 0; padding: 0; text-align: left; }
+.lines.up li { grid-template-columns: 1fr auto; }
+.lines.up .nm { font-weight: 400; font-size: 15px; }
+.lines.up .ph { font-size: 15px; }
+.setup-steps { margin-top: 12px; }
+.setup-steps li { font-size: 15px; }
+.setup-steps code { font-size: 13.5px; background: var(--surface-2); padding: 1px 5px; border-radius: 5px; }
+@media (max-width: 380px) {
+  ol.plan li { grid-template-columns: 68px 1fr; gap: 10px; }
+}
+
 /* standalone app: respect the notch and home indicator */
 .top { padding-top: calc(18px + env(safe-area-inset-top)); }
 body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
@@ -527,9 +617,9 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     e.milk = { mlPerKg: mlkg, text: d < 5 ? 'Days 1 to 4: 30 to 60 mL per kg per day, building up.' : mlkg ? 'About ' + mlkg + ' mL per kg of body weight per day (a guide only).' : null, src: ['pbb-formula'] };
 
     var dol = age.dayOfLife;
-    var minWet = dol <= 4 ? dol : 5;
+    var minWet = w >= 52 ? null : dol <= 4 ? dol : 5; // the wet-nappy guide is for babies, not toddlers nearing toilet training
     e.nappies = { minWet: minWet,
-      text: dol <= 4 ? 'Day ' + dol + ': at least ' + plural(dol, 'wet nappy').replace('nappys', 'nappies') + '.' : 'From day 5: 5 or more heavy wet disposable nappies (6 to 8 cloth) every 24 hours, with pale wee.',
+      text: w >= 52 ? 'Wet nappies vary more from the first birthday, especially around toilet training. Pale wee is a good sign of enough to drink.' : dol <= 4 ? 'Day ' + dol + ': at least ' + plural(dol, 'wet nappy').replace('nappys', 'nappies') + '.' : 'From day 5: 5 or more heavy wet disposable nappies (6 to 8 cloth) every 24 hours, with pale wee.',
       dirtyText: (d >= 4 && w < 6) ? 'Breastfed babies usually have 3 or more soft yellow poos a day from around day 5 (this can settle from 6 weeks).' : null,
       src: ['qld-enough-milk', 'aba-first-week'] };
     return e;
@@ -597,16 +687,70 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     return { minutes: med != null ? med % 1440 : cfg.nightStartMin, n: items.length, personal: med != null };
   }
 
+  /* ---------------- awake-time model (shared by the sleep window and the schedule) ---------------- */
+  // Parents can set their own awake times per child: { on, first, mid, last } in minutes
+  function customWW(profile) {
+    var c = profile && profile.ww;
+    if (!c || !c.on || !(Number(c.mid) > 0)) return null;
+    var mid = Number(c.mid);
+    return { first: Number(c.first) > 0 ? Number(c.first) : mid, mid: mid, last: Number(c.last) > 0 ? Number(c.last) : mid };
+  }
+  function wwModel(events, now, profile, age) {
+    var cfg = config(profile);
+    var w = age.basisWeeks;
+    var sessions = mergeIntervals(sleepIntervals(events, now), 10 * MIN);
+    var base = wwBase(w);
+    var shortNap = w < 8 ? 25 : 40;
+    var obs = wakeWindows(sessions, cfg).filter(function (x) {
+      return x.sleep >= now - 7 * DAY && !x.nextRunning && x.minutes >= base.low * 0.5 && x.minutes <= base.high * 1.8;
+    }).filter(function (x) { return w < 8 || x.position !== 'night'; }).map(function (x) {
+      var q = (x.position === 'last' || x.nextMinutes >= shortNap) ? 1 : 0.5;
+      return { v: x.minutes, w: Math.pow(0.5, (now - x.sleep) / (3 * DAY)) * q, pos: x.position, raw: x };
+    });
+    var custom = customWW(profile);
+    function personalFor(pos) {
+      var same = obs.filter(function (o) { return pos === 'any' ? o.pos !== 'night' : o.pos === pos; });
+      if (sumW(same) >= 1.5) return { v: weightedMedian(same), n: same.length, w: sumW(same) };
+      var target = pos === 'any' ? 'mid' : pos;
+      var scaled = obs.filter(function (o) { return w < 8 || o.pos !== 'night'; }).map(function (o) {
+        return { v: o.v / positionFactor(w, o.pos) * positionFactor(w, target), w: o.w * 0.7 };
+      });
+      return { v: weightedMedian(scaled), n: scaled.length, w: sumW(scaled) };
+    }
+    function blendFor(pos) {
+      var f = positionFactor(w, pos === 'any' ? 'mid' : pos);
+      var b = base.target * f;
+      var p = personalFor(pos);
+      if (custom && pos !== 'night') {
+        var key = pos === 'any' ? 'mid' : pos;
+        return { minutes: custom[key], baseMinutes: b, personal: p.v, nObs: p.n, nEff: p.w, weightPersonal: 0, factor: f, custom: true };
+      }
+      var wp = p.v != null ? Math.min(0.8, p.w / 8) : 0;
+      var v = p.v != null ? b * (1 - wp) + p.v * wp : b;
+      v = clamp(v, base.low * f * 0.75, base.high * f * 1.25);
+      return { minutes: v, baseMinutes: b, personal: p.v, nObs: p.n, nEff: p.w, weightPersonal: wp, factor: f };
+    }
+    return { cfg: cfg, w: w, sessions: sessions, base: base, shortNap: shortNap, obs: obs, custom: custom, blendFor: blendFor };
+  }
+  // the awake times the app would use right now, for each part of the day
+  function awakeTimes(events, now, profile, age) {
+    if (!age || !age.born) return null;
+    var m = wwModel(events, now, profile, age);
+    var newborn = m.w < 8;
+    var f = newborn ? m.blendFor('any') : m.blendFor('first'), mid = newborn ? f : m.blendFor('mid'), l = newborn ? f : m.blendFor('last');
+    var source = m.custom ? 'custom' : mid.nEff >= 5 ? 'personal' : mid.nEff >= 1.5 ? 'learning' : 'guide';
+    return { newborn: newborn, first: f.minutes, mid: mid.minutes, last: l.minutes, source: source, nObs: mid.nObs,
+      guide: { first: m.base.target * positionFactor(m.w, 'first'), mid: m.base.target, last: m.base.target * positionFactor(m.w, 'last'), low: m.base.low, high: m.base.high },
+      custom: m.custom };
+  }
+
   /* ---------------- next sleep ---------------- */
   function predictSleep(events, now, profile, age) {
     if (!age || !age.born) return null;
-    var cfg = config(profile);
-    var w = age.basisWeeks;
-    var raw = sleepIntervals(events, now);
-    var sessions = mergeIntervals(raw, 10 * MIN);
-    var base = wwBase(w);
+    var m = wwModel(events, now, profile, age);
+    var cfg = m.cfg, w = m.w, sessions = m.sessions, base = m.base, shortNap = m.shortNap, blendFor = m.blendFor;
     var last = sessions[sessions.length - 1];
-    var res = { base: base, weeks: w, cfg: cfg };
+    var res = { base: base, weeks: w, cfg: cfg, custom: !!m.custom };
     if (last && last.running) {
       res.state = 'asleep'; res.since = last.start; res.night = isNightSleep(last, cfg);
       res.napIndex = sessions.filter(function (s) { return s.start >= diaryDayStart(now, cfg) && !isNightSleep(s, cfg); }).length;
@@ -621,14 +765,6 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
 
     var bed = bedtimeAnchor(sessions, cfg, now);
     res.bedtime = bed;
-    var obsAll = wakeWindows(sessions, cfg).filter(function (x) {
-      return x.sleep >= now - 7 * DAY && !x.nextRunning && x.minutes >= base.low * 0.5 && x.minutes <= base.high * 1.8;
-    });
-    var shortNap = w < 8 ? 25 : 40;
-    var obs = obsAll.filter(function (x) { return w < 8 || x.position !== 'night'; }).map(function (x) {
-      var q = (x.position === 'last' || x.nextMinutes >= shortNap) ? 1 : 0.5;
-      return { v: x.minutes, w: Math.pow(0.5, (now - x.sleep) / (3 * DAY)) * q, pos: x.position, raw: x };
-    });
 
     // what kind of sleep comes next?
     var position;
@@ -640,25 +776,6 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
       res.kind = 'night';
       res.confidence = 'guide';
       return res;
-    }
-
-    function personalFor(pos) {
-      var same = obs.filter(function (o) { return pos === 'any' ? o.pos !== 'night' : o.pos === pos; });
-      if (sumW(same) >= 1.5) return { v: weightedMedian(same), n: same.length, w: sumW(same) };
-      var target = pos === 'any' ? 'mid' : pos;
-      var scaled = obs.filter(function (o) { return w < 8 || o.pos !== 'night'; }).map(function (o) {
-        return { v: o.v / positionFactor(w, o.pos) * positionFactor(w, target), w: o.w * 0.7 };
-      });
-      return { v: weightedMedian(scaled), n: scaled.length, w: sumW(scaled) };
-    }
-    function blendFor(pos) {
-      var f = positionFactor(w, pos === 'any' ? 'mid' : pos);
-      var b = base.target * f;
-      var p = personalFor(pos);
-      var wp = p.v != null ? Math.min(0.8, p.w / 8) : 0;
-      var v = p.v != null ? b * (1 - wp) + p.v * wp : b;
-      v = clamp(v, base.low * f * 0.75, base.high * f * 1.25);
-      return { minutes: v, baseMinutes: b, personal: p.v, nObs: p.n, nEff: p.w, weightPersonal: wp, factor: f };
     }
 
     var pick = blendFor(position);
@@ -694,9 +811,143 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     res.minutes = (center - lastWake) / MIN;
     res.pick = pick;
     res.adjustments = adjustments;
-    res.confidence = pick.nEff < 1.5 ? 'guide' : pick.nEff < 5 ? 'learning' : 'personal';
+    res.confidence = pick.custom ? 'custom' : pick.nEff < 1.5 ? 'guide' : pick.nEff < 5 ? 'learning' : 'personal';
     res.status = now < res.windowStart ? 'before' : now <= res.windowEnd ? 'in' : 'past';
     return res;
+  }
+
+  /* ---------------- schedule creator ----------------
+     A typical day built from a wake-up time: awake times (custom, personal or age guide) between naps whose lengths share out
+     the usual day sleep for this age (blended with the baby's own last week), then fitted to a target bedtime. */
+  var DAYSLEEP = [ // [weeks, typical total day sleep, minutes]
+    [0, 360], [6, 330], [8, 300], [12, 270], [16, 225], [26, 195], [35, 180], [52, 165], [78, 135], [104, 120], [156, 90], [208, 60]
+  ];
+  function napRange(weeks) {
+    if (weeks < 8) return [4, 6];
+    if (weeks < 13) return [3, 5];
+    if (weeks < 26) return [2, 4];
+    if (weeks < 35) return [2, 3];
+    if (weeks < 52) return [2, 2];
+    if (weeks < 78) return [1, 2];
+    if (weeks < 156) return [1, 1];
+    return [0, 1];
+  }
+  function daySleepGuide(weeks) { return interpTable(DAYSLEEP, weeks)[0]; }
+  function napWeights(n) {
+    var ws = [];
+    for (var i = 0; i < n; i++) ws.push(1);
+    if (n === 3) { ws[1] = 1.1; ws[2] = 0.65; }       // the last of three naps is usually a short catnap
+    else if (n >= 4) ws[n - 1] = 0.6;
+    return ws;
+  }
+  function personalDaySleep(events, now, profile) {
+    var days = dailyStats(events, now, profile, 8).filter(function (d) { return !d.partial && d.hasData && d.naps > 0; });
+    if (days.length < 3) return null;
+    return { minutes: mean(days.map(function (d) { return d.napMin; })), naps: mean(days.map(function (d) { return d.naps; })), n: days.length };
+  }
+  function buildSchedule(events, now, profile, age, opts) {
+    if (!age || !age.born) return null;
+    opts = opts || {};
+    var cfg = config(profile);
+    var w = age.basisWeeks;
+    var at = awakeTimes(events, now, profile, age);
+    var range = napRange(w);
+    var wake = opts.wake != null ? opts.wake : cfg.dayStartMin;
+    var sessions = mergeIntervals(sleepIntervals(events, now), 10 * MIN);
+    var usualBed = bedtimeAnchor(sessions, cfg, now);
+    var bedTarget = opts.bed != null ? opts.bed : usualBed.minutes;
+    while (bedTarget <= wake + 4 * 60) bedTarget += 1440;
+    var pd = personalDaySleep(events, now, profile);
+    var guideDay = daySleepGuide(w);
+    var dayTotal = pd && w >= 8 ? guideDay * 0.4 + pd.minutes * 0.6 : guideDay;
+
+    function make(n) {
+      var ww = [];
+      if (n === 0) ww = [bedTarget - wake];
+      else {
+        var mids = n - 1, spread = mids > 1 ? Math.min(15, Math.max(0, (at.last - at.first) / 4)) : 0;
+        for (var i = 0; i <= n; i++) {
+          if (i === 0) ww.push(at.first);
+          else if (i === n) ww.push(at.last);
+          else ww.push(at.mid + (mids > 1 ? spread * (2 * (i - 1) / (mids - 1) - 1) : 0));
+        }
+      }
+      var wts = napWeights(n), sw = wts.reduce(function (s, x) { return s + x; }, 0);
+      var naps = wts.map(function (x) { return clamp(dayTotal * x / sw, 20, 180); });
+      var sum = function (xs) { return xs.reduce(function (s, x) { return s + x; }, 0); };
+      var raw = wake + sum(ww) + sum(naps);
+      // fit to the bedtime: stretch awake times by up to 15%, then naps by up to 25%
+      var d = bedTarget - raw;
+      if (n > 0) {
+        var capW = sum(ww) * 0.15, dw = clamp(d, -capW, capW), totW = sum(ww);
+        ww = ww.map(function (x) { return x + dw * x / totW; });
+        var d2 = d - dw, capN = sum(naps) * 0.25, dn = clamp(d2, -capN, capN), totN = sum(naps);
+        naps = naps.map(function (x) { return clamp(x + dn * x / totN, 15, 210); });
+      }
+      var t = wake, items = [{ type: 'wake', at: wake }];
+      for (var k = 0; k < n; k++) {
+        t += ww[k];
+        items.push({ type: 'nap', n: k + 1, start: t, end: t + naps[k], minutes: naps[k], awake: ww[k] });
+        t += naps[k];
+      }
+      t += ww[n];
+      items.push({ type: 'bed', at: t, awake: ww[n] });
+      return { naps: n, items: items, bed: t, off: t - bedTarget, dayMin: sum(naps), stretch: Math.abs(raw - bedTarget) };
+    }
+    var auto = opts.naps == null;
+    var n = auto ? null : clamp(Math.round(opts.naps), 0, 7);
+    if (auto) {
+      var best = null;
+      for (var c = Math.max(1, range[0]); c <= range[1]; c++) {
+        var r = make(c);
+        if (!best || Math.abs(r.off) < Math.abs(best.off) - 5 || (Math.abs(r.off) <= Math.abs(best.off) + 5 && r.stretch < best.stretch)) best = r;
+      }
+      // no-nap days only when one nap can't fit
+      if (range[0] === 0 && (!best || Math.abs(best.off) > 30)) best = make(0);
+      n = best.naps;
+    }
+    var out = make(n);
+    out.auto = auto; out.range = range; out.wake = wake; out.bedTarget = bedTarget; out.newborn = w < 8;
+    out.nightMin = wake + 1440 - out.bed;
+    out.awakeSource = at.source; out.awakeTimes = at;
+    out.daySource = pd && w >= 8 ? 'personal' : 'guide'; out.personalDay = pd; out.guideDay = guideDay;
+    out.usualBed = usualBed;
+    return out;
+  }
+
+  /* ---------------- reminder timing ----------------
+     What the next nap/bedtime and feed reminders hang off, with a stable key so a reminder goes out once per awake time or feed gap. */
+  function alertBasis(events, now, profile, age) {
+    var out = {};
+    if (!age || !age.born) return out;
+    var cfg = config(profile);
+    var sp = predictSleep(events, now, profile, age);
+    if (sp && sp.state === 'awake' && !sp.noData && sp.windowStart && sp.kind !== 'night') {
+      out.sleep = { key: 'sleep:' + Math.round(sp.awakeSince / MIN), at: sp.windowStart, end: sp.windowEnd, kind: sp.kind, awakeSince: sp.awakeSince };
+    }
+    var fp = predictFeed(events, now, profile, age);
+    if (fp && fp.state === 'idle' && fp.due) {
+      out.feed = { key: 'feed:' + Math.round(fp.last.start / MIN), at: fp.due, lastStart: fp.last.start, side: fp.suggestSide || null,
+        night: isNight(fp.due, cfg), asleep: !!(sp && sp.state === 'asleep') };
+    }
+    return out;
+  }
+  // upcoming times for a parent-made reminder: once (at), daily (time), or every N hours from a start time
+  function occurrences(r, now, horizon) {
+    var out = [], end = now + horizon, from = now - MIN;
+    if (!r || r.on === false) return out;
+    if (r.repeat === 'once') { if (r.at > from && r.at <= end) out.push(r.at); return out; }
+    var hm = parseHM(r.time, null);
+    if (r.repeat === 'hours') {
+      var step = clamp(Number(r.every) || 4, 1, 24) * HOUR;
+      var anchor = r.from != null ? r.from : (hm != null ? atLocal(now, hm, 0) : now);
+      var k = Math.ceil((from - anchor) / step);
+      for (var t = anchor + Math.max(0, k) * step; t <= end && out.length < 200; t += step) if (t > from) out.push(t);
+      return out;
+    }
+    if (hm == null) return out;
+    for (var d = 0; d <= Math.ceil(horizon / DAY) + 1; d++) { var t2 = atLocal(now, hm, d); if (t2 > from && t2 <= end) out.push(t2); }
+    return out;
   }
 
   /* ---------------- feeds ---------------- */
@@ -812,7 +1063,7 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
       feeds: feeds.length, bottleMl: bottles.reduce(function (s, e) { return s + (Number(e.amountMl) || 0); }, 0),
       breastMin: feeds.reduce(function (s, f) { return s + f.L + f.R; }, 0),
       wet: nappies.filter(function (n) { return n.wet; }).length, dirty: nappies.filter(function (n) { return n.dirty; }).length,
-      pumpMl: pumps.reduce(function (s, e) { return s + (Number(e.leftMl) || 0) + (Number(e.rightMl) || 0); }, 0),
+      pumpMl: pumps.reduce(function (s, e) { return s + (Number(e.leftMl) || 0) + (Number(e.rightMl) || 0) + (Number(e.totalMl) || 0); }, 0),
       solids: solids.length,
       coverageH: isFinite(first) ? Math.max(0, (to - Math.max(first, from)) / HOUR) : 0
     };
@@ -994,9 +1245,520 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     live: live, sleepIntervals: sleepIntervals, mergeIntervals: mergeIntervals, isNightSleep: isNightSleep,
     wakeWindows: wakeWindows, predictSleep: predictSleep, feedSessions: feedSessions, segMinutes: segMinutes,
     predictFeed: predictFeed, stats24h: stats24h, windowStats: windowStats, dailyStats: dailyStats, napInsight: napInsight,
-    contractionStats: contractionStats, sampleData: sampleData, weightedMedian: weightedMedian, plural: plural
+    contractionStats: contractionStats, sampleData: sampleData, weightedMedian: weightedMedian, plural: plural,
+    customWW: customWW, awakeTimes: awakeTimes, buildSchedule: buildSchedule, napRange: napRange, daySleepGuide: daySleepGuide,
+    alertBasis: alertBasis, occurrences: occurrences, positionFactor: positionFactor, bedtimeAnchor: bedtimeAnchor
   };
   root.BabyEngine = api;
+  if (typeof module !== 'undefined' && module.exports) module.exports = api;
+})(typeof globalThis !== 'undefined' ? globalThis : this);
+
+</script>
+<script>
+/* Quick log: turns "fed 120 mL formula at 2pm and a wet nappy" into entries.
+   Pure functions, no DOM. Exposed as globalThis.BabyParse (and module.exports for tests).
+   parse(text, ctx) -> { items: [...], ok: n }
+   ctx: { now, kids: [{ id, name }], child (active id), feeding, suggestSide, lastMilk, running: { [childId]: { sleepStart, feed } } }
+   Each item: { kind: 'event' | 'wake' | 'timer' | 'growth' | 'form' | 'error' | 'unknown', child, src, ... } */
+(function (root) {
+  'use strict';
+  var MIN = 60000, HOUR = 3600000, DAY = 86400000;
+
+  /* ---------- words to numbers ---------- */
+  var SMALL = { zero: 0, one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, eleven: 11, twelve: 12,
+    thirteen: 13, fourteen: 14, fifteen: 15, sixteen: 16, seventeen: 17, eighteen: 18, nineteen: 19 };
+  var DIGIT = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9 };
+  var TENS = { twenty: 20, thirty: 30, forty: 40, fourty: 40, fifty: 50, sixty: 60, seventy: 70, eighty: 80, ninety: 90 };
+  function small(words, k) {
+    var a = words[k];
+    if (Object.prototype.hasOwnProperty.call(SMALL, a)) return [SMALL[a], k + 1];
+    if (Object.prototype.hasOwnProperty.call(TENS, a)) { var b = words[k + 1]; return Object.prototype.hasOwnProperty.call(DIGIT, b) ? [TENS[a] + DIGIT[b], k + 2] : [TENS[a], k + 1]; }
+    return null;
+  }
+  function numberAt(words, i) {
+    var v, j;
+    if ((words[i] === 'a' || words[i] === 'one') && words[i + 1] === 'hundred') { v = 100; j = i + 2; }
+    else {
+      var s = small(words, i);
+      if (!s) return null;
+      v = s[0]; j = s[1];
+      if (words[j] === 'hundred' && v > 0 && v < 10) { v *= 100; j++; } else return [v, j];
+    }
+    var k = words[j] === 'and' ? j + 1 : j, r = small(words, k);
+    return r ? [v + r[0], r[1]] : [v, j];
+  }
+  function wordsToDigits(s) {
+    var words = s.split(' '), out = [];
+    for (var i = 0; i < words.length;) {
+      var n = numberAt(words, i);
+      if (n) { out.push(String(n[0])); i = n[1]; } else { out.push(words[i]); i++; }
+    }
+    return out.join(' ');
+  }
+
+  /* ---------- normalising ---------- */
+  function normalise(text) {
+    var s = ' ' + String(text || '').toLowerCase()
+      .replace(/[‘’ʼ]/g, "'").replace(/[“”]/g, '"').replace(/[–—]/g, '-')
+      .replace(/&/g, ' and ').replace(/\+/g, ' plus ') + ' ';
+    s = s.replace(/([a-z])-([a-z])/g, '$1 $2').replace(/\s+/g, ' ');
+    // spoken fractions and durations, before the number words go
+    s = s.replace(/\b(?:an|a|one) hour and a half\b/g, ' 90 minutes ')
+      .replace(/\bhalf (?:an )?hour\b/g, ' 30 minutes ')
+      .replace(/\b(?:a )?quarter (?:of )?an hour\b|\ba quarter hour\b/g, ' 15 minutes ')
+      .replace(/\ba couple (?:of )?minutes\b/g, ' 2 minutes ').replace(/\ba few minutes\b/g, ' 5 minutes ').replace(/\ba minute\b/g, ' 1 minute ')
+      .replace(/\ba couple (?:of )?hours\b/g, ' 2 hours ');
+    s = wordsToDigits(s.trim());
+    s = ' ' + s + ' ';
+    s = s.replace(/\b(\d+) point (\d+)\b/g, '$1.$2')
+      .replace(/(\S+ )?right now\b/g, function (m, prev) { return prev === 'the ' ? m : (prev || '') + 'now'; });
+    s = s.replace(/\b(\d+) and a half\b/g, function (m, n) { return (Number(n) + 0.5) + ''; })
+      .replace(/\b(?:an|a) hour\b/g, ' 1 hour ')
+      .replace(/\bhalf past (\d{1,2})\b/g, '$1:30').replace(/\bquarter past (\d{1,2})\b/g, '$1:15')
+      .replace(/\bquarter to (\d{1,2})\b/g, function (m, h) { var x = Number(h) - 1; return (x < 1 ? 12 : x) + ':45'; })
+      .replace(/\b(\d{1,2}) o'? ?clock\b/g, '$1:00')
+      .replace(/\b(at|from|to|till|until|around|about|since|by) (\d{1,2}) (\d{2})\b(?! ?(?:ml|min|minutes?|oz|kg|g|cm|°))/g, '$1 $2:$3')
+      .replace(/\b(\d{1,2}) (\d{2}) ?(am|pm|a\.m\.?|p\.m\.?)/g, '$1:$2 $3');
+    // units
+    s = s.replace(/\b(a\.m\.?|am)(?=\s|$|[,.;])/g, 'am').replace(/\b(p\.m\.?|pm)(?=\s|$|[,.;])/g, 'pm')
+      .replace(/(\d)\s*(?:millilit(?:re|er)s?|mls|mils?|mills|ml|cc)\b/g, '$1 ml')
+      .replace(/(\d)\s*(?:ounces?|oz)\b/g, '$1 oz')
+      .replace(/(\d)\s*(?:kilograms?|kilos?|kgs|kg)\b/g, '$1 kg')
+      .replace(/(\d)\s*(?:grams?|gms?|g)\b/g, '$1 g')
+      .replace(/(\d)\s*(?:pounds?|lbs?)\b/g, '$1 lb')
+      .replace(/(\d)\s*(?:centimet(?:re|er)s?|cms?)\b/g, '$1 cm')
+      .replace(/(\d)\s*(?:degrees? ?(?:celsius|centigrade|c)?|deg ?c?|°\s*c|°)(?=\s|$|[,.;])/g, '$1 °')
+      .replace(/(\d)\s*(?:degrees? ?fahrenheit|°\s*f|fahrenheit)\b/g, '$1 °f')
+      .replace(/(\d)\s*(?:minutes?|mins?|m)(?=\s|$|[,.;])/g, '$1 min')
+      .replace(/(\d)\s*(?:hours?|hrs?|h)(?=\s|$|[,.;\d])/g, '$1 h ')
+      .replace(/\bnaps\b/g, 'nap').replace(/\bbetween (\S+) and (\S+)/g, 'from $1 to $2');
+    return s.replace(/\s+/g, ' ').trim();
+  }
+
+  /* ---------- times ---------- */
+  var TIME = '(\\d{1,2})(?::(\\d{2})|\\.(\\d{2})(?= ?(?:am|pm)))? ?(am|pm)?';
+  function atLocal(t, minutes, dayOffset) { var d = new Date(t); d.setHours(0, 0, 0, 0); d.setDate(d.getDate() + (dayOffset || 0)); return d.getTime() + minutes * MIN; }
+  function calDays(a, b) { var x = new Date(a); x.setHours(0, 0, 0, 0); var y = new Date(b); y.setHours(0, 0, 0, 0); return Math.round((y - x) / DAY); }
+  function clock(h, m, mer) {
+    h = Number(h); m = Number(m || 0);
+    if (!(m >= 0 && m < 60)) return null;
+    if (mer && (h < 1 || h > 12)) return null;
+    if (!mer && h > 23) return null;
+    return { h: h, m: m, mer: mer || null };
+  }
+  function candidates(c, now, dayMod) {
+    var hours;
+    if (c.mer === 'am') hours = [c.h % 12];
+    else if (c.mer === 'pm') hours = [(c.h % 12) + 12];
+    else if (c.h === 0 || c.h > 12) hours = [c.h % 24];
+    else hours = [c.h % 12, (c.h % 12) + 12];
+    var out = [];
+    for (var d = 0; d >= -2; d--) hours.forEach(function (H) { out.push(atLocal(now, H * 60 + c.m, d)); });
+    if (dayMod === 'yesterday') out = out.filter(function (t) { return calDays(t, now) === 1; });
+    else if (dayMod === 'lastnight') out = out.filter(function (t) { var hh = new Date(t).getHours(), dd = calDays(t, now); return (dd === 1 && hh >= 17) || (dd === 0 && hh < 8); });
+    else if (dayMod === 'morning') out = out.filter(function (t) { return calDays(t, now) === 0 && new Date(t).getHours() < 12; });
+    else if (dayMod === 'afternoon') out = out.filter(function (t) { var hh = new Date(t).getHours(); return calDays(t, now) === 0 && hh >= 12 && hh < 18; });
+    else if (dayMod === 'evening') out = out.filter(function (t) { var hh = new Date(t).getHours(); return calDays(t, now) === 0 && hh >= 16; });
+    return out;
+  }
+  // the most recent time matching a clock reading (not more than 5 minutes ahead of now)
+  function resolve(c, now, dayMod, before) {
+    var limit = before != null ? before : now + 5 * MIN;
+    var ok = candidates(c, now, dayMod).filter(function (t) { return t <= limit && (before == null || before - t <= 16 * HOUR); }).sort(function (a, b) { return b - a; });
+    return ok.length ? ok[0] : null;
+  }
+
+  /* ---------- keywords ---------- */
+  var K = {
+    note: /^(?:note|notes)\b/,
+    temp: /\b(?:temp|temperature|fever|thermometer)\b|\d °/,
+    med: /\b(?:medicine|medication|meds|paracetamol|panadol|ibuprofen|nurofen|calpol|tylenol|vitamin d|vit d|vitamins?|probiotics?|biogaia|antibiotics?|amoxicillin|amoxil|gripe water|infacol|colic drops|drops|dose|syrup|cream|ointment|gave (?:him |her |them )?(?:some |a |the )?(?!milk|bottle|feed|formula|a bath|bath)[a-z])/,
+    pump: /\b(?:pump|pumped|pumping)\b/,
+    express: /\bexpress(?:ed|ing)?\b/,
+    growth: /\d (?:kg|g|lb|cm)\b/,
+    bath: /\b(?:bath|bathed|bathing|bathtime|shower)\b/,
+    tummy: /\btummy(?: time)?\b/,
+    nappy: /\b(?:nappy|nappies|diaper|diapers|wee|wees|weed|weeing|pee|peed|wet|poo|poos|pooed|pooing|poop|pooped|pooey|dirty|soiled|changed|change)\b/,
+    solids: /\b(?:solids|ate|eaten|puree|purée|mashed|cereal|porridge|finger food)\b/,
+    breast: /\b(?:breast(?! ?milk)|breastfe(?:e)?d(?:ing)?|nursed|nursing|boob|latched|both sides|left|right|[lr] ?\d+)\b/,
+    bottle: /\b(?:bottle|formula|ebm|drank)\b|\d (?:ml|oz)\b/,
+    feed: /\b(?:fed|feed|feeding|feeds|milk)\b/,
+    sleep: /\b(?:nap|napped|napping|slept|sleep|sleeping|asleep|went down|gone down|down for|put down|bed|bedtime|settled|dozed)\b/,
+    wake: /\b(?:woke|woken|wake|wakes|waking|awake|got up|up from|up at)\b/
+  };
+  function typeOf(f) {
+    if (K.note.test(f)) return 'note';
+    if (K.temp.test(f)) return 'temp';
+    if (K.med.test(f)) return 'med';
+    if (K.pump.test(f) || (K.express.test(f) && !/\b(?:fed|feed|bottle|drank|gave|had)\b/.test(f))) return 'pump';
+    if (K.growth.test(f) && /\b(?:weigh|weighs|weighed|weighing|weight|length|long|tall|height|head|circumference|measured)\b|\d (?:kg|lb)\b/.test(f)) return 'growth';
+    if (K.bath.test(f)) return 'bath';
+    if (K.tummy.test(f)) return 'tummy';
+    if (K.nappy.test(f)) return 'nappy';
+    if (K.solids.test(f) && !/\d (?:ml|oz)\b/.test(f)) return 'solids';
+    if (K.bottle.test(f)) return 'bottle';
+    if (K.breast.test(f)) return 'breast';
+    if (K.feed.test(f)) return 'feed';
+    if (K.wake.test(f) && !/\b(?:asleep|went down|nap|slept|from)\b/.test(f)) return 'wake';
+    if (K.sleep.test(f)) return 'sleep';
+    if (K.wake.test(f)) return 'sleep';
+    return null;
+  }
+
+  /* ---------- pulling values out of a clause ---------- */
+  function Clause(text, now) { this.t = ' ' + text + ' '; this.now = now; }
+  Clause.prototype.take = function (re) {
+    var m = re.exec(this.t);
+    if (m) this.t = this.t.slice(0, m.index) + ' ' + this.t.slice(m.index + m[0].length);
+    return m;
+  };
+  Clause.prototype.has = function (re) { return re.test(this.t); };
+
+  function dayModOf(s) {
+    if (/\byesterday\b/.test(s)) return 'yesterday';
+    if (/\blast night\b|\boverni(?:ght|te)\b/.test(s)) return 'lastnight';
+    if (/\bthis morning\b/.test(s)) return 'morning';
+    if (/\bthis afternoon\b/.test(s)) return 'afternoon';
+    if (/\b(?:this evening|tonight)\b/.test(s)) return 'evening';
+    return null;
+  }
+  function durMin(h, m) { return (Number(h) || 0) * 60 + (Number(m) || 0); }
+  // returns { start, end, time, dur, now } as found in the clause
+  function extractTimes(cl, now) {
+    var out = { mod: dayModOf(cl.t) };
+    cl.take(/\b(?:yesterday|last night|overni(?:ght|te)|this morning|this afternoon|this evening|tonight)\b/);
+    var ago = cl.take(/\b(\d+(?:\.\d+)?) h(?: (?:and )?(\d+)(?: min)?)? ago\b|\b(\d+) min ago\b/);
+    if (ago) { out.time = now - (ago[3] ? Number(ago[3]) : durMin(ago[1], ago[2])) * MIN; out.explicit = true; }
+    if (cl.take(/\b(?:just now|right now|now|just)\b/)) { if (out.time == null) out.time = now; out.isNow = true; }
+    var R = new RegExp('\\b(?:from )?(?:at )?' + TIME + ' ?(?:to|till|til|until|-) ?' + TIME + '(?![\\d.]| ?(?:ml|oz|kg|g|cm|°|min\\b|h\\b))');
+    var r = R.exec(cl.t);
+    if (r && (r[2] || r[4] || r[6] || r[8] || /\bfrom\b/.test(cl.t.slice(Math.max(0, r.index - 6), r.index + 5)))) {
+      cl.take(R);
+      var mer2 = r[8], mer1 = r[4];
+      var c2 = clock(r[5], r[6] || r[7], mer2), c1 = clock(r[1], r[2] || r[3], mer1);
+      if (c1 && c2 && !mer1 && mer2) {
+        // "1 to 2:30pm": the start shares the meridiem if that keeps it before the end
+        var s24 = (c1.h % 12) + (mer2 === 'pm' ? 12 : 0), e24 = (c2.h % 12) + (mer2 === 'pm' ? 12 : 0);
+        c1.mer = s24 * 60 + c1.m <= e24 * 60 + c2.m ? mer2 : (mer2 === 'pm' ? 'am' : 'pm');
+      }
+      if (c1 && c2) {
+        out.end = resolve(c2, now, out.mod === 'lastnight' ? null : out.mod);
+        if (out.end != null) out.start = resolve(c1, now, null, out.end);
+        if (out.start == null || out.end == null) out.bad = 'Check the times.';
+        out.explicit = true;
+      }
+    }
+    var A = new RegExp('\\b(?:at|around|about|approx|approximately|since|by|@) ?' + TIME + '(?![\\d.]| ?(?:ml|oz|kg|g|cm|°|min\\b|h\\b))');
+    var a = cl.take(/\b(?:at|around|about|by|since) (\d{3,4})()()()(?![\d.]| ?(?:ml|oz|kg|g|cm|°|min\b|h\b))/) || cl.take(A) || cl.take(new RegExp('(?:^| )' + '(\\d{1,2})(?::(\\d{2})|\\.(\\d{2})(?= ?(?:am|pm)))( ?(?:am|pm))?(?= |$)')) || cl.take(new RegExp('\\b(\\d{1,2})()()( ?(?:am|pm))\\b'));
+    if (a) {
+      var hh = a[1], mm = a[2] || a[3];
+      if (!mm && hh.length >= 3) { mm = hh.slice(-2); hh = hh.slice(0, -2); }
+      var c = clock(hh, mm, a[4] ? a[4].trim() : null);
+      if (c && !c.mer && cl.bedtime && c.h >= 5 && c.h <= 11) c.mer = 'pm';
+      if (c) { var t = resolve(c, now, out.mod); if (t != null) { out.time = t; out.explicit = true; } else out.bad = 'That time hasn’t happened yet.'; }
+    } else if (cl.take(/\b(?:at )?(noon|midday|midnight)\b/)) {
+      var mid = /midnight/.test(RegExp.$1) ? clock(0, 0, null) : clock(12, 0, null);
+      out.time = resolve(mid, now, out.mod); out.explicit = true;
+    }
+    var d = cl.take(/\b(?:for )?(\d+(?:\.\d+)?) h(?: (?:and )?(\d+)(?: min)?)?\b/) || null;
+    if (d) out.dur = durMin(d[1], d[2]);
+    var dm = cl.take(/\b(?:for )?(\d+) min\b/);
+    if (dm) out.dur = (out.dur || 0) + Number(dm[1]);
+    return out;
+  }
+
+  function sidesOf(cl) {
+    var segs = [], m;
+    var re1 = /\b(left|right|l|r)(?: side| boob| breast)?(?: for)? ?(\d+)(?: min)?\b/;
+    var re2 = /\b(\d+) min (?:on )?(?:the )?(left|right)\b/;
+    while ((m = cl.take(re1))) segs.push({ side: m[1].charAt(0) === 'l' ? 'L' : 'R', min: Number(m[2]) });
+    while ((m = cl.take(re2))) segs.push({ side: m[2].charAt(0) === 'l' ? 'L' : 'R', min: Number(m[1]) });
+    while ((m = cl.take(/\band (\d+) (?:on )?(?:the )?(left|right)\b/))) segs.push({ side: m[2].charAt(0) === 'l' ? 'L' : 'R', min: Number(m[1]) });
+    var bare = [];
+    while ((m = cl.take(/\b(left|right)\b/))) bare.push(m[1].charAt(0) === 'l' ? 'L' : 'R');
+    var both = !!cl.take(/\b(?:both sides|both)\b/);
+    return { segs: segs, bare: bare, both: both };
+  }
+  function amountMl(cl) {
+    var m = cl.take(/\b(\d+(?:\.\d+)?) ml\b/);
+    if (m) return Math.round(Number(m[1]));
+    m = cl.take(/\b(\d+(?:\.\d+)?) oz\b/);
+    if (m) return Math.round(Number(m[1]) * 29.5735 / 5) * 5;
+    return null;
+  }
+  var MED_NAMES = [
+    [/\bparacetamol\b/, 'Paracetamol'], [/\bpanadol\b/, 'Panadol (paracetamol)'], [/\bcalpol\b/, 'Calpol (paracetamol)'], [/\btylenol\b/, 'Tylenol (paracetamol)'],
+    [/\bibuprofen\b/, 'Ibuprofen'], [/\bnurofen\b/, 'Nurofen (ibuprofen)'], [/\b(?:vitamin d|vit d)\b/, 'Vitamin D'], [/\bvitamins?\b/, 'Vitamins'],
+    [/\bbiogaia\b/, 'BioGaia'], [/\bprobiotics?\b/, 'Probiotic'], [/\bamoxicillin|amoxil\b/, 'Amoxicillin'], [/\bantibiotics?\b/, 'Antibiotic'],
+    [/\bgripe water\b/, 'Gripe water'], [/\binfacol\b/, 'Infacol'], [/\bcolic drops\b/, 'Colic drops']
+  ];
+  function cap(s) { s = String(s || '').trim(); return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+  function leftover(s) {
+    return s.replace(/\b(?:she|he|they|baby|bub|bubs|the|a|an|some|had|has|have|did|done|was|is|got|gave|him|her|them|of|on|in|at|for|and|with|after|before|then|just|also|today|ate|eaten|solids|food|lunch|dinner|breakfast|snack|for)\b/g, ' ').replace(/[^a-z0-9 ,'-]/g, ' ').replace(/\s+/g, ' ').trim();
+  }
+
+  /* ---------- one clause -> one item ---------- */
+  function clauseItem(text, type, ctx, child) {
+    var now = ctx.now, cl = new Clause(text, now);
+    var item = { child: child, src: text.trim(), type: type };
+    if (type === 'note') {
+      var body = text.replace(/^(?:note|notes)\b[:\s-]*/, '').trim();
+      var tn = extractTimes(new Clause(body, now), now);
+      item.kind = body ? 'event' : 'form';
+      item.ev = { type: 'note', start: tn.time != null ? tn.time : now, note: cap(body) };
+      item.form = 'note';
+      return item;
+    }
+    var feedType = type === 'bottle' || type === 'breast' || type === 'feed';
+    var sd = feedType && !/\d (?:ml|oz)\b/.test(text) ? sidesOf(cl) : { segs: [], bare: [], both: false };
+    if (type === 'sleep' && /\b(?:bed|bedtime|went to bed)\b/.test(text)) cl.bedtime = true;
+    var times = extractTimes(cl, now);
+    item.explicitTime = !!times.explicit;
+    item.isNow = !!times.isNow;
+    if (times.bad) return { kind: 'error', child: child, src: item.src, msg: times.bad };
+    var at = times.time != null ? times.time : now;
+    var s = cl.t;
+
+    if (type === 'temp') {
+      var tm = /\b(\d{2,3}(?:\.\d+)?) ?(°f?)?/.exec(s);
+      var celsius = null;
+      if (tm) { var v = Number(tm[1]); if (tm[2] === '°f' || v >= 86) v = (v - 32) * 5 / 9; if (v >= 30 && v <= 45) celsius = Math.round(v * 10) / 10; }
+      var site = /\b(?:underarm|armpit|axillary|under (?:the |her |his )?arm)\b/.test(s) ? 'underarm' : /\bear\b/.test(s) ? 'ear' : /\bforehead\b/.test(s) ? 'forehead' : /\b(?:mouth|oral)\b/.test(s) ? 'mouth' : '';
+      item.ev = { type: 'temp', start: at, celsius: celsius, site: site };
+      item.kind = celsius != null ? 'event' : 'form'; item.form = 'temp';
+      return item;
+    }
+    if (type === 'med') {
+      var name = null;
+      MED_NAMES.forEach(function (n) { if (!name && n[0].test(s)) name = n[1]; });
+      if (!name) { var g = /\bgave (?:him |her |them )?(?:some |a |the )?([a-z][a-z ]{1,30}?)(?= \d| at |$| for )/.exec(s); if (g) name = cap(g[1]); }
+      var dose = /\b(\d+(?:\.\d+)?) ?(ml|drops?|mg|tablets?|doses?|sachets?|puffs?)\b/.exec(s);
+      item.ev = { type: 'med', start: at, name: name || 'Medicine', dose: dose ? dose[1] + ' ' + (dose[2] === 'ml' ? 'mL' : dose[2]) : '' };
+      item.kind = 'event';
+      return item;
+    }
+    if (type === 'pump') {
+      var segs = [], pm;
+      while ((pm = cl.take(/\b(left|right|l|r) ?(\d+(?:\.\d+)?)(?: ml)?\b/))) segs.push([pm[1].charAt(0), Number(pm[2])]);
+      while ((pm = cl.take(/\b(\d+(?:\.\d+)?) ml (?:on )?(?:the )?(left|right)\b/))) segs.push([pm[2].charAt(0), Number(pm[1])]);
+      var total = amountMl(cl);
+      var ev = { type: 'pump', start: at, end: times.dur ? at + times.dur * MIN : null };
+      if (segs.length) { ev.leftMl = 0; ev.rightMl = 0; segs.forEach(function (x) { if (x[0] === 'l') ev.leftMl += x[1]; else ev.rightMl += x[1]; }); }
+      else if (total != null) ev.totalMl = total;
+      if (times.dur && times.time == null) { ev.start = now - times.dur * MIN; ev.end = now; }
+      item.ev = ev; item.kind = segs.length || total != null ? 'event' : 'form'; item.form = 'pump';
+      return item;
+    }
+    if (type === 'growth') {
+      var g2 = { at: at };
+      var kg = /\b(\d+(?:\.\d+)?) kg\b/.exec(s), gr = /\b(\d{3,5}) g\b/.exec(s), lb = /\b(\d+(?:\.\d+)?) lb(?: (\d+(?:\.\d+)?) oz)?\b/.exec(s);
+      if (kg) g2.weightKg = Number(kg[1]);
+      else if (gr) g2.weightKg = Number(gr[1]) / 1000;
+      else if (lb) g2.weightKg = Math.round((Number(lb[1]) * 0.45359237 + (Number(lb[2]) || 0) * 0.0283495) * 1000) / 1000;
+      var cmRe = /\b(\d+(?:\.\d+)?) cm\b/g, cm;
+      while ((cm = cmRe.exec(s))) {
+        var before = s.slice(Math.max(0, cm.index - 24), cm.index);
+        if (/\bhead|circumference\b/.test(before) && g2.headCm == null) g2.headCm = Number(cm[1]);
+        else if (g2.lengthCm == null && !/\bhead\b/.test(before.slice(-8))) g2.lengthCm = Number(cm[1]);
+        else if (g2.headCm == null) g2.headCm = Number(cm[1]);
+      }
+      if (g2.weightKg != null && (g2.weightKg < 0.4 || g2.weightKg > 30)) return { kind: 'error', child: child, src: item.src, msg: 'That weight looks off. Say it in kilograms, like 4.2 kg.' };
+      item.g = g2; item.kind = g2.weightKg != null || g2.lengthCm != null || g2.headCm != null ? 'growth' : 'form'; item.form = 'growth';
+      return item;
+    }
+    if (type === 'bath') { item.ev = { type: 'bath', start: at }; item.kind = 'event'; return item; }
+    if (type === 'tummy') {
+      var st = times.time != null ? at : times.dur ? now - times.dur * MIN : now;
+      item.ev = { type: 'tummy', start: st, end: times.dur ? st + times.dur * MIN : null }; item.kind = 'event';
+      return item;
+    }
+    if (type === 'nappy') {
+      var wet = /\b(?:wet|wee|wees|weed|weeing|pee|peed|urine)\b/.test(s), dirty = /\b(?:dirty|poo|poos|pooed|pooing|poop|pooped|pooey|soiled|stool|number 2)\b/.test(s);
+      if (/\bboth\b/.test(s)) { wet = true; dirty = true; }
+      if (!wet && !dirty) wet = true;
+      var col = /\b(black|meconium|green|yellow|mustard|orange|brown|red|white|pale|grey|gray)\b/.exec(s), colour = null;
+      if (col && dirty) colour = { black: 'meconium', meconium: 'meconium', green: 'green', yellow: 'yellow', mustard: 'yellow', orange: 'yellow', brown: 'brown' }[col[1]] || 'other';
+      item.ev = { type: 'nappy', start: at, wet: wet, dirty: dirty, colour: colour }; item.kind = 'event';
+      return item;
+    }
+    if (type === 'solids') {
+      var foods = leftover(s.replace(/\b(?:solids|puree|purée)\b/g, function (w) { return w === 'solids' ? ' ' : w; }));
+      item.ev = { type: 'feed', method: 'solids', start: at, foods: foods };
+      item.kind = foods ? 'event' : 'form'; item.form = 'solids';
+      return item;
+    }
+    if (type === 'bottle' || type === 'breast' || type === 'feed') {
+      var ml = amountMl(cl);
+      var hasBreast = sd.segs.length || sd.bare.length || sd.both || /\b(?:breast(?! ?milk)|breastfe(?:e)?d(?:ing)?|nursed|nursing|boob|latched)\b/.test(s);
+      if (ml != null || type === 'bottle') {
+        var milk = /\bformula\b/.test(s) ? 'formula' : /\b(?:breast ?milk|expressed|ebm|bm)\b/.test(s) ? 'breast' : (ctx.feeding === 'formula' ? 'formula' : ctx.lastMilk || null);
+        item.ev = { type: 'feed', method: 'bottle', start: at, amountMl: ml, milk: milk };
+        if (ml != null && (ml <= 0 || ml > 500)) return { kind: 'error', child: child, src: item.src, msg: 'Bottle amounts need to be between 1 and 500 mL.' };
+        item.kind = ml != null ? 'event' : 'form'; item.form = 'bottle';
+        return item;
+      }
+      if (hasBreast || type === 'breast' || (ctx.feeding === 'breast' && times.dur)) {
+        var segs2 = sd.segs.slice(), total2 = times.dur;
+        if (!segs2.length && total2) {
+          var sides = sd.both ? [ctx.suggestSide || 'L', (ctx.suggestSide || 'L') === 'L' ? 'R' : 'L'] : sd.bare.length ? sd.bare.slice(0, 2) : [ctx.suggestSide || 'L'];
+          if (sides.length === 2 && sides[0] === sides[1]) sides = [sides[0]];
+          var each = Math.round(total2 / sides.length);
+          segs2 = sides.map(function (x) { return { side: x, min: each }; });
+          item.guessedSide = !sd.bare.length && !sd.both;
+        }
+        if (!segs2.length) {
+          var side0 = sd.bare[0] || (sd.both ? (ctx.suggestSide || 'L') : null);
+          if (side0 && (times.isNow || times.time == null) && /\b(?:feeding|started|starting|start|now|on)\b/.test(text)) {
+            return { kind: 'timer', child: child, src: item.src, side: side0, type: 'breast' };
+          }
+          item.ev = { type: 'feed', method: 'breast', start: at, firstSide: side0 || ctx.suggestSide || 'L' }; item.kind = 'form'; item.form = 'breast';
+          return item;
+        }
+        var mins = segs2.reduce(function (a2, x) { return a2 + x.min; }, 0);
+        if (mins <= 0 || mins > 180) return { kind: 'error', child: child, src: item.src, msg: 'Breastfeed minutes need to be between 1 and 180.' };
+        var start = times.time != null ? at : now - mins * MIN, t = start, out = [];
+        segs2.forEach(function (x) { out.push({ side: x.side, start: t, end: t + x.min * MIN }); t += x.min * MIN; });
+        item.ev = { type: 'feed', method: 'breast', start: start, end: t, segments: out };
+        if (t > now + 5 * MIN) { item.ev.start -= t - now; item.ev.end = now; item.ev.segments = out.map(function (x) { return { side: x.side, start: x.start - (t - now), end: x.end - (t - now) }; }); }
+        item.kind = 'event';
+        return item;
+      }
+      item.ev = { type: 'feed', start: at }; item.kind = 'form'; item.form = ctx.feeding === 'formula' ? 'bottle' : ctx.feeding === 'breast' ? 'breast' : 'feed';
+      return item;
+    }
+    if (type === 'sleep' || type === 'wake') {
+      var where = /\b(?:pram|stroller|buggy)\b/.test(s) ? 'pram' : /\bcar\b/.test(s) ? 'car' : /\b(?:carrier|sling|wrap|ergo)\b/.test(s) ? 'carrier' : /\b(?:arms|cuddle|on me|on dad|on mum|contact)\b/.test(s) ? 'arms' : /\b(?:cot|bassinet|crib)\b/.test(s) ? 'cot' : '';
+      var wakeWord = /\b(?:woke|woken|wake|wakes|waking|awake|got up|up from|up at)\b/.test(text);
+      var sleepWord = /\b(?:asleep|went down|gone down|down for|put down|nap|napped|slept|sleep|bed|bedtime|settled|dozed)\b/.test(text);
+      if (times.start != null && times.end != null) {
+        item.ev = { type: 'sleep', start: times.start, end: times.end, where: where }; item.kind = 'event';
+        return item;
+      }
+      if (times.dur) {
+        var end, st2;
+        if (times.time != null && wakeWord && !sleepWord) { end = at; st2 = end - times.dur * MIN; }
+        else if (times.time != null) { st2 = at; end = st2 + times.dur * MIN; }
+        else { end = now; st2 = now - times.dur * MIN; }
+        if (end > now + 5 * MIN) return { kind: 'error', child: child, src: item.src, msg: 'That sleep would end in the future.' };
+        if (times.dur > 16 * 60) return { kind: 'error', child: child, src: item.src, msg: 'That’s over 16 hours. Check the times.' };
+        item.ev = { type: 'sleep', start: st2, end: end, where: where }; item.kind = 'event';
+        return item;
+      }
+      if (type === 'wake' || (wakeWord && !sleepWord)) { item.kind = 'wake'; item.end = at; return item; }
+      item.kind = 'start-sleep'; item.ev = { type: 'sleep', start: at, end: null, where: where };
+      return item;
+    }
+    return { kind: 'unknown', child: child, src: item.src };
+  }
+
+  /* ---------- whole text ---------- */
+  function escapeRe(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+  function parse(text, ctx) {
+    ctx = ctx || {};
+    var now = ctx.now || Date.now();
+    var s = normalise(text);
+    if (!s) return { items: [], ok: 0 };
+    var kids = (ctx.kids || []).filter(function (k) { return k && k.name && k.name.trim().length >= 2; }).map(function (k) {
+      return { id: k.id, re: new RegExp('\\b' + escapeRe(k.name.trim().toLowerCase()) + "(?:'s|s)?\\b") };
+    });
+    // clauses: commas, full stops, "then"; "and" only splits when both sides say what happened
+    var parts = [], seqs = [], re = / ?([,;]|\.(?= |$)| and then | then | also | plus | after that ) ?/g, last = 0, m, nextSeq = false;
+    while ((m = re.exec(s))) { parts.push(s.slice(last, m.index)); seqs.push(nextSeq); nextSeq = /then|after that/.test(m[1]); last = re.lastIndex; }
+    parts.push(s.slice(last)); seqs.push(nextSeq);
+    var frags = [];
+    parts.forEach(function (p, pi) {
+      if (!p || !p.trim()) return;
+      var firstOfPart = true;
+      var bits = p.split(/ and | with /);
+      var cur = null;
+      bits.forEach(function (b) {
+        var t = typeOf(b);
+        if (cur && !t) cur.text += ' and ' + b;
+        else if (cur && t && !cur.type) { cur.text += ' and ' + b; cur.type = t; }
+        else if (cur && t && cur.type === t && (t === 'breast' || t === 'nappy')) cur.text += ' and ' + b;
+        else { cur = { text: b, type: t, seq: firstOfPart && seqs[pi] }; frags.push(cur); }
+        firstOfPart = false;
+      });
+    });
+    // fragments that only say when: attach to the one before (or after)
+    var merged = [];
+    frags.forEach(function (f) {
+      var last = merged[merged.length - 1];
+      if (!f.type && last) last.text += ' ' + f.text;
+      else merged.push(f);
+    });
+    if (merged.length > 1 && !merged[0].type) { merged[1].text = merged[0].text + ' ' + merged[1].text; merged.shift(); }
+    var child = null, items = [];
+    merged.forEach(function (f) {
+      var txt = f.text;
+      kids.forEach(function (k) { if (k.re.test(txt)) { child = k.id; txt = txt.replace(k.re, ' '); } });
+      var type = typeOf(txt) || f.type;
+      if (!type) { items.push({ kind: 'unknown', child: child, src: f.text.trim() }); return; }
+      var it = clauseItem(txt.replace(/\s+/g, ' ').trim(), type, ctx, child);
+      it.seq = !!f.seq;
+      items.push(it);
+    });
+    // join neighbours that are one thing said in two parts
+    var out = [];
+    items.forEach(function (it) {
+      var prev = out[out.length - 1];
+      if (prev && prev.child === it.child && prev.kind === 'event' && it.kind === 'event' && prev.ev.type === 'nappy' && it.ev.type === 'nappy' && !it.explicitTime) {
+        prev.ev.wet = prev.ev.wet || it.ev.wet; prev.ev.dirty = prev.ev.dirty || it.ev.dirty; prev.ev.colour = prev.ev.colour || it.ev.colour; prev.src += ' and ' + it.src; return;
+      }
+      if (prev && prev.child === it.child && prev.kind === 'start-sleep' && it.kind === 'wake') {
+        if (it.end > prev.ev.start) { prev.kind = 'event'; prev.ev.end = it.end; prev.src += ' and ' + it.src; return; }
+      }
+      if (prev && prev.child === it.child && prev.kind === 'event' && it.kind === 'event' && prev.ev.method === 'breast' && it.ev.method === 'breast' && !it.explicitTime) {
+        var shift = prev.ev.end - it.ev.start;
+        it.ev.segments.forEach(function (x) { prev.ev.segments.push({ side: x.side, start: x.start + shift, end: x.end + shift }); });
+        prev.ev.end = prev.ev.segments[prev.ev.segments.length - 1].end;
+        if (prev.ev.end > now) { var back = prev.ev.end - now; prev.ev.start -= back; prev.ev.end = now; prev.ev.segments = prev.ev.segments.map(function (x) { return { side: x.side, start: x.start - back, end: x.end - back }; }); }
+        prev.src += ' and ' + it.src; return;
+      }
+      out.push(it);
+    });
+    // "nap 1 to 2:30 then a bottle": what follows "then" happened when the thing before it ended
+    out.forEach(function (i, ix) {
+      var prev = out[ix - 1];
+      if (!i.seq || i.explicitTime || i.isNow || !prev || !prev.explicitTime || !i.ev || i.kind === 'error') return;
+      var tEnd = prev.ev ? (prev.ev.end != null ? prev.ev.end : prev.ev.start) : prev.end;
+      if (tEnd == null || tEnd > now) return;
+      var dur = i.ev.end != null ? i.ev.end - i.ev.start : null;
+      i.ev.start = tEnd; if (dur != null) i.ev.end = tEnd + dur;
+      i.explicitTime = true;
+    });
+    // otherwise one time said once applies to everything else in the sentence (not ranges, which are their own)
+    var timed = out.filter(function (i) { return i.explicitTime; });
+    if (timed.length === 1 && out.length > 1 && !(timed[0].ev && timed[0].ev.end != null) && !out.some(function (i) { return i.seq; })) {
+      var tref = timed[0].ev ? timed[0].ev.start : timed[0].end != null ? timed[0].end : timed[0].g && timed[0].g.at;
+      out.forEach(function (i) {
+        if (i === timed[0] || i.explicitTime || i.isNow || tref == null) return;
+        if (i.ev && i.ev.end == null && i.kind !== 'start-sleep') i.ev.start = tref;
+        else if (i.ev && i.kind === 'start-sleep') i.ev.start = tref;
+        else if (i.g) i.g.at = tref;
+        else if (i.kind === 'wake') i.end = tref;
+      });
+    }
+    // checks that need to know what's running
+    var running = ctx.running || {};
+    out.forEach(function (i, ix) {
+      var cid = i.child || ctx.child, r = running[cid] || {};
+      if (i.kind === 'wake') {
+        var startedHere = out.slice(0, ix).filter(function (p) { return p.kind === 'start-sleep' && (p.child || ctx.child) === cid; })[0];
+        if (!r.sleepStart && !startedHere) { out[ix] = { kind: 'error', child: i.child, src: i.src, msg: 'No sleep is running. Say when they fell asleep too, like “nap 1:10 to 2:30”.' }; return; }
+        var since = r.sleepStart || (startedHere && startedHere.ev.start);
+        if (i.end <= since) { out[ix] = { kind: 'error', child: i.child, src: i.src, msg: 'That wake-up time is before the sleep started.' }; return; }
+        i.since = since;
+      }
+      if (i.kind === 'start-sleep' && r.sleepStart) out[ix] = { kind: 'error', child: i.child, src: i.src, msg: 'Already asleep. Say “woke at …” to end that sleep.' };
+      if (i.kind === 'timer' && r.feed) out[ix] = { kind: 'error', child: i.child, src: i.src, msg: 'A feed timer is already running.' };
+      if (i.ev && i.ev.start > now + 5 * MIN) out[ix] = { kind: 'error', child: i.child, src: i.src, msg: 'That time hasn’t happened yet.' };
+    });
+    return { items: out, ok: out.filter(function (i) { return i.kind !== 'error' && i.kind !== 'unknown' && i.kind !== 'form'; }).length };
+  }
+
+  var api = { parse: parse, normalise: normalise, typeOf: typeOf };
+  root.BabyParse = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this);
 
@@ -1008,6 +1770,8 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
   var E = root.BabyEngine, DAY = E.DAY;
   var DEFAULT_PROFILE = { surname: '', name: '', dueDate: null, birthAt: null, feeding: 'unsure', dayStart: '07:00', nightStart: '19:00' };
   var MEMBER_COLOURS = ['#4A57B5', '#B8417A', '#11907F', '#C9790E', '#6B5BB0', '#2F7FA0'];
+  var FIRST_CHILD = 'baby';
+  var HM = /^\d{2}:\d{2}$/;
 
   function randomId(n) {
     var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789', out = '';
@@ -1018,8 +1782,18 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
   }
   function uid() { return Date.now().toString(36) + randomId(6).toLowerCase(); }
   function clean(o) { return JSON.parse(JSON.stringify(o, function (k, v) { return (k === '_path' || k === '_pending') ? undefined : v; })); }
-  function num(v) { var n = Number(v); return v !== null && v !== '' && isFinite(n) ? n : null; }
+  function num(v) { var n = Number(v); return v !== null && v !== '' && v !== undefined && isFinite(n) ? n : null; }
   function str(v, max) { return typeof v === 'string' ? v.slice(0, max || 500) : ''; }
+  function obj(v) { return v && typeof v === 'object' && !Array.isArray(v) ? v : {}; }
+  function childOf(v) { return typeof v === 'string' && /^[A-Za-z0-9_-]{1,40}$/.test(v) ? v : FIRST_CHILD; }
+  function deepMerge(t, s) {
+    Object.keys(s).forEach(function (k) {
+      var v = s[k];
+      if (v && typeof v === 'object' && !Array.isArray(v) && t[k] && typeof t[k] === 'object' && !Array.isArray(t[k])) deepMerge(t[k], v);
+      else t[k] = v === undefined ? undefined : JSON.parse(JSON.stringify(v));
+    });
+    return t;
+  }
 
   // shared data is untrusted: coerce every field into the shape the UI expects
   function sanitizeEvent(id, e, path) {
@@ -1027,7 +1801,7 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     var start = num(e.start);
     if (start == null) return null;
     var out = {
-      id: String(id), type: str(e.type, 20), start: start, end: e.end == null ? null : num(e.end),
+      id: String(id), type: str(e.type, 20), start: start, end: e.end == null ? null : num(e.end), child: childOf(e.child),
       by: e.by ? str(e.by, 120) : null, createdAt: num(e.createdAt), updatedAt: num(e.updatedAt) || num(e.createdAt) || 0,
       updatedBy: e.updatedBy ? str(e.updatedBy, 120) : null, deleted: !!e.deleted, note: str(e.note, 1000), _path: path
     };
@@ -1042,7 +1816,7 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     } else if (t === 'nappy') {
       out.wet = !!e.wet; out.dirty = !!e.dirty; out.colour = str(e.colour, 20) || null;
     } else if (t === 'pump') {
-      out.leftMl = num(e.leftMl); out.rightMl = num(e.rightMl);
+      out.leftMl = num(e.leftMl); out.rightMl = num(e.rightMl); out.totalMl = num(e.totalMl);
     } else if (t === 'temp') {
       out.celsius = num(e.celsius); out.site = str(e.site, 20);
     } else if (t === 'med') {
@@ -1054,7 +1828,20 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
   }
   function sanitizeGrowth(id, g) {
     if (!g || typeof g !== 'object' || num(g.at) == null) return null;
-    return { id: String(id), at: num(g.at), weightKg: num(g.weightKg), lengthCm: num(g.lengthCm), headCm: num(g.headCm), note: str(g.note, 300), by: g.by ? str(g.by, 120) : null, updatedAt: num(g.updatedAt) || 0 };
+    return { id: String(id), at: num(g.at), child: childOf(g.child), weightKg: num(g.weightKg), lengthCm: num(g.lengthCm), headCm: num(g.headCm), note: str(g.note, 300), by: g.by ? str(g.by, 120) : null, updatedAt: num(g.updatedAt) || 0 };
+  }
+  function sanitizeWW(w) {
+    if (!w || typeof w !== 'object') return null;
+    var out = { on: !!w.on };
+    ['first', 'mid', 'last'].forEach(function (k) { var v = num(w[k]); if (v != null && v >= 15 && v <= 480) out[k] = Math.round(v); });
+    return out.mid ? out : null;
+  }
+  function sanitizePlan(p) {
+    if (!p || typeof p !== 'object') return null;
+    var out = { wake: HM.test(p.wake || '') ? p.wake : null, bed: HM.test(p.bed || '') ? p.bed : null, naps: null };
+    var n = num(p.naps);
+    if (n != null && n >= 0 && n <= 7) out.naps = Math.round(n);
+    return out.wake ? out : null;
   }
   function sanitizeProfile(p) {
     p = p && typeof p === 'object' ? p : {};
@@ -1065,16 +1852,74 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     if (typeof p.dueDate === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(p.dueDate)) out.dueDate = p.dueDate;
     if (num(p.birthAt) != null) out.birthAt = num(p.birthAt);
     if (['breast', 'formula', 'mixed', 'unsure'].indexOf(p.feeding) >= 0) out.feeding = p.feeding;
-    if (typeof p.dayStart === 'string' && /^\d{2}:\d{2}$/.test(p.dayStart)) out.dayStart = p.dayStart;
-    if (typeof p.nightStart === 'string' && /^\d{2}:\d{2}$/.test(p.nightStart)) out.nightStart = p.nightStart;
+    if (typeof p.dayStart === 'string' && HM.test(p.dayStart)) out.dayStart = p.dayStart;
+    if (typeof p.nightStart === 'string' && HM.test(p.nightStart)) out.nightStart = p.nightStart;
     ['birthWeightKg', 'birthLengthCm', 'birthHeadCm'].forEach(function (k) { if (num(p[k]) != null) out[k] = num(p[k]); });
+    out.ww = sanitizeWW(p.ww);
+    out.plan = sanitizePlan(p.plan);
+    out.archived = !!p.archived;
+    out.order = num(p.order) || 0;
+    out.createdAt = num(p.createdAt) || 0;
     return out;
+  }
+  // children: {childId: rawProfile} -> sorted list; the first child (the original meta/baby doc) comes first
+  function childList(map) {
+    return Object.keys(map || {}).map(function (cid) { var p = sanitizeProfile(map[cid]); p.id = childOf(cid); return p; })
+      .sort(function (a, b) { return (a.order - b.order) || (a.createdAt - b.createdAt) || (a.id === FIRST_CHILD ? -1 : b.id === FIRST_CHILD ? 1 : a.id < b.id ? -1 : 1); });
   }
   function sanitizeMember(id, m) {
     if (!m || typeof m !== 'object') return null;
     return { id: String(id), name: str(m.name, 40), colour: /^#[0-9A-Fa-f]{6}$/.test(m.colour || '') ? m.colour : null, joinedAt: num(m.joinedAt) || 0 };
   }
   function contraction(id, c) { return num(c.start) == null ? null : { id: String(id), start: num(c.start), end: c.end == null ? null : num(c.end), by: c.by ? str(c.by, 120) : null, updatedAt: num(c.updatedAt) || 0 }; }
+
+  /* reminders: shared settings (meta/alerts), each phone's notification settings (meta/push), upcoming notifications (meta/outbox) */
+  function sanitizeReminder(id, r) {
+    if (!r || typeof r !== 'object' || r.deleted) return null;
+    var rep = ['once', 'daily', 'hours'].indexOf(r.repeat) >= 0 ? r.repeat : 'daily';
+    var out = { id: String(id), title: str(r.title, 80) || 'Reminder', repeat: rep, time: HM.test(r.time || '') ? r.time : '09:00',
+      every: Math.min(24, Math.max(1, Math.round(num(r.every) || 4))), at: num(r.at), from: num(r.from),
+      child: r.child ? childOf(r.child) : null, to: r.to ? str(r.to, 40) : null, on: r.on !== false, by: r.by ? str(r.by, 40) : null, createdAt: num(r.createdAt) || 0 };
+    if (rep === 'once' && out.at == null) return null;
+    return out;
+  }
+  function sanitizeAlerts(a) {
+    a = obj(a);
+    var relay = typeof a.relay === 'string' && /^https:\/\/[^\s"'<>]+$/.test(a.relay) ? a.relay.replace(/\/+$/, '') : null;
+    var custom = obj(a.custom), list = [];
+    Object.keys(custom).forEach(function (id) { var r = sanitizeReminder(id, custom[id]); if (r) list.push(r); });
+    list.sort(function (x, y) { return x.createdAt - y.createdAt; });
+    return { relay: relay, custom: list };
+  }
+  var PREF_DEFAULTS = { sleep: true, sleepLead: 10, feed: true, feedLead: 0, feedNight: false, custom: true, only: null };
+  function sanitizePrefs(p) {
+    p = obj(p);
+    var out = {};
+    Object.keys(PREF_DEFAULTS).forEach(function (k) { out[k] = PREF_DEFAULTS[k]; });
+    ['sleep', 'feed', 'feedNight', 'custom'].forEach(function (k) { if (typeof p[k] === 'boolean') out[k] = p[k]; });
+    if (num(p.sleepLead) != null) out.sleepLead = Math.min(60, Math.max(0, Math.round(num(p.sleepLead))));
+    if (num(p.feedLead) != null) out.feedLead = Math.min(60, Math.max(0, Math.round(num(p.feedLead))));
+    if (p.only) out.only = childOf(p.only);
+    return out;
+  }
+  function sanitizeSub(s) {
+    s = obj(s);
+    var k = obj(s.keys);
+    if (typeof s.endpoint !== 'string' || !/^https:\/\//.test(s.endpoint) || typeof k.p256dh !== 'string' || typeof k.auth !== 'string') return null;
+    return { endpoint: s.endpoint.slice(0, 1000), keys: { p256dh: k.p256dh.slice(0, 200), auth: k.auth.slice(0, 100) }, at: num(s.at) || 0, ua: str(s.ua, 40) };
+  }
+  function sanitizePush(p) {
+    p = obj(p);
+    var subs = {}, prefs = {};
+    Object.keys(obj(p.subs)).forEach(function (m) { var s = sanitizeSub(p.subs[m]); if (s) subs[m] = s; });
+    Object.keys(obj(p.prefs)).forEach(function (m) { prefs[m] = sanitizePrefs(p.prefs[m]); });
+    return { subs: subs, prefs: prefs };
+  }
+  function sanitizeOutbox(o) {
+    o = obj(o);
+    var items = Array.isArray(o.items) ? o.items.slice(0, 300).filter(function (i) { return i && typeof i.id === 'string' && num(i.at) != null && typeof i.to === 'string'; }) : [];
+    return { items: items.map(function (i) { return { id: i.id, at: num(i.at), to: i.to, title: str(i.title, 120), body: str(i.body, 300), tag: str(i.tag, 64) }; }), at: num(o.at) || 0, by: str(o.by, 40) };
+  }
 
   /* ---------- MemoryStore: sample data, or a phone with no database configured ---------- */
   function MemoryStore(initial, opts) {
@@ -1085,7 +1930,10 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     var saved = null;
     if (this.persistKey) { try { saved = JSON.parse(localStorage.getItem(this.persistKey) || 'null'); } catch (e) { saved = null; } }
     var d = saved || initial || {};
-    this.data = { profile: d.profile || null, events: d.events || [], growth: d.growth || [], contractions: d.contractions || [], members: d.members || {} };
+    var children = d.children || {};
+    if (d.profile && !children[FIRST_CHILD]) children[FIRST_CHILD] = d.profile; // older saves and sample data
+    this.data = { children: children, events: d.events || [], growth: d.growth || [], contractions: d.contractions || [], members: d.members || {},
+      alerts: d.alerts || {}, push: d.push || {}, outbox: d.outbox || {} };
     this.listeners = [];
     this.status = { mode: this.mode, loaded: true, pending: 0, readOnly: false };
     this._snap = null;
@@ -1102,12 +1950,14 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
       if (this._snap) return this._snap;
       var members = {}, self = this;
       Object.keys(this.data.members).forEach(function (id) { var m = sanitizeMember(id, self.data.members[id]); if (m) members[id] = m; });
+      var children = childList(this.data.children);
       this._snap = {
-        profile: this.data.profile ? sanitizeProfile(this.data.profile) : null,
+        children: children, profile: children[0] || null,
         events: this.data.events.map(function (e) { return sanitizeEvent(e.id, e, 'local'); }).filter(Boolean),
         growth: this.data.growth.map(function (g) { return sanitizeGrowth(g.id, g); }).filter(Boolean),
         contractions: this.data.contractions.map(function (c) { return contraction(c.id, c); }).filter(Boolean),
-        members: members, me: this.me
+        members: members, me: this.me,
+        alerts: sanitizeAlerts(this.data.alerts), push: sanitizePush(this.data.push), outbox: sanitizeOutbox(this.data.outbox)
       };
       return this._snap;
     },
@@ -1115,7 +1965,8 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     addEvent: function (ev) { this.data.events.push(clean(ev)); this.emit(); return Promise.resolve(); },
     patchEvent: function (id, patch) { var e = this.find(this.data.events, id); if (e) { Object.assign(e, clean(patch), { updatedAt: Date.now() }); this.emit(); } return Promise.resolve(); },
     removeEvent: function (id) { return this.patchEvent(id, { deleted: true }); },
-    saveProfile: function (patch) { this.data.profile = Object.assign({}, DEFAULT_PROFILE, this.data.profile || {}, clean(patch)); this.emit(); return Promise.resolve(); },
+    saveChild: function (cid, patch) { this.data.children[cid] = Object.assign({}, DEFAULT_PROFILE, this.data.children[cid] || {}, clean(patch)); this.emit(); return Promise.resolve(); },
+    saveProfile: function (patch) { return this.saveChild(FIRST_CHILD, patch); },
     setMember: function (name, colour) { this.data.members[this.me] = Object.assign({}, this.data.members[this.me] || { joinedAt: Date.now() }, { name: name, colour: colour || MEMBER_COLOURS[0] }); this.emit(); return Promise.resolve(); },
     addGrowth: function (g) { this.data.growth.push(clean(g)); this.emit(); return Promise.resolve(); },
     patchGrowth: function (id, p) { var g = this.find(this.data.growth, id); if (g) { Object.assign(g, clean(p)); this.emit(); } return Promise.resolve(); },
@@ -1124,18 +1975,22 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     patchContraction: function (id, p) { var c = this.find(this.data.contractions, id); if (c) { Object.assign(c, clean(p)); this.emit(); } return Promise.resolve(); },
     removeContraction: function (id) { this.data.contractions = this.data.contractions.filter(function (c) { return c.id !== id; }); this.emit(); return Promise.resolve(); },
     clearContractions: function () { this.data.contractions = []; this.emit(); return Promise.resolve(); },
+    saveAlerts: function (patch) { deepMerge(this.data.alerts, clean(patch)); this.emit(); return Promise.resolve(); },
+    savePush: function (patch) { deepMerge(this.data.push, clean(patch)); this.emit(); return Promise.resolve(); },
+    setOutbox: function (doc) { this.data.outbox = clean(doc); this.emit(); return Promise.resolve(); },
     exportAll: function () { return Promise.resolve(this.snapshot()); }
   };
 
   /* ---------- FirebaseStore: one family log shared by every paired phone ----------
-     families/{family}/meta/baby                profile
+     families/{family}/meta/baby                first child's profile (meta/child~{id} for more children)
+     families/{family}/meta/alerts, push, outbox reminder settings, each phone's notification settings, upcoming notifications
      families/{family}/days/{day}~{member}       one doc per phone per day, events keyed by id (merge writes)
      families/{family}/growth/{id}, contractions/{id}, members/{member} */
   function FirebaseStore(fb, family, member) {
     this.fb = fb; this.family = family; this.me = member; this.base = 'families/' + family + '/';
     this.listeners = [];
-    this.server = { profile: null, days: new Map(), growth: new Map(), contractions: new Map(), members: new Map() };
-    this.meta = { profile: {}, days: {}, growth: {}, contractions: {}, members: {} };
+    this.server = { meta: new Map(), days: new Map(), growth: new Map(), contractions: new Map(), members: new Map() };
+    this.meta = { meta: {}, days: {}, growth: {}, contractions: {}, members: {} };
     this.parts = {};
     this.status = { mode: 'firebase', loaded: false, slow: false, pending: 0, offline: typeof navigator !== 'undefined' && navigator.onLine === false, readOnly: false, error: null };
     this._snap = null;
@@ -1155,7 +2010,7 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     emit: function () {
       this._snap = null;
       var m = this.meta;
-      this.status.pending = ['profile', 'days', 'growth', 'contractions', 'members'].reduce(function (s, k) { return s + Object.keys(m[k]).filter(function (id) { return m[k][id]; }).length; }, 0);
+      this.status.pending = ['meta', 'days', 'growth', 'contractions', 'members'].reduce(function (s, k) { return s + Object.keys(m[k]).filter(function (id) { return m[k][id] && id !== 'outbox'; }).length; }, 0);
       this.listeners.forEach(function (f) { f(); });
     },
     loaded: function (part, md) {
@@ -1175,16 +2030,7 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
       if (code === 'unavailable' || code === 'internal' || code === 'unknown') setTimeout(function () { self.status.error = null; resub.call(self); }, 5000);
       this.emit();
     },
-    subscribeAll: function () { this.subscribeMeta(); this.subscribeDays(); this.subscribeColl('growth'); this.subscribeColl('contractions'); this.subscribeColl('members'); },
-    subscribeMeta: function () {
-      var self = this;
-      if (this.unMeta) this.unMeta();
-      this.unMeta = this.fb.doc(this.base + 'meta/baby').onSnapshot(function (s) {
-        self.server.profile = s.exists ? s.data() : null;
-        self.meta.profile = { baby: s.metadata.hasPendingWrites };
-        self.loaded('meta', s.metadata); self.emit();
-      }, function (e) { self.onError(e, self.subscribeMeta); });
-    },
+    subscribeAll: function () { this.subscribeColl('meta'); this.subscribeDays(); this.subscribeColl('growth'); this.subscribeColl('contractions'); this.subscribeColl('members'); },
     subscribeDays: function () {
       var self = this;
       if (this.unDays) this.unDays();
@@ -1220,13 +2066,19 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
       });
       var pendDays = this.meta.days, base = this.base;
       evs.forEach(function (e) { var docId = e._path.slice(base.length + 5); if (pendDays[docId]) e._pending = true; });
-      var growth = [], ctr = [], members = {};
+      var growth = [], ctr = [], members = {}, kids = {};
       this.server.growth.forEach(function (g, id) { var s = sanitizeGrowth(id, g); if (s) growth.push(s); });
       this.server.contractions.forEach(function (c, id) { var s = contraction(id, c); if (s) ctr.push(s); });
       this.server.members.forEach(function (mm, id) { var s = sanitizeMember(id, mm); if (s) members[id] = s; });
+      this.server.meta.forEach(function (doc, id) {
+        if (id === FIRST_CHILD) kids[FIRST_CHILD] = doc;
+        else if (id.indexOf('child~') === 0) kids[id.slice(6)] = doc;
+      });
+      var children = childList(kids);
       this._snap = {
-        profile: this.server.profile ? sanitizeProfile(this.server.profile) : null,
-        events: Array.from(evs.values()), growth: growth, contractions: ctr, members: members, me: this.me
+        children: children, profile: children[0] || null,
+        events: Array.from(evs.values()), growth: growth, contractions: ctr, members: members, me: this.me,
+        alerts: sanitizeAlerts(this.server.meta.get('alerts')), push: sanitizePush(this.server.meta.get('push')), outbox: sanitizeOutbox(this.server.meta.get('outbox'))
       };
       return this._snap;
     },
@@ -1255,9 +2107,11 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
       return this.write(this.fb.doc(cur._path).merge(body), 'change');
     },
     removeEvent: function (id) { return this.patchEvent(id, { deleted: true }); },
-    saveProfile: function (patch) {
-      return this.write(this.fb.doc(this.base + 'meta/baby').merge(clean(Object.assign({}, patch, { updatedAt: Date.now(), updatedBy: this.me }))), 'setting');
+    childPath: function (cid) { return this.base + 'meta/' + (cid === FIRST_CHILD ? FIRST_CHILD : 'child~' + cid); },
+    saveChild: function (cid, patch) {
+      return this.write(this.fb.doc(this.childPath(cid)).merge(clean(Object.assign({}, patch, { updatedAt: Date.now(), updatedBy: this.me }))), 'setting');
     },
+    saveProfile: function (patch) { return this.saveChild(FIRST_CHILD, patch); },
     setMember: function (name, colour) {
       var cur = this.snapshot().members[this.me];
       var body = { name: name, colour: colour || (cur && cur.colour) || MEMBER_COLOURS[this.server.members.size % MEMBER_COLOURS.length] };
@@ -1274,6 +2128,9 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
       var self = this;
       return Promise.all(this.snapshot().contractions.map(function (c) { return self.removeContraction(c.id); }));
     },
+    saveAlerts: function (patch) { return this.write(this.fb.doc(this.base + 'meta/alerts').merge(clean(patch)), 'reminder'); },
+    savePush: function (patch) { return this.write(this.fb.doc(this.base + 'meta/push').merge(clean(patch)), 'notification setting'); },
+    setOutbox: function (doc) { return this.write(this.fb.doc(this.base + 'meta/outbox').set(clean(doc)), 'reminder schedule'); },
     exportAll: function () {
       var self = this;
       return this.fb.collection(this.base + 'days').get().then(function (qs) {
@@ -1283,12 +2140,13 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
           Object.keys(map).forEach(function (id) { var e = sanitizeEvent(id, map[id], self.base + 'days/' + d.id); if (e) { var cur = evs.get(id); if (!cur || e.updatedAt >= cur.updatedAt) evs.set(id, e); } });
         });
         var s = self.snapshot();
-        return { profile: s.profile, events: Array.from(evs.values()), growth: s.growth, contractions: s.contractions, members: s.members };
+        return { children: s.children, profile: s.profile, events: Array.from(evs.values()), growth: s.growth, contractions: s.contractions, members: s.members };
       });
     }
   };
 
-  root.BabyStore = { MemoryStore: MemoryStore, FirebaseStore: FirebaseStore, DEFAULT_PROFILE: DEFAULT_PROFILE, MEMBER_COLOURS: MEMBER_COLOURS, uid: uid, randomId: randomId, sanitizeProfile: sanitizeProfile };
+  root.BabyStore = { MemoryStore: MemoryStore, FirebaseStore: FirebaseStore, DEFAULT_PROFILE: DEFAULT_PROFILE, MEMBER_COLOURS: MEMBER_COLOURS, FIRST_CHILD: FIRST_CHILD,
+    uid: uid, randomId: randomId, sanitizeProfile: sanitizeProfile, sanitizePrefs: sanitizePrefs, PREF_DEFAULTS: PREF_DEFAULTS, childList: childList };
 })(typeof globalThis !== 'undefined' ? globalThis : this);
 
 </script>
@@ -1296,9 +2154,10 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
 /* UI for the baby tracker. Depends on BabyEngine and BabyStore. */
 (function () {
   'use strict';
-  var E = window.BabyEngine, B = window.BabyStore;
+  var E = window.BabyEngine, B = window.BabyStore, QP = window.BabyParse;
   var MIN = E.MIN, HOUR = E.HOUR, DAY = E.DAY, pad = E.pad;
-  var TABS = ['today', 'patterns', 'guide'];
+  var TABS = ['today', 'patterns', 'plan', 'guide'];
+  var TAB_NAMES = { today: 'Today', patterns: 'Patterns', plan: 'Plan', guide: 'Guide' };
   var DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   var MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   var MONL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -1308,7 +2167,8 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
   var S = {
     tab: 'today', store: null, realStore: null, demoStore: null, demo: false, user: null, names: {}, nameKey: '',
     sheet: null, patternsDays: 7, logExpanded: false, nightMode: 'auto', table: {}, readout: {}, toastTimer: null,
-    localReason: null, renderQueued: false, delArm: null, ctx: null
+    localReason: null, renderQueued: false, delArm: null, ctx: null, child: null, plan: {}, swReg: null,
+    alertQueue: [], alertShown: {}, outboxSig: '', relayStatus: null
   };
 
   /* ---------------- formatting ---------------- */
@@ -1358,6 +2218,8 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
 
   /* ---------------- glyphs ---------------- */
   var G = {
+    mic: '<rect x="9" y="3" width="6" height="11" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+    bell: '<path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20.5a2 2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>',
     sleep: '<path d="M20 14.6A8.2 8.2 0 1 1 9.4 4a6.6 6.6 0 0 0 10.6 10.6z" fill="currentColor"/>',
     feed: '<path d="M12 3.2c3.1 4 6.2 7.2 6.2 10.6a6.2 6.2 0 0 1-12.4 0C5.8 10.4 8.9 7.2 12 3.2z" fill="currentColor"/>',
     solids: '<path d="M4.5 11h15a7.5 7.5 0 0 1-15 0z" fill="currentColor"/><path d="M15 3.5 12.5 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
@@ -1382,22 +2244,39 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
   function glyphFor(e) { return e.type === 'feed' ? glyph(e.method === 'solids' ? 'solids' : 'feed') : glyph(e.type); }
 
   /* ---------------- context ---------------- */
-  function snap() { return S.store ? S.store.snapshot() : { profile: null, events: [], growth: [], contractions: [], me: null }; }
+  function snap() { return S.store ? S.store.snapshot() : { children: [], profile: null, events: [], growth: [], contractions: [], me: null, alerts: { custom: [] }, push: { subs: {}, prefs: {} }, outbox: { items: [] } }; }
+  function kidsOf(d) { return (d.children || []).filter(function (k) { return !k.archived; }); }
+  function activeKid(d) {
+    var kids = kidsOf(d);
+    for (var i = 0; i < kids.length; i++) if (kids[i].id === S.child) return kids[i];
+    if (kids.length) return kids[0];
+    var p = B.sanitizeProfile({}); p.id = B.FIRST_CHILD; return p;
+  }
+  function eventsFor(d, cid) { return (d.events || []).filter(function (e) { return (e.child || B.FIRST_CHILD) === cid; }); }
   function makeCtx() {
     var now = Date.now(), d = snap();
-    var profile = B.sanitizeProfile(d.profile || {});
+    var profile = activeKid(d);
+    var kids = kidsOf(d);
     var age = E.ageInfo(profile, now);
-    var events = d.events || [];
+    var events = eventsFor(d, profile.id);
     var liveEv = E.live(events);
     var runningSleeps = liveEv.filter(function (e) { return e.type === 'sleep' && e.end == null; }).sort(function (a, b) { return a.start - b.start; });
     var runningFeeds = liveEv.filter(function (e) { return e.type === 'feed' && e.method === 'breast' && e.end == null; }).sort(function (a, b) { return a.start - b.start; });
     var st = S.store ? S.store.status : { mode: 'connecting', loaded: false };
-    return { now: now, d: d, profile: profile, age: age, events: events, live: liveEv, cfg: E.config(profile), me: d.me,
+    return { now: now, d: d, profile: profile, child: profile.id, kids: kids, multi: kids.length > 1, age: age, events: events, live: liveEv, cfg: E.config(profile), me: d.me,
+      growth: (d.growth || []).filter(function (g) { return (g.child || B.FIRST_CHILD) === profile.id; }),
       runningSleep: runningSleeps[0] || null, runningSleeps: runningSleeps, runningFeed: runningFeeds[runningFeeds.length - 1] || null,
       status: st, readOnly: !!(st && st.readOnly) };
   }
   function babyName(p) { return p.name ? (p.name + ' ' + (p.surname || '')).trim() : ('Baby ' + (p.surname || '')).trim(); }
   function firstName(p) { return p.name || 'Baby'; }
+  function kidLabel(p, kids) {
+    // first names are enough once there are several children; unnamed ones get a number
+    if (p.name) return p.name;
+    var unnamed = (kids || []).filter(function (k) { return !k.name; });
+    return unnamed.length > 1 ? 'Baby ' + (unnamed.indexOf(p) + 1) : 'Baby';
+  }
+  function forKid(c) { return c && c.multi ? ' for ' + kidLabel(c.profile, c.kids) : ''; }
 
   /* ---------------- people ---------------- */
   function members(ctx) { return (ctx && ctx.d && ctx.d.members) || {}; }
@@ -1420,11 +2299,11 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
   /* ---------------- shell ---------------- */
   function buildShell() {
     document.getElementById('app').innerHTML =
-      '<header class="top"><div><h1 id="hName">Baby</h1><p class="age" id="hAge"></p></div>' +
+      '<header class="top"><div><h1><button type="button" class="kid-btn" id="hKid" data-act="kids" aria-haspopup="dialog"><span id="hName">Baby</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h1><p class="age" id="hAge"></p></div>' +
       '<div class="top-right"><button type="button" class="sync" id="hSync" data-act="sync-info" data-s="idle"><i></i><span>Connecting</span></button>' +
       '<button type="button" class="icon-btn" data-act="settings" aria-label="Settings"><svg viewBox="0 0 24 24" aria-hidden="true">' + G.gear + '</svg></button></div></header>' +
       '<nav class="tabs" role="tablist" aria-label="Sections">' +
-      TABS.map(function (t) { return '<button type="button" role="tab" id="tab-' + t + '" data-act="tab" data-tab="' + t + '" aria-selected="false">' + { today: 'Today', patterns: 'Patterns', guide: 'Guide' }[t] + '</button>'; }).join('') +
+      TABS.map(function (t) { return '<button type="button" role="tab" id="tab-' + t + '" data-act="tab" data-tab="' + t + '" aria-selected="false">' + TAB_NAMES[t] + '</button>'; }).join('') +
       '</nav><div id="banner"></div><main id="view" role="tabpanel"></main>';
   }
   function renderSoon() {
@@ -1447,11 +2326,13 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     var v = document.getElementById('view');
     v.removeAttribute('data-view');
     v.setAttribute('aria-labelledby', 'tab-' + S.tab);
-    v.innerHTML = S.tab === 'patterns' ? viewPatterns(c) : S.tab === 'guide' ? viewGuide(c) : viewToday(c);
+    v.innerHTML = S.tab === 'patterns' ? viewPatterns(c) : S.tab === 'guide' ? viewGuide(c) : S.tab === 'plan' ? viewPlan(c) : viewToday(c);
     renderActionBar(c);
     if (S.sheet && S.sheet.live) renderSheet();
     refreshNames(c);
     tick();
+    scheduleOutboxSync();
+    checkPushSub();
   }
   function applyNightLight(c) {
     var on = S.nightMode === 'on' || (S.nightMode === 'auto' && E.isNight(c.now, c.cfg));
@@ -1460,7 +2341,9 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     if (meta) { var bg = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim(); if (bg) meta.setAttribute('content', bg); }
   }
   function renderHeader(c) {
-    document.getElementById('hName').textContent = babyName(c.profile);
+    document.getElementById('hName').textContent = c.multi ? kidLabel(c.profile, c.kids) : babyName(c.profile);
+    document.getElementById('hKid').disabled = false;
+    document.getElementById('hKid').setAttribute('aria-label', (c.multi ? 'Looking after ' : '') + babyName(c.profile) + '. Choose or add a child');
     var a = c.age, line;
     if (a.born) {
       line = E.ageLabel(a, c.now);
@@ -1504,6 +2387,7 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
   /* ---------------- SETUP (first run, or opening a pairing link) ---------------- */
   function renderSetup(c) {
     document.getElementById('hName').textContent = 'Nightlight';
+    document.getElementById('hKid').disabled = true;
     document.getElementById('hAge').textContent = 'A shared baby log for two phones';
     document.getElementById('hSync').hidden = true;
     document.querySelector('.tabs').hidden = true;
@@ -1571,8 +2455,11 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     h += alerts(c, st, ex, fp);
     h += '</section>';
     h += statsBlock(c, st, ex);
-    h += '<section class="section"><h2>Log</h2>' + logList(c) + '</section>';
+    h += '<section class="section"><h2>Log</h2>' + (c.readOnly ? '' : qlogBar()) + logList(c) + '</section>';
     return h;
+  }
+  function qlogBar() {
+    return '<button type="button" class="qlog" data-act="quicklog"><span>Type or say what happened</span><span class="qlog-mic" aria-hidden="true"><svg viewBox="0 0 24 24">' + G.mic + '</svg></span></button>';
   }
   function nextSleepRow(c, sp, ex) {
     if (sp.state === 'asleep') {
@@ -1590,7 +2477,7 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     }
     var label = sp.kind === 'bedtime' ? 'Bedtime window' : sp.kind === 'sleep' ? 'Sleep window' : 'Nap window';
     var rel = sp.status === 'in' ? 'now' : sp.status === 'past' ? 'passed' : fmtRel(sp.windowStart, c.now);
-    var conf = sp.confidence === 'personal' ? 'Personalised from ' + sp.pick.nObs + ' awake times' : sp.confidence === 'learning' ? 'Learning your baby’s rhythm' : 'From the age guide until a few sleeps are logged';
+    var conf = sp.confidence === 'custom' ? 'From your own awake times' : sp.confidence === 'personal' ? 'Personalised from ' + sp.pick.nObs + ' awake times' : sp.confidence === 'learning' ? 'Learning your baby’s rhythm' : 'From the age guide until a few sleeps are logged';
     var sub = sp.status === 'past' ? 'Past the usual window. Watch for tired signs and settle when you can.' : sp.status === 'in' ? 'A good time to start winding down.' : conf;
     return '<li>' + glyph('sleep') + '<div><div class="what">' + label + '</div><div class="when">' + fmtRange(sp.windowStart, sp.windowEnd) + '</div></div>' +
       '<div class="rel"' + (sp.status === 'before' ? ' data-live="rel" data-at="' + sp.windowStart + '"' : '') + '>' + rel + '</div>' +
@@ -1621,7 +2508,7 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     if (c.runningSleep && c.now - c.runningSleep.start > 14 * HOUR) h += '<div class="note warn"><strong>The sleep timer has run ' + fmtDur((c.now - c.runningSleep.start) / MIN) + '</strong>Did someone forget to tap Wake up? <button type="button" class="linkish" data-act="edit" data-id="' + esc(c.runningSleep.id) + '">Fix the times</button></div>';
     if (c.runningFeed && c.now - c.runningFeed.start > 2 * HOUR) h += '<div class="note warn"><strong>The feed timer has run ' + fmtDur((c.now - c.runningFeed.start) / MIN) + '</strong><button type="button" class="linkish" data-act="feed">Open the timer to finish it</button></div>';
     if (fp && fp.wakeHint && c.runningSleep) h += '<div class="note"><strong>' + fmtDur(fp.sinceLast / MIN) + ' since the last feed</strong>Until babies are back to birth weight (usually within 2 weeks), they’re usually woken for a feed every 3 to 4 hours. Follow your midwife’s advice.' + srcLinks(['kidshealth-wake', 'qld-enough-milk']) + '</div>';
-    if (c.age.dayOfLife >= 2 && st.coverageH >= 20 && st.wet < ex.nappies.minWet) {
+    if (ex.nappies.minWet != null && c.age.dayOfLife >= 2 && st.coverageH >= 20 && st.wet < ex.nappies.minWet) {
       h += '<div class="note warn"><strong>Fewer wet nappies than expected</strong>' + st.wet + ' wet in the last 24 hours; at this age expect at least ' + ex.nappies.minWet + '. Check feeding, and contact your midwife, child health nurse or GP if it continues, if the wee is dark, or if your baby seems unwell.' + srcLinks(ex.nappies.src) + '</div>';
     }
     return h;
@@ -1639,7 +2526,7 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     var cover = st.coverageH < 23.5;
     var first = c.live.reduce(function (m, e) { return Math.min(m, e.start); }, Infinity);
     var head = 'Last 24 hours' + (cover && isFinite(first) ? ' (logging since ' + (E.calDays(first, c.now) ? fmtDate(first) + ' ' : '') + fmtTime(first) + ')' : '');
-    var wetLow = c.age.dayOfLife >= 2 && st.coverageH >= 20 && st.wet < ex.nappies.minWet;
+    var wetLow = ex.nappies.minWet != null && c.age.dayOfLife >= 2 && st.coverageH >= 20 && st.wet < ex.nappies.minWet;
     var extra = [];
     if (st.longestMin) extra.push('Longest sleep ' + fmtDur(st.longestMin));
     if (st.breastMin) extra.push('breastfeeding ' + fmtDur(st.breastMin));
@@ -1648,7 +2535,7 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     return '<p class="stats-head">' + head + '</p><section class="stats" aria-label="Last 24 hours">' +
       '<div><div class="k">Sleep</div><div class="v">' + fmtDur(st.sleepMin) + '</div><div class="t">usual ' + ex.sleep.low + '–' + ex.sleep.high + 'h</div></div>' +
       '<div><div class="k">Feeds</div><div class="v">' + st.feeds + '</div></div>' +
-      '<div><div class="k">Wet</div><div class="v">' + st.wet + '</div><div class="t' + (wetLow ? ' low' : '') + '">' + (wetLow ? 'below ' : 'at least ') + ex.nappies.minWet + '</div></div>' +
+      '<div><div class="k">Wet</div><div class="v">' + st.wet + '</div>' + (ex.nappies.minWet != null ? '<div class="t' + (wetLow ? ' low' : '') + '">' + (wetLow ? 'below ' : 'at least ') + ex.nappies.minWet + '</div>' : '') + '</div>' +
       '<div><div class="k">Dirty</div><div class="v">' + st.dirty + '</div></div>' +
       '</section>' + (extra.length ? '<p class="stats-foot">' + extra.join(' · ') + '</p>' : '');
   }
@@ -1668,7 +2555,7 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
       return '<em>' + (e.end == null ? 'Breastfeeding' : 'Breastfeed') + '</em> <span>' + parts.join(' · ') + '</span>' + note;
     }
     if (t === 'nappy') return '<em>' + (e.wet && e.dirty ? 'Wet + dirty' : e.dirty ? 'Dirty nappy' : 'Wet nappy') + '</em>' + (e.dirty && e.colour ? ' <span>' + esc(COLOURS[e.colour] || e.colour) + '</span>' : '') + note;
-    if (t === 'pump') return '<em>Pumped</em> <span>' + ((e.leftMl || 0) + (e.rightMl || 0)) + ' mL (L ' + (e.leftMl || 0) + ' · R ' + (e.rightMl || 0) + ')</span>' + note;
+    if (t === 'pump') return '<em>Pumped</em> <span>' + (e.totalMl != null && !e.leftMl && !e.rightMl ? e.totalMl + ' mL' : ((e.leftMl || 0) + (e.rightMl || 0)) + ' mL (L ' + (e.leftMl || 0) + ' · R ' + (e.rightMl || 0) + ')') + '</span>' + note;
     if (t === 'temp') return '<em' + (e.celsius >= 38 ? ' style="color:var(--alert)"' : '') + '>' + (e.celsius != null ? e.celsius.toFixed(1) + '°C' : 'Temperature') + '</em>' + (e.site ? ' <span>' + esc(SITES[e.site] || e.site) + '</span>' : '') + note;
     if (t === 'med') return '<em>' + esc(e.name || 'Medicine') + '</em> <span>' + esc(e.dose || '') + '</span>' + note;
     if (t === 'bath') return '<em>Bath</em>' + note;
@@ -1972,7 +2859,7 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
       rows.map(function (r) { return '<tr><td>' + r[0] + '</td><td class="n">' + r[1] + '</td><td class="n muted">' + r[2] + '</td></tr>'; }).join('') + '</tbody></table></div></section>';
   }
   function growthSection(c) {
-    var g = (c.d.growth || []).slice().sort(function (a, b) { return a.at - b.at; });
+    var g = (c.growth || []).slice().sort(function (a, b) { return a.at - b.at; });
     var h = '<section class="section"><h2>Growth</h2>';
     var wts = g.filter(function (x) { return x.weightKg; });
     if (wts.length >= 2) h += '<div class="chart">' + weightChart(c, wts) + '</div>';
@@ -2011,6 +2898,99 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     return s + '</svg>';
   }
 
+  /* ---------------- PLAN: schedule creator, awake times, reminders ---------------- */
+  function hm(min) { min = ((Math.round(min) % 1440) + 1440) % 1440; return pad(Math.floor(min / 60)) + ':' + pad(min % 60); }
+  function fromHM(v) { var m = /^(\d{2}):(\d{2})$/.exec(v || ''); return m ? Number(m[1]) * 60 + Number(m[2]) : null; }
+  function planTime(c, min) { return E.atLocal(c.now, 0, 0) + Math.round(min) * MIN; }
+  function round5(m) { return Math.round(m / 5) * 5; }
+  // this morning's wake-up, if the night's sleep has been logged
+  function todaysWake(c) {
+    var ss = E.mergeIntervals(E.sleepIntervals(c.events, c.now), 10 * MIN);
+    for (var i = ss.length - 1; i >= 0; i--) {
+      var x = ss[i];
+      if (x.running) continue;
+      if (E.calDays(x.end, c.now) !== 0) break;
+      var m = E.minutesOfDay(x.end);
+      if (E.isNightSleep(x, c.cfg) && m >= c.cfg.dayStartMin - 180 && m <= c.cfg.dayStartMin + 240) return x.end;
+    }
+    return null;
+  }
+  function planState(c) {
+    var cur = S.plan[c.child];
+    if (cur) return cur;
+    var saved = c.profile.plan, tw = todaysWake(c);
+    // a saved plan is the family's usual day; without one, start from this morning's wake-up
+    if (saved) cur = { wake: fromHM(saved.wake), bed: saved.bed ? fromHM(saved.bed) : null, naps: saved.naps, fromToday: false };
+    else cur = { wake: tw != null ? E.minutesOfDay(tw) : c.cfg.dayStartMin, bed: null, naps: null, fromToday: tw != null };
+    S.plan[c.child] = cur;
+    return cur;
+  }
+  function schedule(c) {
+    var p = planState(c);
+    return E.buildSchedule(c.events, c.now, c.profile, c.age, { wake: p.wake, bed: p.bed, naps: p.naps });
+  }
+  var SRC_TEXT = { custom: 'your own awake times', personal: 'awake times from the last week', learning: 'the age guide, moving towards your baby’s own awake times', guide: 'the age guide' };
+  function viewPlan(c) {
+    var h = '';
+    if (!c.age.born) {
+      h += '<section class="section"><h2>Daily schedule</h2><p class="lede">Once ' + esc(firstName(c.profile) === 'Baby' ? 'your baby is' : firstName(c.profile) + ' is') + ' born, this builds a day of naps and a bedtime from a wake-up time, their age and what you log. For the first 8 weeks it’s a loose rhythm rather than a clock.</p></section>';
+    } else {
+      h += scheduleSection(c) + awakeSection(c);
+    }
+    h += remindersSection(c);
+    return h;
+  }
+  function scheduleSection(c) {
+    var p = planState(c), r = schedule(c);
+    var nm = firstName(c.profile);
+    var h = '<section class="section plan-sec"><h2>Daily schedule</h2>' +
+      '<p class="lede">' + (r.newborn ? 'A rough rhythm for ' + esc(E.ageLabel(c.age, c.now)) + ': feed, a little play, then sleep. Newborn sleep doesn’t follow the clock yet.' : 'A day of naps for ' + esc(E.ageLabel(c.age, c.now)) + ', from a wake-up time to bedtime.') + '</p>' +
+      '<div class="plan-in"><div class="field"><label for="pl-wake">Wake up</label><input id="pl-wake" type="time" value="' + hm(p.wake) + '" data-plan="wake"></div>' +
+      '<div class="field"><label for="pl-bed">Bedtime</label><input id="pl-bed" type="time" value="' + hm(p.bed != null ? p.bed : r.bedTarget) + '" data-plan="bed"></div></div>' +
+      '<div class="plan-naps"><span class="lab" id="pl-naps-l">' + (r.newborn ? 'Sleeps' : 'Naps') + '</span><div class="mini-step" role="group" aria-labelledby="pl-naps-l"><button type="button" data-act="plan-naps" data-d="-1" aria-label="One fewer"' + (r.naps <= 0 ? ' disabled' : '') + '>−</button><output aria-live="polite">' + r.naps + '</output><button type="button" data-act="plan-naps" data-d="1" aria-label="One more"' + (r.naps >= 7 ? ' disabled' : '') + '>+</button></div>' +
+      '<span class="plan-auto">' + (r.auto ? (r.naps === 1 ? 'fits best' : 'fit best') : '<button type="button" class="linkish" data-act="plan-auto">Let the app choose</button>') + '</span></div>' +
+      '<div class="plan-meta">' + (p.fromToday ? '<span>Woke at ' + fmtTime(planTime(c, p.wake)) + ' today.</span> ' : '') +
+      (function () { var tw = todaysWake(c); return tw != null && !p.fromToday && Math.abs(E.minutesOfDay(tw) - p.wake) >= 5 ? '<button type="button" class="linkish" data-act="plan-today">Plan from today’s wake-up at ' + fmtTime(tw) + '</button> ' : ''; })() +
+      '</div>';
+    h += '<ol class="plan">' + r.items.map(function (it, i) {
+      if (it.type === 'wake') return '<li class="p-wake"><span class="pt">' + fmtTime(planTime(c, it.at)) + '</span><span class="pd">Wake up</span></li>';
+      var gap = '<li class="p-gap"><span class="pt"></span><span class="pd">' + fmtDur(it.awake) + ' awake</span></li>';
+      if (it.type === 'nap') return gap + '<li class="p-nap"><span class="pt">' + fmtTime(planTime(c, it.start)) + '</span><span class="pd"><strong>' + (r.newborn ? 'Sleep ' : 'Nap ') + it.n + '</strong> until ' + fmtTime(planTime(c, it.end)) + ' · ' + fmtDur(it.minutes) + '</span></li>';
+      return gap + '<li class="p-bed"><span class="pt">' + fmtTime(planTime(c, it.at)) + '</span><span class="pd"><strong>Bedtime</strong></span></li>';
+    }).join('') + '</ol>';
+    var ex = E.expectations(c.age, c.profile);
+    h += '<p class="plan-sum"><span>Day sleep <strong>' + fmtDur(r.dayMin) + '</strong></span><span>Night <strong>' + fmtDur(r.nightMin) + '</strong>, with night feeds</span></p>';
+    var notes = [];
+    if (Math.abs(r.off) > 15) {
+      var target = fmtTime(planTime(c, r.bedTarget)), lands = fmtTime(planTime(c, r.bed));
+      if (r.off > 0) notes.push('Bedtime lands at ' + lands + ', later than ' + target + '. ' + (r.naps > r.range[0] ? 'Try ' + (r.naps - 1) + (r.naps - 1 === 1 ? ' nap' : ' naps') + ', or an earlier wake-up.' : 'Try an earlier wake-up or a shorter last nap.'));
+      else notes.push('Bedtime lands at ' + lands + ', earlier than ' + target + '. ' + (r.naps < r.range[1] ? 'Try ' + (r.naps + 1) + ' naps with a short catnap, or a later wake-up.' : 'Try a later wake-up, or stretch the last awake time.'));
+    }
+    if (!r.auto && (r.naps < r.range[0] || r.naps > r.range[1])) notes.push('Most babies this age have ' + (r.range[0] === r.range[1] ? r.range[0] : r.range[0] + ' to ' + r.range[1]) + ' naps.');
+    if (notes.length) h += '<div class="note warn">' + notes.map(esc).join(' ') + '</div>';
+    h += '<p class="tiny plan-src">Built from ' + esc(SRC_TEXT[r.awakeSource] || 'the age guide') + ' and ' + (r.daySource === 'personal' ? esc(nm) + '’s day sleep over the last ' + r.personalDay.n + ' days' : 'usual day sleep for this age') + '. Most babies this age sleep ' + ex.sleep.low + ' to ' + ex.sleep.high + ' hours in 24 hours. Go with tired signs over the clock.</p>';
+    var saved = c.profile.plan, same = saved && fromHM(saved.wake) === Math.round(p.wake) && (saved.naps == null) === (p.naps == null) && (saved.naps == null || saved.naps === p.naps) && ((saved.bed ? fromHM(saved.bed) : null) === (p.bed != null ? Math.round(p.bed) : null));
+    h += '<div class="btn-row">' + (c.readOnly ? '' : same ? '<span class="pill">Saved as your plan</span>' : '<button type="button" class="btn small primary" data-act="plan-save">' + (saved ? 'Update our plan' : 'Save as our plan') + '</button>') +
+      '<button type="button" class="btn small" data-act="plan-copy">Copy the schedule</button>' + (saved && !same ? '<button type="button" class="btn small quiet" data-act="plan-reset">Back to the saved plan</button>' : '') + '</div>';
+    return h + '</section>';
+  }
+  function scheduleText(c) {
+    var r = schedule(c), L = [babyName(c.profile) + '’s day (' + E.ageLabel(c.age, c.now) + ')'];
+    r.items.forEach(function (it) {
+      if (it.type === 'wake') L.push(fmtTime(planTime(c, it.at)) + '  wake up');
+      else if (it.type === 'nap') L.push(fmtRange(planTime(c, it.start), planTime(c, it.end)) + '  ' + (r.newborn ? 'sleep ' : 'nap ') + it.n + ' (' + fmtDur(it.minutes) + ', after ' + fmtDur(it.awake) + ' awake)');
+      else L.push(fmtTime(planTime(c, it.at)) + '  bedtime (after ' + fmtDur(it.awake) + ' awake)');
+    });
+    L.push('A guide only: watch for tired signs.');
+    return L.join('\n');
+  }
+  function awakeSection(c) {
+    var at = E.awakeTimes(c.events, c.now, c.profile, c.age);
+    var rows = at.newborn ? [['Before each sleep', at.mid]] : [['First of the day', at.first], ['Between naps', at.mid], ['Before bed', at.last]];
+    return '<section class="section"><h2>Awake times</h2><p class="lede">' + (at.source === 'custom' ? 'Using the awake times you set.' : 'Set automatically from ' + esc(SRC_TEXT[at.source]) + '.') + ' These drive the nap and bedtime windows on Today and the schedule above.</p>' +
+      '<dl class="facts aw">' + rows.map(function (r) { return '<div><dt>' + esc(r[0]) + '</dt><dd>' + fmtDur(r[1]) + '</dd></div>'; }).join('') + '</dl>' +
+      (c.readOnly ? '' : '<div class="btn-row"><button type="button" class="btn small" data-act="awake">' + (at.source === 'custom' ? 'Change your awake times' : 'Set your own awake times') + '</button></div>') + '</section>';
+  }
   /* ---------------- GUIDE ---------------- */
   function viewGuide(c) {
     var a = c.age;
@@ -2023,7 +3003,7 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
       fact('Awake time', ex.awake.text, ex.awake.src) +
       fact('Naps', ex.naps.text, ex.naps.src) +
       fact('Feeds', ex.feeds.text, ex.feeds.src);
-    var lastW = (c.d.growth || []).filter(function (g) { return g.weightKg; }).sort(function (x, y) { return y.at - x.at; })[0];
+    var lastW = (c.growth || []).filter(function (g) { return g.weightKg; }).sort(function (x, y) { return y.at - x.at; })[0];
     var bottles = c.live.some(function (e) { return e.type === 'feed' && e.method === 'bottle' && e.start >= c.now - 14 * DAY; });
     if (ex.milk && ex.milk.text && (c.profile.feeding !== 'breast' || bottles)) {
       var extra = '';
@@ -2106,6 +3086,7 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
       else if (k === 'hero') el.innerHTML = heroDur((base + now - since) / MIN);
     });
     if (now - lastFull > 30000) { lastFull = now; if (!S.sheet || S.sheet.live) renderSoon(); }
+    if (!S.lastAlertCheck || now - S.lastAlertCheck > 15000) { S.lastAlertCheck = now; inAppAlerts(); }
   }
 
   /* ---------------- toast ---------------- */
@@ -2123,11 +3104,12 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
   function openSheet(kind, opts) {
     hideToast();
     S.sheet = Object.assign({ kind: kind, opener: document.activeElement }, opts || {});
-    S.sheet.live = kind === 'feed' && (opts && opts.tab ? opts.tab === 'breast' : true);
+    S.sheet.live = (kind === 'feed' && (opts && opts.tab ? opts.tab === 'breast' : true)) || kind === 'reminders' || kind === 'kids';
     document.body.classList.add('sheet-open');
     renderSheet(true);
   }
   function closeSheet() {
+    stopDictation();
     var sh = document.getElementById('sheet'), sc = document.getElementById('scrim');
     sh.classList.remove('show'); sc.classList.remove('show');
     document.body.classList.remove('sheet-open');
@@ -2203,7 +3185,7 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     more: function (c) {
       var items = [['pump', 'Pumping', 'Left and right amounts'], ['temp', 'Temperature', 'With fever guidance'], ['med', 'Medicine', 'Name and dose'], ['growth', 'Measurement', 'Weight, length, head'],
         ['bath', 'Bath', ''], ['tummy', 'Tummy time', 'Minutes'], ['note', 'Note', 'Anything else'], ['sleep', 'Past sleep', 'Enter start and end'], ['breast', 'Past breastfeed', 'Enter minutes'], ['bottle', 'Past bottle', 'Amount and time']];
-      return { title: 'More', body: '<div class="grid-btns">' + items.map(function (it) {
+      return { title: 'More', body: '<button type="button" class="qlog" data-act="quicklog" style="margin:0 0 12px"><span>Type or say it instead</span><span class="qlog-mic" aria-hidden="true"><svg viewBox="0 0 24 24">' + G.mic + '</svg></span></button><div class="grid-btns">' + items.map(function (it) {
         var gname = it[0] === 'breast' || it[0] === 'bottle' ? 'feed' : it[0];
         return '<button type="button" class="tile" data-act="add" data-type="' + it[0] + '">' + glyph(gname) + '<span>' + esc(it[1]) + (it[2] ? '<span class="tiny">' + esc(it[2]) + '</span>' : '') + '</span></button>';
       }).join('') + '</div>' };
@@ -2266,12 +3248,21 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
         var sp = E.predictSleep(c.events, c.now, c.profile, c.age);
         if (!sp || !sp.pick) return { title: 'Sleep window', body: '<p class="prose">There’s not enough logged yet. Log a few sleeps and the window will appear.</p>' };
         var label = sp.kind === 'bedtime' ? 'Bedtime window' : sp.kind === 'sleep' ? 'Sleep window' : 'Nap window';
+        if (sp.pick.custom) {
+          b += '<p><strong>' + label + ': ' + fmtRange(sp.windowStart, sp.windowEnd) + '</strong>, about ' + fmtDur(sp.minutes) + ' after waking at ' + fmtTime(sp.awakeSince) + '.</p><ul class="steps">' +
+            '<li>Your awake time setting for this part of the day: ' + fmtDur(sp.pick.minutes) + '.</li>' +
+            '<li>For comparison, the age guide says about ' + fmtDur(sp.pick.baseMinutes) + (sp.pick.personal != null ? ', and your baby’s last 7 days suggest ' + fmtDur(sp.pick.personal) : '') + '.</li>' +
+            (sp.adjustments || []).map(function (a) { return '<li>' + esc(a) + '</li>'; }).join('') + '</ul>' +
+            '<div class="btn-row"><button type="button" class="btn small" data-act="awake">Change awake times</button></div>' + srcLinks(['tresillian-newborn', 'tresillian-3-5', 'canapari']);
+          return { title: 'Why this time?', body: b + '</div>' };
+        }
         b += '<p><strong>' + label + ': ' + fmtRange(sp.windowStart, sp.windowEnd) + '</strong>, about ' + fmtDur(sp.minutes) + ' after waking at ' + fmtTime(sp.awakeSince) + '.</p><ul class="steps">' +
           '<li>Age guide at ' + esc(E.weeksLabel(Math.round(c.age.basisDays))) + ': about ' + fmtDur(sp.pick.baseMinutes) + ' awake for this part of the day (usual range ' + fmtDur(sp.base.low * sp.pick.factor) + ' to ' + fmtDur(sp.base.high * sp.pick.factor) + ').</li>' +
           (sp.pick.personal != null ? '<li>Your baby, last 7 days: ' + fmtDur(sp.pick.personal) + ' awake before good naps (' + sp.pick.nObs + ' awake times, recent days count more).</li>' : '<li>No awake times from your own log yet.</li>') +
           '<li>Blend: ' + Math.round(sp.pick.weightPersonal * 100) + '% your baby, ' + Math.round((1 - sp.pick.weightPersonal) * 100) + '% age guide.</li>' +
           (sp.adjustments || []).map(function (a) { return '<li>' + esc(a) + '</li>'; }).join('') + '</ul>' +
-          '<p>The window is about ' + fmtDur((sp.windowEnd - sp.windowStart) / MIN) + ' wide. If your baby shows tired signs earlier, go with your baby.</p>' + srcLinks(['tresillian-newborn', 'tresillian-3-5', 'canapari']);
+          '<p>The window is about ' + fmtDur((sp.windowEnd - sp.windowStart) / MIN) + ' wide. If your baby shows tired signs earlier, go with your baby.</p>' +
+          (c.readOnly ? '' : '<div class="btn-row"><button type="button" class="btn small" data-act="awake">Set your own awake times</button></div>') + srcLinks(['tresillian-newborn', 'tresillian-3-5', 'canapari']);
       } else {
         var fp = E.predictFeed(c.events, c.now, c.profile, c.age);
         if (!fp || !fp.due) return { title: 'Next feed', body: '<p class="prose">Log a couple of feeds and the next one will be estimated.</p>' };
@@ -2294,8 +3285,8 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     },
     settings: function (c) {
       var p = c.profile, a = c.age;
-      var people = Object.keys(S.names).filter(function (id) { return S.names[id] && S.names[id].name; });
-      var b = '<div class="form">' +
+      var who = c.profile.name ? c.profile.name + '’s' : 'Baby’s';
+      var b = '<h3 style="margin-bottom:10px">' + esc(who) + ' details</h3><div class="form">' +
         '<div class="two"><div class="field"><label for="s-name">First name</label><input id="s-name" type="text" maxlength="60" value="' + esc(p.name) + '" placeholder="Decide later"></div>' +
         '<div class="field"><label for="s-surname">Surname</label><input id="s-surname" type="text" maxlength="60" value="' + esc(p.surname) + '"></div></div>' +
         '<div class="two"><div class="field"><label for="s-due">Due date</label><input id="s-due" type="date" value="' + esc(p.dueDate || '') + '"></div>' +
@@ -2305,6 +3296,14 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
         '<p class="tiny">Used to split day and night sleep, shade the diary, and time the night light. Set night to when bedtime usually starts.</p>' +
         '<p class="err" id="f-err" role="alert"></p>' +
         (c.readOnly ? '' : '<div class="btn-row"><button type="button" class="btn primary" data-act="save-settings">Save</button></div>') + '</div>';
+      if (!c.readOnly) {
+        b += '<div class="section" style="padding:22px 0 0"><h3>Children</h3><p class="tiny" style="margin:4px 0 10px">Each phone chooses who it’s looking after from the name at the top of the screen.</p><div class="btn-row" style="margin-top:0">' +
+          '<button type="button" class="btn small" data-act="add-kid">Add a child</button>' +
+          (c.multi ? '<button type="button" class="btn small danger" data-act="remove-kid">' + (S.delArm === 'remove-kid' ? 'Tap again to remove ' + esc(kidLabel(c.profile, c.kids)) : 'Remove ' + esc(kidLabel(c.profile, c.kids)) + ' from the log') + '</button>' : '') + '</div>' +
+          (c.multi ? '<p class="tiny" style="margin-top:8px">Removing hides this child and their entries on both phones. Nothing is deleted from the shared log.</p>' : '') + '</div>';
+        b += '<div class="section" style="padding:22px 0 0"><h3>Reminders</h3><p class="tiny" style="margin:4px 0 10px">' + esc(reminderSummary(c)) + '</p><div class="btn-row" style="margin-top:0"><button type="button" class="btn small" data-act="reminders">Notifications and reminders</button>' +
+          (c.age.born ? '<button type="button" class="btn small" data-act="awake">Awake times</button>' : '') + '</div></div>';
+      }
       b += '<div class="section" style="padding:22px 0 0"><h3>Night light on this phone</h3><p class="tiny" style="margin:4px 0 10px">Dims the app to warm amber so night feeds stay dark and calm.</p><div class="seg" role="group" aria-label="Night light">' +
         [['auto', 'After ' + fmtHour(E.atLocal(c.now, c.cfg.nightStartMin, 0))], ['on', 'Always'], ['off', 'Off']].map(function (o) { return '<button type="button" data-act="nightmode" data-v="' + o[0] + '" aria-pressed="' + (S.nightMode === o[0]) + '">' + o[1] + '</button>'; }).join('') + '</div></div>';
       var mem = members(c), ids = Object.keys(mem).sort(function (x, y) { return (mem[x].joinedAt || 0) - (mem[y].joinedAt || 0); });
@@ -2330,6 +3329,123 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
         '<p class="err" id="f-err" role="alert"></p><div class="btn-row"><button type="button" class="btn primary" data-act="save-born">Start tracking</button></div></div>';
       return { title: 'Welcome to the world', body: b };
     },
+    awake: function (c, sh) {
+      var at = E.awakeTimes(c.events, c.now, c.profile, c.age);
+      if (!at) return { title: 'Awake times', body: '<p class="prose">Awake times start after the birth.</p>' };
+      var cw = c.profile.ww;
+      if (!sh.draft) sh.draft = cw ? { on: !!cw.on, first: cw.first || cw.mid, mid: cw.mid, last: cw.last || cw.mid } : { on: false, first: round5(at.first), mid: round5(at.mid), last: round5(at.last) };
+      var d = sh.draft, g = at.guide;
+      var b = '<div class="seg" role="group" aria-label="Awake times" style="margin-bottom:14px">' + [['auto', 'Automatic'], ['own', 'Set my own']].map(function (o) {
+        return '<button type="button" data-act="ww-mode" data-v="' + o[0] + '" aria-pressed="' + ((o[0] === 'own') === d.on) + '">' + o[1] + '</button>'; }).join('') + '</div>';
+      if (!d.on) {
+        b += '<div class="prose"><p>Nightlight starts from the age guide and moves towards your baby’s own awake times before good naps, with recent days counting most.</p></div>' +
+          '<dl class="facts aw" style="margin-top:8px">' + (at.newborn ? [['Before each sleep', at.mid]] : [['First of the day', at.first], ['Between naps', at.mid], ['Before bed', at.last]]).map(function (r) { return '<div><dt>' + r[0] + '</dt><dd>' + fmtDur(r[1]) + '</dd></div>'; }).join('') + '</dl>' +
+          '<p class="tiny" style="margin-top:8px">Now using ' + esc(SRC_TEXT[at.source === 'custom' ? 'guide' : at.source]) + '.</p>';
+      } else {
+        var rows = at.newborn ? [['mid', 'Before each sleep', g.mid]] : [['first', 'First awake time of the day', g.first], ['mid', 'Between naps', g.mid], ['last', 'Last one, before bed', g.last]];
+        b += '<p class="small muted" style="margin-bottom:6px">Nap and bedtime windows will use these instead of the automatic times. A short nap still brings the next window a little earlier.</p><div class="ww-rows">' + rows.map(function (r) {
+          var v = d[r[0]], lo = g.low * (r[2] / g.mid), hi = g.high * (r[2] / g.mid);
+          var flag = v < lo * 0.8 ? 'Shorter than usual at this age' : v > hi * 1.2 ? 'Longer than usual at this age' : '';
+          return '<div class="ww-row"><div><div class="ww-k">' + esc(r[1]) + '</div><div class="tiny">' + (flag ? '<span class="flag">' + flag + '</span> · ' : '') + 'usual ' + fmtDur(round5(lo)) + ' to ' + fmtDur(round5(hi)) + '</div></div>' +
+            '<div class="mini-step"><button type="button" data-act="ww-step" data-k="' + r[0] + '" data-d="-5" aria-label="5 minutes less">−</button><output aria-live="polite">' + fmtDur(v) + '</output><button type="button" data-act="ww-step" data-k="' + r[0] + '" data-d="5" aria-label="5 minutes more">+</button></div></div>';
+        }).join('') + '</div>';
+      }
+      b += '<p class="err" id="f-err" role="alert"></p><div class="btn-row"><button type="button" class="btn primary" data-act="ww-save">Save</button></div>' +
+        '<p class="tiny" style="margin-top:12px">Awake time is from waking up to falling asleep again, including the feed. Revisit custom times every few weeks: they lengthen as babies grow.</p>';
+      return { title: 'Awake times', body: b };
+    },
+    reminders: function (c) {
+      var d = c.d, state = pushState(d), p = prefsFor(d, me() || 'local-me'), custom = (d.alerts && d.alerts.custom) || [];
+      if (!S.relayStatus || Date.now() - S.relayStatus.checked > 60000) setTimeout(function () { refreshRelayStatus(); }, 0);
+      var b = '<div class="rm-head"><span class="g">' + '<svg viewBox="0 0 24 24" aria-hidden="true">' + G.bell + '</svg></span><p>' + esc(PUSH_TEXT[state]) + '</p></div><div class="btn-row" style="margin-top:8px">';
+      if (state === 'norelay') b += '<button type="button" class="btn primary" data-act="relay">Set up the reminder service</button>';
+      else if (state === 'off') b += '<button type="button" class="btn primary" data-act="push-on">Turn on notifications</button>';
+      else if (state === 'on') b += '<button type="button" class="btn" data-act="push-test">Send a test</button><button type="button" class="btn quiet" data-act="push-off">Turn off on this phone</button>';
+      b += '</div>';
+      var lead = function (k, opts) { return '<div class="seg small-seg" role="group" aria-label="How early">' + opts.map(function (o) { return '<button type="button" data-act="pref-lead" data-k="' + k + '" data-v="' + o[0] + '" aria-pressed="' + (p[k] === o[0]) + '">' + o[1] + '</button>'; }).join('') + '</div>'; };
+      b += '<div class="section" style="padding:22px 0 0"><h3>What this phone reminds you about</h3><p class="tiny" style="margin:4px 0 6px">Each phone chooses for itself.</p><ul class="toggles">' +
+        '<li><label class="check"><input type="checkbox" data-pref="sleep"' + (p.sleep ? ' checked' : '') + '> Nap and bedtime windows</label>' + (p.sleep ? lead('sleepLead', [[0, 'On time'], [10, '10 min early'], [20, '20 min early']]) : '') + '</li>' +
+        '<li><label class="check"><input type="checkbox" data-pref="feed"' + (p.feed ? ' checked' : '') + '> Feeds</label>' + (p.feed ? lead('feedLead', [[0, 'On time'], [15, '15 min early']]) : '') + '</li>' +
+        (p.feed ? '<li><label class="check"><input type="checkbox" data-pref="feedNight"' + (p.feedNight ? ' checked' : '') + '> Feeds overnight too</label><p class="tiny">Until babies are back to birth weight, usually by 2 weeks, they’re often woken for a feed every 3 to 4 hours. Follow your midwife’s advice.</p></li>' : '') +
+        '<li><label class="check"><input type="checkbox" data-pref="custom"' + (p.custom ? ' checked' : '') + '> Your own reminders</label></li>' +
+        (c.multi ? '<li><label class="check"><input type="checkbox" data-pref="only"' + (p.only ? ' checked' : '') + '> Only for the child this phone is looking after' + (p.only ? ' (' + esc(kidLabel(kidById(c, p.only), c.kids)) + ')' : '') + '</label></li>' : '') + '</ul></div>';
+      b += '<div class="section" style="padding:22px 0 0"><h3>Your own reminders</h3><p class="tiny" style="margin:4px 0 6px">Shared by both phones, like vitamin D drops or medicine.</p>' +
+        (custom.length ? '<ul class="lines">' + custom.map(function (r) {
+          var kid = r.child ? kidById(c, r.child) : null;
+          return '<li><button type="button" class="rem-row" data-act="rem-edit" data-id="' + esc(r.id) + '"><span class="nm">' + esc(r.title) + '</span><span class="wh">' + esc(repeatText(r)) + (r.to ? ' · ' + (r.to === me() ? 'this phone only' : esc(nameOf(r.to, c)) + '’s phone only') : '') + (kid && c.multi ? ' · ' + esc(kidLabel(kid, c.kids)) : '') + '</span></button></li>';
+        }).join('') + '</ul>' : '<p class="empty" style="padding-bottom:4px">None yet.</p>') +
+        (c.readOnly ? '' : '<div class="btn-row"><button type="button" class="btn small" data-act="rem-new">Add a reminder</button></div>') + '</div>';
+      if (state !== 'local' && state !== 'demo') {
+        var rs = S.relayStatus, url = relayUrl(d);
+        var line = !url ? 'Not set up yet.' : !rs || rs.pending ? 'Checking…' : rs.ok && !rs.running ? 'Connected, but it hasn’t run on its schedule yet. Check the Cron Trigger is set to every minute; a new one can take 15 minutes to start.' : rs.ok ? 'Connected and running' + (rs.lastRun ? ', last check ' + fmtRel(rs.lastRun, Date.now()) : '') + '.' + (rs.recent && rs.recent.length ? ' Last sent ' + fmtRel(rs.recent[0].at, Date.now()) + (rs.recent[0].status >= 200 && rs.recent[0].status < 300 ? '' : ' (code ' + rs.recent[0].status + ')') + '.' : '') : 'Can’t reach it right now' + (rs.error ? ' (' + esc(rs.error) + ')' : '') + '.';
+        b += '<div class="section" style="padding:22px 0 0"><h3>Reminder service</h3><p class="tiny" style="margin:4px 0 8px">' + line + '</p>' + (url ? '<p class="tiny" style="word-break:break-all">' + esc(url) + '</p>' : '') +
+          '<div class="btn-row" style="margin-top:8px"><button type="button" class="btn small" data-act="relay">' + (url ? 'Change' : 'Set it up') + '</button>' + (url ? '<button type="button" class="btn small quiet" data-act="relay-check">Check again</button>' : '') + '</div></div>';
+      }
+      return { title: 'Reminders', body: b };
+    },
+    reminder: function (c, sh) {
+      var r = sh.rem || null;
+      if (!sh.repeat) sh.repeat = r ? r.repeat : 'daily';
+      var rep = sh.repeat, now = floorMin(Date.now());
+      var b = '<div class="form"><div class="field"><label for="r-title">Reminder</label><input id="r-title" type="text" maxlength="80" value="' + esc(sh.title != null ? sh.title : r ? r.title : '') + '" placeholder="e.g. Vitamin D drops">' +
+        (r ? '' : '<div class="chips" style="margin-top:4px">' + ['Vitamin D drops', 'Medicine', 'Pump', 'Tummy time', 'Probiotic'].map(function (x) { return '<button type="button" class="chip" data-act="rem-preset" data-v="' + esc(x) + '">' + esc(x) + '</button>'; }).join('') + '</div>') + '</div>' +
+        '<div class="field"><span class="lab">Repeat</span><div class="seg" role="group" aria-label="Repeat">' + [['once', 'Once'], ['daily', 'Every day'], ['hours', 'Every few hours']].map(function (o) { return '<button type="button" data-act="rem-repeat" data-v="' + o[0] + '" aria-pressed="' + (rep === o[0]) + '">' + o[1] + '</button>'; }).join('') + '</div></div>';
+      if (rep === 'once') b += '<div class="field"><label for="r-at">When</label><input id="r-at" type="datetime-local" value="' + toInput(r && r.at ? r.at : now + 60 * MIN) + '"></div>';
+      else {
+        b += '<div class="field"><label for="r-time">' + (rep === 'hours' ? 'Starting at' : 'Time') + '</label><input id="r-time" type="time" value="' + esc(r && r.time ? r.time : rep === 'hours' ? hm(E.minutesOfDay(now + 30 * MIN)) : '09:00') + '"></div>';
+        if (rep === 'hours') b += '<div class="field"><span class="lab">Every</span>' + chips('r-every', [['2', '2 h'], ['3', '3 h'], ['4', '4 h'], ['6', '6 h'], ['8', '8 h'], ['12', '12 h']], String(r ? r.every : 4)) + '</div>';
+      }
+      b += '<div class="field"><span class="lab">Notify</span>' + chips('r-to', [['all', 'Both phones'], ['me', 'Just this phone']], r && r.to ? (r.to === me() ? 'me' : 'all') : 'all') + '</div>';
+      if (c.multi) b += '<div class="field"><span class="lab">For</span>' + chips('r-child', [['all', 'Everyone']].concat(c.kids.map(function (k) { return [k.id, kidLabel(k, c.kids)]; })), r && r.child ? r.child : 'all') + '</div>';
+      b += '<p class="err" id="f-err" role="alert"></p><div class="btn-row"><button type="button" class="btn primary" data-act="rem-save">' + (r ? 'Save changes' : 'Add reminder') + '</button>' +
+        (r ? '<button type="button" class="btn danger" data-act="rem-del" data-id="' + esc(r.id) + '">' + (S.delArm === 'rem-' + r.id ? 'Tap again to delete' : 'Delete') + '</button>' : '') + '</div></div>';
+      return { title: r ? 'Reminder' : 'Add a reminder', body: b };
+    },
+    relay: function (c) {
+      var url = relayUrl(c.d) || '';
+      var b = '<div class="prose"><p>Phones only show notifications from a web app when a server sends them. This free service does that for Nightlight: it checks your shared log every minute and sends whatever is due. It holds no baby data, only the notification addresses.</p><p>Set it up once, on a computer. It takes about 5 minutes and covers both phones.</p></div>' +
+        '<ol class="steps setup-steps"><li>On a computer, go to <strong>dash.cloudflare.com</strong> and sign up. It’s free and doesn’t need a card.</li>' +
+        '<li>Open <strong>Workers &amp; Pages</strong>, choose <strong>Create</strong>, then <strong>Start with Hello World</strong>. Name it <strong>nightlight-push</strong> and choose <strong>Deploy</strong>.</li>' +
+        '<li>Choose <strong>Edit code</strong>, delete everything in the editor, paste in the whole of <strong>nightlight-push.js</strong>, then choose <strong>Deploy</strong>.</li>' +
+        '<li>Back on the worker’s page, open <strong>Settings</strong>, find <strong>Trigger events</strong> (or <strong>Triggers</strong>), and add a <strong>Cron Trigger</strong> that runs <strong>every minute</strong> (<code>* * * * *</code>). It can take up to 15 minutes to start.</li>' +
+        '<li>Copy the worker’s address, which ends in <strong>workers.dev</strong>, and paste it here.</li></ol>' +
+        '<div class="form" style="margin-top:14px"><div class="field"><label for="rl-url">Reminder service address</label><input id="rl-url" type="url" inputmode="url" autocomplete="off" autocapitalize="off" spellcheck="false" value="' + esc(url) + '" placeholder="https://nightlight-push.yourname.workers.dev"></div>' +
+        '<p class="err" id="f-err" role="alert"></p><div class="btn-row"><button type="button" class="btn primary" data-act="relay-save">Connect</button></div></div>' +
+        '<p class="tiny" style="margin-top:12px">Both phones pick up the address from your shared log, so you only paste it once.</p>';
+      return { title: 'Set up reminders', body: b };
+    },
+    quicklog: function (c, sh) {
+      var voice = !!(window.SpeechRecognition || window.webkitSpeechRecognition);
+      var b = '<div class="form ql"><div class="ql-box"><label for="ql-text" class="sr">What happened</label>' +
+        '<textarea id="ql-text" rows="2" maxlength="400" autocomplete="off" autocapitalize="sentences" enterkeyhint="done" placeholder="e.g. fed 120 mL at 2pm and a wet nappy">' + esc(sh.text || '') + '</textarea>' +
+        '<button type="button" class="ql-mic" data-act="ql-mic" id="ql-mic" aria-label="Speak instead of typing" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true">' + G.mic + '</svg></button></div>' +
+        '<p class="tiny" id="ql-hint">' + (voice ? 'Type, or tap the microphone and say it.' : 'Type, or tap the microphone on your keyboard to say it.') + (c.multi ? ' Say a name to log for ' + c.kids.map(function (k) { return esc(kidLabel(k, c.kids)); }).join(' or ') + '.' : '') + '</p>' +
+        '<div id="ql-preview" aria-live="polite"></div>' +
+        '<div class="btn-row"><button type="button" class="btn primary" data-act="ql-save" id="ql-save" disabled>Log it</button></div>' +
+        '<details class="ql-ex"><summary>Things you can say</summary><ul>' + ['fed 120 mL formula at 2pm', 'left 12 min, right 8', 'nap 1:10 to 2:30 in the pram', 'fell asleep 10 minutes ago', 'woke up at 6:40', 'wet and dirty nappy, yellow', 'pumped 60 left 50 right', 'temp 37.9 underarm', 'paracetamol 2.5 mL at 10pm', 'weight 4.2 kg', 'tummy time 10 min', 'note: first smile'].map(function (x) { return '<li><button type="button" class="linkish" data-act="ql-try" data-v="' + esc(x) + '">' + esc(x) + '</button></li>'; }).join('') + '</ul></details></div>';
+      return { title: 'Type or say it', body: b };
+    },
+    kids: function (c) {
+      var b = '<ul class="kids">' + c.kids.map(function (k) {
+        var on = k.id === c.child;
+        return '<li><button type="button" class="kid-row" data-act="pick-kid" data-id="' + esc(k.id) + '" aria-pressed="' + on + '"><span class="kid-dot" aria-hidden="true"></span>' +
+          '<span class="kid-main"><span class="kid-nm">' + esc(babyName(k)) + '</span><span class="kid-st">' + esc(kidStatus(k, c)) + '</span></span>' +
+          (on ? '<span class="kid-on">Looking after</span>' : '') + '</button></li>';
+      }).join('') + '</ul>';
+      if (!c.readOnly) b += '<div class="btn-row"><button type="button" class="btn" data-act="add-kid">Add a child</button></div>';
+      b += '<p class="tiny" style="margin-top:12px">' + (c.multi ? 'Each phone chooses its own child, so you can each look after one. What you log goes to the child shown at the top.' : 'Add a brother or sister here. Each phone then chooses who it’s looking after.') + '</p>';
+      return { title: c.multi ? 'Who are you looking after?' : 'Children', body: b };
+    },
+    'add-kid': function (c, sh) {
+      var born = sh.born !== false;
+      var b = '<div class="form"><div class="two"><div class="field"><label for="k-name">First name</label><input id="k-name" type="text" maxlength="60" placeholder="Decide later"></div>' +
+        '<div class="field"><label for="k-surname">Surname</label><input id="k-surname" type="text" maxlength="60" value="' + esc(c.profile.surname || '') + '"></div></div>' +
+        '<div class="seg" role="group" aria-label="Born yet?">' + [['born', 'Already born'], ['due', 'On the way']].map(function (o) { return '<button type="button" data-act="kid-born" data-v="' + o[0] + '" aria-pressed="' + ((o[0] === 'born') === born) + '">' + o[1] + '</button>'; }).join('') + '</div>' +
+        (born ? '<div class="field"><label for="k-birth">Born</label><input id="k-birth" type="datetime-local"></div>' : '<div class="field"><label for="k-due">Due date</label><input id="k-due" type="date"></div>') +
+        '<div class="field"><label for="k-feeding">Feeding</label><select id="k-feeding">' + [['breast', 'Breastfeeding'], ['formula', 'Formula'], ['mixed', 'Both'], ['unsure', born ? 'Eating family food or not sure' : 'Not sure yet']].map(function (o) { return '<option value="' + o[0] + '">' + o[1] + '</option>'; }).join('') + '</select></div>' +
+        '<p class="err" id="f-err" role="alert"></p><div class="btn-row"><button type="button" class="btn primary" data-act="save-kid">Add</button></div></div>';
+      return { title: 'Add a child', body: b };
+    },
     copy: function (c, sh) {
       return { title: 'Copy this text', body: '<p class="small muted" style="margin-bottom:8px">Your browser blocked automatic copying. Select the text below and copy it.</p><div class="field"><label for="copy-text" class="sr">Text to copy</label><textarea id="copy-text" style="min-height:240px" readonly>' + esc(sh.text) + '</textarea></div>' };
     },
@@ -2343,7 +3459,7 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
         if (st.offline) lines.push('You’re offline. Entries are kept on this phone and sync automatically when you’re back online.');
         else if (st.pending) lines.push('Some changes are still on their way to the shared log.');
       } else lines.push('Connecting to the shared log…');
-      lines.push('Nightlight can’t send notifications, so check the Today tab for the next nap and feed.');
+      lines.push(pushState(c.d) === 'on' ? 'Reminders arrive as notifications on this phone.' : 'For nap, bedtime and feed notifications, open the Plan tab and turn on reminders.');
       return { title: 'Syncing', body: '<div class="prose">' + lines.map(function (l) { return '<p>' + esc(l) + '</p>'; }).join('') + '</div>' };
     },
     pair: function () {
@@ -2355,6 +3471,15 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
         '<p class="tiny" style="margin-top:12px">Anyone with this link can see and add to your log, so only share it with each other.</p>' };
     }
   };
+  function kidStatus(k, c) {
+    var now = c.now, age = E.ageInfo(k, now);
+    if (!age.born) return age.daysToDue != null ? dueLabel(age.due) : 'Not born yet';
+    var ev = eventsFor(c.d, k.id), sp = E.predictSleep(ev, now, k, age);
+    var bits = [E.ageLabel(age, now)];
+    if (sp && sp.state === 'asleep') bits.push('asleep ' + fmtDur((now - sp.since) / MIN));
+    else if (sp && sp.awakeSince) bits.push('awake ' + fmtDur((now - sp.awakeSince) / MIN));
+    return bits.join(' · ');
+  }
   function pairLink() { return location.origin + location.pathname.replace(/index\.html$/, '') + '#join=' + S.family; }
   function qrSvg(text) {
     try {
@@ -2399,7 +3524,8 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
 
   /* ---------------- actions ---------------- */
   function me() { return S.demo ? 'demo-a' : (S.ctx && S.ctx.me) || null; }
-  function newEvent(base) { var t = Date.now(); return Object.assign({ id: B.uid(), by: me(), createdAt: t, updatedAt: t, updatedBy: me(), end: null, note: '' }, base); }
+  function curKid() { return activeKid(snap()).id; }
+  function newEvent(base) { var t = Date.now(); return Object.assign({ id: B.uid(), child: curKid(), by: me(), createdAt: t, updatedAt: t, updatedBy: me(), end: null, note: '' }, base); }
   function guard() { if (S.ctx && S.ctx.readOnly) { toast('This log is view-only for you.'); return false; } return true; }
   function st() { return S.store; }
   function handleErr(e) { if (e && e.code === 'read_only') return; if (e && e.code) toast('Couldn’t save: ' + (e.message || e.code)); }
@@ -2409,7 +3535,7 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     if (c.runningSleep) return;
     var ev = newEvent({ type: 'sleep', start: floorMin(c.now) });
     st().addEvent(ev).catch(handleErr);
-    toast('Sleep started at ' + fmtTime(ev.start), [{ label: 'Adjust', fn: function () { openEdit(ev.id); } }, { label: 'Undo', fn: function () { st().removeEvent(ev.id).catch(handleErr); } }]);
+    toast('Sleep started' + forKid(c) + ' at ' + fmtTime(ev.start), [{ label: 'Adjust', fn: function () { openEdit(ev.id); } }, { label: 'Undo', fn: function () { st().removeEvent(ev.id).catch(handleErr); } }]);
   }
   function wakeUp() {
     var c = makeCtx();
@@ -2417,7 +3543,7 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     var end = Math.max(floorMin(c.now), c.runningSleep.start + MIN);
     var ids = c.runningSleeps.map(function (e) { return e.id; });
     ids.forEach(function (id) { st().patchEvent(id, { end: end }).catch(handleErr); });
-    toast('Woke after ' + fmtDur((end - c.runningSleep.start) / MIN), [{ label: 'Adjust', fn: function () { openEdit(ids[0]); } }, { label: 'Undo', fn: function () { ids.forEach(function (id) { st().patchEvent(id, { end: null }).catch(handleErr); }); } }]);
+    toast((c.multi ? kidLabel(c.profile, c.kids) + ' woke' : 'Woke') + ' after ' + fmtDur((end - c.runningSleep.start) / MIN), [{ label: 'Adjust', fn: function () { openEdit(ids[0]); } }, { label: 'Undo', fn: function () { ids.forEach(function (id) { st().patchEvent(id, { end: null }).catch(handleErr); }); } }]);
   }
   function tapSide(side) {
     var c = makeCtx(), now = Date.now(), rf = c.runningFeed;
@@ -2445,7 +3571,7 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     var ev = newEvent({ type: 'nappy', start: floorMin(Date.now()), wet: k !== 'dirty', dirty: k !== 'wet' });
     st().addEvent(ev).catch(handleErr);
     closeSheet();
-    toast((k === 'both' ? 'Wet + dirty' : k === 'dirty' ? 'Dirty' : 'Wet') + ' nappy logged', [{ label: 'Details', fn: function () { openEdit(ev.id); } }, { label: 'Undo', fn: function () { st().removeEvent(ev.id).catch(handleErr); } }]);
+    toast((k === 'both' ? 'Wet + dirty' : k === 'dirty' ? 'Dirty' : 'Wet') + ' nappy logged' + forKid(S.ctx), [{ label: 'Details', fn: function () { openEdit(ev.id); } }, { label: 'Undo', fn: function () { st().removeEvent(ev.id).catch(handleErr); } }]);
   }
   function openEdit(id) {
     var c = makeCtx();
@@ -2525,7 +3651,7 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
       var ev = newEvent(data);
       st().addEvent(ev).catch(handleErr);
       closeSheet();
-      toast(TYPE_TITLES[type] + ' saved', [{ label: 'Undo', fn: function () { st().removeEvent(ev.id).catch(handleErr); } }]);
+      toast(TYPE_TITLES[type] + ' saved' + forKid(S.ctx), [{ label: 'Undo', fn: function () { st().removeEvent(ev.id).catch(handleErr); } }]);
     }
     if (fever) { S.tab = 'today'; location.hash = 'today'; render(); window.scrollTo(0, 0); }
   }
@@ -2537,7 +3663,7 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     var g = { at: at, weightKg: w, lengthCm: len, headCm: head, note: strVal('f-gnote') };
     var cur = S.sheet.growth;
     if (cur) st().patchGrowth(cur.id, g).catch(handleErr);
-    else st().addGrowth(Object.assign({ id: B.uid(), by: me() }, g)).catch(handleErr);
+    else st().addGrowth(Object.assign({ id: B.uid(), child: curKid(), by: me() }, g)).catch(handleErr);
     closeSheet(); toast('Measurement saved');
   }
   function saveSettings() {
@@ -2547,7 +3673,7 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     var birthEl = document.getElementById('s-birth');
     if (birthEl) { var bt = fromInput(birthEl.value); if (bt == null) return setErr('Add the birth date and time.'); if (bt > Date.now() + 5 * MIN) return setErr('Birth time is in the future.'); patch.birthAt = bt; }
     if (E.parseHM(patch.dayStart, -1) === E.parseHM(patch.nightStart, -2)) return setErr('Day and night can’t start at the same time.');
-    st().saveProfile(patch).catch(handleErr);
+    st().saveChild(curKid(), patch).catch(handleErr);
     var meEl = document.getElementById('s-me');
     if (meEl && meEl.value.trim() && st().setMember) st().setMember(meEl.value.trim()).catch(handleErr);
     closeSheet(); toast('Settings saved');
@@ -2561,8 +3687,8 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     if (w != null && (w < 0.4 || w > 8)) return setErr('Weight looks off: enter kilograms, like 3.40.');
     var patch = { birthAt: at, name: strVal('b-name'), feeding: document.getElementById('b-feeding').value };
     if (w != null) patch.birthWeightKg = w; if (len != null) patch.birthLengthCm = len; if (head != null) patch.birthHeadCm = head;
-    st().saveProfile(patch).catch(handleErr);
-    if (w != null || len != null || head != null) st().addGrowth({ id: B.uid(), by: me(), at: at, weightKg: w, lengthCm: len, headCm: head, note: 'Birth' }).catch(handleErr);
+    st().saveChild(curKid(), patch).catch(handleErr);
+    if (w != null || len != null || head != null) st().addGrowth({ id: B.uid(), child: curKid(), by: me(), at: at, weightKg: w, lengthCm: len, headCm: head, note: 'Birth' }).catch(handleErr);
     var running = E.contractionStats(makeCtx().d.contractions || [], Date.now()).running;
     if (running) st().patchContraction(running.id, { end: Date.now() }).catch(handleErr);
     closeSheet(); S.tab = 'today'; location.hash = 'today';
@@ -2579,7 +3705,7 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
       L.push('- Feeds: ' + avg('feeds').toFixed(1) + (avg('bottleMl') ? ', bottles ' + Math.round(avg('bottleMl')) + ' mL' : '') + (avg('breastMin') ? ', breastfeeding ' + fmtDur(avg('breastMin')) : ''));
       L.push('- Nappies: ' + avg('wet').toFixed(1) + ' wet, ' + avg('dirty').toFixed(1) + ' dirty');
     }
-    var g = (c.d.growth || []).filter(function (x) { return x.weightKg; }).sort(function (a, b) { return a.at - b.at; });
+    var g = (c.growth || []).filter(function (x) { return x.weightKg; }).sort(function (a, b) { return a.at - b.at; });
     if (g.length) L.push('Weight: ' + g.slice(-4).map(function (x) { return fmtKg(x.weightKg) + ' on ' + fmtDate(x.at); }).join('; '));
     var temps = c.live.filter(function (e) { return e.type === 'temp' && e.start >= c.now - 7 * DAY; });
     if (temps.length) L.push('Temperatures (7 days): ' + temps.map(function (e) { return e.celsius.toFixed(1) + '°C ' + fmtDate(e.start) + ' ' + fmtTime(e.start); }).join('; '));
@@ -2589,18 +3715,19 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
   }
   function csv(data, c) {
     function q(v) { v = v == null ? '' : String(v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }
-    var rows = [['type', 'start', 'end', 'minutes', 'details', 'note', 'logged_by']];
+    var kidName = {}; (data.children || []).forEach(function (k) { kidName[k.id] = babyName(k); });
+    var rows = [['child', 'type', 'start', 'end', 'minutes', 'details', 'note', 'logged_by']];
     E.live(data.events).sort(function (a, b) { return a.start - b.start; }).forEach(function (e) {
       var det = '';
       if (e.type === 'feed') { if (e.method === 'breast') { var m = E.segMinutes(e.segments, Date.now()); det = 'breast L ' + Math.round(m.L) + 'm R ' + Math.round(m.R) + 'm'; } else if (e.method === 'bottle') det = 'bottle ' + (e.amountMl || '') + ' mL ' + (e.milk || ''); else det = 'solids ' + (e.foods || ''); }
       else if (e.type === 'nappy') det = (e.wet ? 'wet ' : '') + (e.dirty ? 'dirty ' : '') + (e.colour || '');
-      else if (e.type === 'pump') det = 'L ' + (e.leftMl || 0) + ' mL R ' + (e.rightMl || 0) + ' mL';
+      else if (e.type === 'pump') det = e.totalMl != null && !e.leftMl && !e.rightMl ? e.totalMl + ' mL' : 'L ' + (e.leftMl || 0) + ' mL R ' + (e.rightMl || 0) + ' mL';
       else if (e.type === 'temp') det = e.celsius + ' C ' + (e.site || '');
       else if (e.type === 'med') det = e.name + ' ' + (e.dose || '');
       else if (e.type === 'sleep') det = e.where || '';
-      rows.push([e.type, toInput(e.start).replace('T', ' '), e.end ? toInput(e.end).replace('T', ' ') : '', e.end ? Math.round((e.end - e.start) / MIN) : '', det.trim(), e.note || '', nameOf(e.by, c)]);
+      rows.push([kidName[e.child || B.FIRST_CHILD] || '', e.type, toInput(e.start).replace('T', ' '), e.end ? toInput(e.end).replace('T', ' ') : '', e.end ? Math.round((e.end - e.start) / MIN) : '', det.trim(), e.note || '', nameOf(e.by, c)]);
     });
-    (data.growth || []).forEach(function (g) { rows.push(['growth', toInput(g.at).replace('T', ' '), '', '', [g.weightKg ? g.weightKg + ' kg' : '', g.lengthCm ? g.lengthCm + ' cm long' : '', g.headCm ? g.headCm + ' cm head' : ''].filter(Boolean).join(' '), g.note || '', nameOf(g.by, c)]); });
+    (data.growth || []).forEach(function (g) { rows.push([kidName[g.child || B.FIRST_CHILD] || '', 'growth', toInput(g.at).replace('T', ' '), '', '', [g.weightKg ? g.weightKg + ' kg' : '', g.lengthCm ? g.lengthCm + ' cm long' : '', g.headCm ? g.headCm + ' cm head' : ''].filter(Boolean).join(' '), g.note || '', nameOf(g.by, c)]); });
     return rows.map(function (r) { return r.map(q).join(','); }).join('\n');
   }
   function copyText(text, okMsg) {
@@ -2624,14 +3751,480 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     render(); window.scrollTo(0, 0);
   }
 
+  /* ---------------- reminders and notifications ----------------
+     Each phone keeps its own settings (meta/push.prefs[member]) and notification address (meta/push.subs[member]).
+     Whichever phone is open writes the next few days of notifications to meta/outbox; the reminder service
+     (a small Cloudflare Worker) checks it every minute and sends what's due, so reminders arrive with the app closed. */
+  function cfgVal(k) { return window.NIGHTLIGHT_CONFIG ? window.NIGHTLIGHT_CONFIG[k] : null; }
+  function relayUrl(d) { return cfgVal('pushRelay') || (d.alerts && d.alerts.relay) || null; }
+  function prefsFor(d, mid) { return B.sanitizePrefs(((d.push || {}).prefs || {})[mid]); }
+  function mySub(d) { return ((d.push || {}).subs || {})[me()] || null; }
+  function pushSupported() { return !!(window.isSecureContext && 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window); }
+  function pushState(d) {
+    if (S.demo) return 'demo';
+    if (!S.store || S.store.status.mode !== 'firebase') return 'local';
+    if (S.isIOS && !S.isStandalone) return 'install';
+    if (!pushSupported()) return 'unsupported';
+    if (Notification.permission === 'denied') return 'denied';
+    if (!relayUrl(d)) return 'norelay';
+    return mySub(d) && Notification.permission === 'granted' ? 'on' : 'off';
+  }
+  var PUSH_TEXT = {
+    demo: 'Notifications are off in the sample.', local: 'Notifications need the shared log, so they’re off on a phone-only log.',
+    install: 'Open Nightlight from your Home Screen to turn on notifications. iPhones only allow them for Home Screen apps.',
+    unsupported: 'This browser can’t show notifications from web apps. On iPhone, use the Home Screen app (iOS 16.4 or later).',
+    denied: 'Notifications are blocked for Nightlight. Turn them on in your phone’s Settings, under Notifications, then come back here.',
+    norelay: 'Reminders need the free reminder service set up once. It takes about 5 minutes on a computer.',
+    off: 'Notifications are off on this phone.', on: 'Notifications are on for this phone.'
+  };
+  function repeatText(r) {
+    if (r.repeat === 'once') return fmtDate(r.at) + ' at ' + fmtTime(r.at);
+    if (r.repeat === 'hours') return 'Every ' + r.every + ' hours from ' + fmtTime(r.from != null ? r.from : E.atLocal(Date.now(), E.parseHM(r.time, 540), 0));
+    return 'Every day at ' + fmtTime(E.atLocal(Date.now(), E.parseHM(r.time, 540), 0));
+  }
+  // the notifications due in the next few days for some phones (members); deterministic so phones agree
+  function reminderItems(d, now, members) {
+    var kids = kidsOf(d), multi = kids.length > 1, items = [];
+    var basis = kids.map(function (k) { return { k: k, b: E.alertBasis(eventsFor(d, k.id), now, k, E.ageInfo(k, now)) }; });
+    var custom = (d.alerts && d.alerts.custom) || [];
+    members.forEach(function (mid) {
+      var p = prefsFor(d, mid);
+      basis.forEach(function (x) {
+        if (p.only && p.only !== x.k.id) return;
+        var nm = kidLabel(x.k, kids), whose = multi ? nm + '’s ' : '';
+        var sl = x.b.sleep;
+        if (p.sleep && sl) {
+          var at = floorMin(sl.at - p.sleepLead * MIN);
+          var what = sl.kind === 'bedtime' ? 'bedtime window' : sl.kind === 'sleep' ? 'sleep window' : 'nap window';
+          if (at > now) items.push({ id: x.k.id + ':' + sl.key + ':' + mid, to: mid, at: at, tag: 'nl-sleep-' + x.k.id,
+            title: cap(whose + what) + (p.sleepLead ? ' opens at ' + fmtTime(sl.at) : ' is open'),
+            body: (multi ? nm : 'Awake') + (multi ? ' has been awake' : '') + ' since ' + fmtTime(sl.awakeSince) + '. Window ' + fmtRange(sl.at, sl.end) + '.' });
+        }
+        var fd = x.b.feed;
+        if (p.feed && fd && (!fd.night || p.feedNight)) {
+          var fa = floorMin(fd.at - p.feedLead * MIN);
+          if (fa > now) items.push({ id: x.k.id + ':' + fd.key + ':' + mid, to: mid, at: fa, tag: 'nl-feed-' + x.k.id,
+            title: (multi ? nm + ': feed' : 'Feed') + ' due around ' + fmtTime(fd.at),
+            body: 'Last fed at ' + fmtTime(fd.lastStart) + (fd.side && x.k.feeding !== 'formula' ? '. Start on the ' + (fd.side === 'L' ? 'left' : 'right') + '.' : '.') });
+        }
+      });
+      if (p.custom) custom.forEach(function (r) {
+        if (r.to && r.to !== mid) return;
+        var kid = r.child ? kids.filter(function (k) { return k.id === r.child; })[0] : null;
+        if (r.child && !kid) return;
+        if (p.only && r.child && r.child !== p.only) return;
+        E.occurrences(r, now, 7 * DAY).forEach(function (t) {
+          items.push({ id: 'c:' + r.id + ':' + Math.round(t / MIN) + ':' + mid, to: mid, at: t, tag: 'nl-c-' + r.id, title: r.title,
+            body: (kid && multi ? kidLabel(kid, kids) + ' · ' : '') + repeatText(r) });
+        });
+      });
+    });
+    items.sort(function (a, b) { return a.at - b.at || (a.id < b.id ? -1 : 1); });
+    return items.slice(0, 150);
+  }
+  function cap(x) { return x ? x.charAt(0).toUpperCase() + x.slice(1) : x; }
+  function outboxDiffers(old, items, now) {
+    var live = (old || []).filter(function (i) { return i.at > now; });
+    if (live.length !== items.length) return true;
+    var m = {}; live.forEach(function (i) { m[i.id] = i; });
+    return items.some(function (i) { var o = m[i.id]; return !o || Math.abs(o.at - i.at) >= 2 * MIN || o.to !== i.to; });
+  }
+  function scheduleOutboxSync(delay) {
+    clearTimeout(S.outboxTimer);
+    S.outboxTimer = setTimeout(syncOutbox, delay == null ? 4000 : delay);
+  }
+  function syncOutbox() {
+    if (S.demo || !S.store || S.store.status.mode !== 'firebase' || !S.store.status.loaded || (S.ctx && S.ctx.readOnly)) return;
+    var d = snap(), now = Date.now();
+    if (!relayUrl(d)) return;
+    var members = Object.keys((d.push || {}).subs || {});
+    if (!members.length && !(d.outbox.items || []).length) return;
+    var items = reminderItems(d, now, members);
+    if (!outboxDiffers(d.outbox.items, items, now)) return;
+    st().setOutbox({ items: items, at: now, by: me() }).catch(function () {});
+  }
+  // with notifications off on this phone, a gentle in-app nudge while Nightlight is open
+  function inAppAlerts() {
+    if (S.demo || !S.store || document.hidden || S.needsSetup) return;
+    var d = snap(), now = Date.now(), mid = me() || 'local-me';
+    if (pushState(d) === 'on') { S.alertQueue = []; return; }
+    (S.alertQueue || []).forEach(function (it) {
+      if (it.at <= now && it.at > now - 3 * MIN && !S.alertShown[it.id]) {
+        S.alertShown[it.id] = 1;
+        toast(it.title + '. ' + it.body);
+        try { if (navigator.vibrate) navigator.vibrate([120, 80, 120]); } catch (e) {}
+      }
+    });
+    S.alertQueue = reminderItems(d, now, [mid]).filter(function (i) { return i.at - now < 30 * MIN; });
+  }
+  function b64uToBytes(s) {
+    var pad2 = '='.repeat((4 - s.length % 4) % 4), raw = atob((s + pad2).replace(/-/g, '+').replace(/_/g, '/'));
+    var out = new Uint8Array(raw.length); for (var i = 0; i < raw.length; i++) out[i] = raw.charCodeAt(i);
+    return out;
+  }
+  function sameKey(buf, key) {
+    if (!buf) return false;
+    var a = new Uint8Array(buf), b = b64uToBytes(key);
+    if (a.length !== b.length) return false;
+    for (var i = 0; i < a.length; i++) if (a[i] !== b[i]) return false;
+    return true;
+  }
+  function relayFetch(path, body) {
+    var url = relayUrl(snap());
+    if (!url) return Promise.reject(new Error('not set up'));
+    var opts = body ? { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) } : {};
+    var ctrl = window.AbortController ? new AbortController() : null;
+    if (ctrl) { opts.signal = ctrl.signal; setTimeout(function () { ctrl.abort(); }, 12000); }
+    return fetch(url + path, opts).then(function (r) { return r.json().catch(function () { return { ok: false, error: 'HTTP ' + r.status }; }); });
+  }
+  function registerRelay() { relayFetch('/register', { family: S.family }).catch(function () {}); }
+  function refreshRelayStatus(force) {
+    var d = snap();
+    if (!relayUrl(d) || S.demo || !S.family) return;
+    if (!force && S.relayStatus && Date.now() - S.relayStatus.checked < 60000) return;
+    S.relayStatus = { checked: Date.now(), pending: true };
+    relayFetch('/status?family=' + encodeURIComponent(S.family)).then(function (j) {
+      S.relayStatus = Object.assign({ checked: Date.now() }, j);
+      if (j && j.ok && !j.registered && mySub(snap())) registerRelay();
+      if (S.sheet && S.sheet.kind === 'reminders') renderSheet(); else if (S.tab === 'plan') renderSoon();
+    }, function (e) { S.relayStatus = { checked: Date.now(), ok: false, error: String(e && e.message || e) }; if (S.sheet && S.sheet.kind === 'reminders') renderSheet(); });
+  }
+  function enablePush() {
+    var d = snap(), key = cfgVal('vapidPublicKey'), state = pushState(d);
+    if (state === 'norelay') { openSheet('relay'); return; }
+    if (state !== 'off' && state !== 'on') { toast(PUSH_TEXT[state]); return; }
+    if (!key) { toast('This copy of Nightlight is missing its notification key.'); return; }
+    var reg = S.swReg;
+    if (!reg || !reg.pushManager) { toast('Nightlight is still getting ready. Try again in a few seconds.'); return; }
+    var ask = Notification.requestPermission();
+    Promise.resolve(ask).then(function (perm) {
+      if (perm !== 'granted') { if (S.sheet) renderSheet(); toast(perm === 'denied' ? PUSH_TEXT.denied : 'Notifications weren’t turned on.'); return null; }
+      return reg.pushManager.getSubscription().then(function (old) {
+        if (old && old.options && old.options.applicationServerKey && !sameKey(old.options.applicationServerKey, key)) return old.unsubscribe().then(function () { return null; });
+        return old;
+      }).then(function (old) {
+        return old || reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: b64uToBytes(key) });
+      }).then(function (sub) {
+        var j = sub.toJSON(), patch = { subs: {} };
+        patch.subs[me()] = { endpoint: j.endpoint, keys: { p256dh: j.keys.p256dh, auth: j.keys.auth }, at: Date.now(), ua: S.isIOS ? 'iPhone' : /android/i.test(navigator.userAgent) ? 'Android' : 'Browser' };
+        if (!(d.push.prefs || {})[me()]) { patch.prefs = {}; patch.prefs[me()] = B.PREF_DEFAULTS; }
+        return st().savePush(patch).then(function () {
+          registerRelay(); scheduleOutboxSync(800);
+          if (S.sheet && S.sheet.kind === 'reminders') renderSheet(); else renderSoon();
+          toast('Notifications are on for this phone.', [{ label: 'Send a test', fn: testPush }]);
+        });
+      });
+    }).catch(function (e) { toast('Couldn’t turn on notifications: ' + ((e && e.message) || e)); });
+  }
+  function disablePush() {
+    var patch = { subs: {} }; patch.subs[me()] = null;
+    st().savePush(patch).catch(handleErr);
+    if (S.swReg && S.swReg.pushManager) S.swReg.pushManager.getSubscription().then(function (sub) { if (sub) sub.unsubscribe(); }).catch(function () {});
+    scheduleOutboxSync(800);
+    toast('Notifications are off for this phone.');
+  }
+  function testPush() {
+    toast('Sending a test…');
+    relayFetch('/test', { family: S.family, member: me() }).then(function (j) {
+      if (j && j.ok) toast('Test sent. It should arrive in a few seconds, even with Nightlight closed.');
+      else if (j && (j.status === 404 || j.status === 410)) toast('This phone’s notification address has expired. Turn notifications off, then on again.');
+      else if (j && j.error === 'no-subscription') toast('The reminder service can’t see this phone yet. Wait a moment and try again.');
+      else toast('The reminder service couldn’t send it' + (j && (j.status || j.error) ? ' (' + (j.status || j.error) + ')' : '') + '.');
+    }, function () { toast('Couldn’t reach the reminder service. Check the address in Reminders.'); });
+  }
+  function savePrefs(patch) {
+    var d = snap(), cur = prefsFor(d, me()), body = { prefs: {} };
+    body.prefs[me()] = Object.assign({}, cur, patch);
+    st().savePush(body).catch(handleErr);
+    scheduleOutboxSync(800);
+  }
+  function connectRelay() {
+    var el = document.getElementById('rl-url'), err = document.getElementById('f-err');
+    var url = (el && el.value || '').trim().replace(/\/+$/, '');
+    if (url && !/^https?:\/\//.test(url)) url = 'https://' + url;
+    if (!/^https:\/\/[a-z0-9.-]+\.[a-z]{2,}(?:\/[^\s]*)?$/i.test(url)) { if (err) err.textContent = 'Paste the worker’s address, like https://nightlight-push.yourname.workers.dev'; return; }
+    if (err) err.textContent = 'Checking…';
+    var ctrl = window.AbortController ? new AbortController() : null;
+    if (ctrl) setTimeout(function () { ctrl.abort(); }, 12000);
+    fetch(url + '/status?family=' + encodeURIComponent(S.family), ctrl ? { signal: ctrl.signal } : {}).then(function (r) { return r.json(); }).then(function (j) {
+      if (!j || j.app !== 'nightlight') throw new Error('not nightlight');
+      st().saveAlerts({ relay: url }).catch(handleErr);
+      S.relayStatus = Object.assign({ checked: Date.now() }, j);
+      setTimeout(registerRelay, 300);
+      openSheet('reminders');
+      toast('Reminder service connected. Now turn on notifications on each phone.');
+    }).catch(function () {
+      var e2 = document.getElementById('f-err');
+      if (e2) e2.textContent = 'That address didn’t answer like the Nightlight reminder service. Check you pasted the whole file into the worker, pressed Deploy, and copied the workers.dev address.';
+    });
+  }
+  function saveReminder() {
+    var sh = S.sheet, cur = sh.rem, title = strVal('r-title');
+    if (!title) return setErr('Give the reminder a name.');
+    var rep = sh.repeat || 'daily', data = { title: title, repeat: rep, on: true, to: chipVal('r-to') === 'me' ? me() : null, child: chipVal('r-child') && chipVal('r-child') !== 'all' ? chipVal('r-child') : null };
+    if (rep === 'once') { var at = fromInput(strVal('r-at')); if (at == null) return setErr('Choose when.'); if (at < Date.now() - MIN) return setErr('That time has passed.'); data.at = at; }
+    else {
+      var t = strVal('r-time'); if (!/^\d{2}:\d{2}$/.test(t)) return setErr('Choose a time.');
+      data.time = t;
+      if (rep === 'hours') { data.every = Number(chipVal('r-every') || 4); data.from = E.atLocal(Date.now(), E.parseHM(t, 540), 0); }
+    }
+    var id = cur ? cur.id : B.uid(), patch = { custom: {} };
+    patch.custom[id] = Object.assign({}, data, cur ? { by: cur.by, createdAt: cur.createdAt, updatedAt: Date.now() } : { by: me(), createdAt: Date.now() });
+    st().saveAlerts(patch).catch(handleErr);
+    scheduleOutboxSync(800);
+    openSheet('reminders');
+    toast(cur ? 'Reminder updated' : 'Reminder added' + (pushState(snap()) === 'on' ? '' : '. Turn on notifications to get it with the app closed.'));
+  }
+  function reminderSummary(c) {
+    var st0 = pushState(c.d), n = ((c.d.alerts || {}).custom || []).length;
+    return (st0 === 'on' ? 'Notifications are on for this phone.' : st0 === 'norelay' ? 'Set up once to get nap, bedtime and feed reminders as notifications.' : PUSH_TEXT[st0]) + (n ? ' ' + n + ' reminder' + (n === 1 ? '' : 's') + ' of your own.' : '');
+  }
+  function remindersSection(c) {
+    var d = c.d, state = pushState(d), mine = reminderItems(d, c.now, [me() || 'local-me']).slice(0, 4), custom = (d.alerts && d.alerts.custom) || [];
+    var h = '<section class="section"><h2>Reminders</h2><p class="lede">' + esc(state === 'on' ? 'Notifications are on for this phone, so these arrive even with Nightlight closed.' : PUSH_TEXT[state]) + '</p>';
+    if (mine.length) h += '<ul class="lines up">' + mine.map(function (i) { return '<li><span class="nm">' + esc(i.title) + '</span><span class="ph num">' + (i.at - c.now < 12 * HOUR ? fmtRel(i.at, c.now) : dayLabel(i.at, c.now) + ' ' + fmtTime(i.at)) + '</span></li>'; }).join('') + '</ul>';
+    else if (c.age.born || custom.length) h += '<p class="empty">Nothing due in the next while' + (c.age.born ? '. Nap and feed reminders appear after you log a wake-up or a feed.' : '.') + '</p>';
+    h += '<div class="btn-row"><button type="button" class="btn small' + (state === 'on' ? '' : ' primary') + '" data-act="reminders">' + (state === 'on' ? 'Reminder settings' : state === 'norelay' ? 'Set up reminders' : 'Turn on reminders') + '</button>' +
+      (c.readOnly ? '' : '<button type="button" class="btn small" data-act="rem-new">Add your own reminder</button>') + '</div></section>';
+    return h;
+  }
+
+  /* ---------------- children ---------------- */
+  function pickKid(id, silent) {
+    S.child = id;
+    try { localStorage.setItem('nl-child', id); } catch (e) {}
+    var d = snap(), pr = ((d.push || {}).prefs || {})[me()];
+    if (pr && pr.only && pr.only !== id) savePrefs({ only: id });
+    S.logExpanded = false; S.readout = {}; S.table = {};
+    if (silent) { render(); return; }
+    closeSheet(); render(); window.scrollTo(0, 0);
+    var c = makeCtx();
+    toast('Now looking after ' + kidLabel(c.profile, c.kids) + '. What you log goes to ' + (c.profile.name || 'this child') + '.');
+  }
+  function saveKid() {
+    var sh = S.sheet, born = sh.born !== false, c = makeCtx(), now = Date.now();
+    var p = { name: strVal('k-name'), surname: strVal('k-surname'), feeding: document.getElementById('k-feeding').value,
+      dayStart: c.profile.dayStart || '07:00', nightStart: c.profile.nightStart || '19:00', createdAt: now, order: now };
+    if (born) {
+      var at = fromInput(strVal('k-birth'));
+      if (at == null) return setErr('Add the date and time of birth. A rough time is fine.');
+      if (at > now + 5 * MIN) return setErr('Birth time is in the future.');
+      p.birthAt = at;
+    } else {
+      var due = strVal('k-due');
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(due)) return setErr('Add the due date.');
+      p.dueDate = due;
+    }
+    var cid = B.randomId(8);
+    st().saveChild(cid, p).catch(handleErr);
+    closeSheet();
+    pickKid(cid, true);
+    toast((p.name || 'A new baby') + ' added. This phone is now looking after ' + (p.name || 'them') + '; switch from the name at the top.');
+  }
+  function removeKid() {
+    var c = makeCtx();
+    if (!c.multi) return;
+    var gone = c.child, next = c.kids.filter(function (k) { return k.id !== gone; })[0];
+    st().saveChild(gone, { archived: true }).catch(handleErr);
+    closeSheet(); pickKid(next.id, true);
+    toast(kidLabel(c.profile, c.kids) + ' is hidden from the log', [{ label: 'Undo', fn: function () { st().saveChild(gone, { archived: false }).catch(handleErr); pickKid(gone, true); } }]);
+  }
+  function saveWW() {
+    var d = S.sheet && S.sheet.draft; if (!d) return;
+    var c = makeCtx(), at = E.awakeTimes(c.events, c.now, c.profile, c.age);
+    var ww = { on: !!d.on, first: Math.round(d.first), mid: Math.round(d.mid), last: Math.round(d.last) };
+    if (at && at.newborn) { ww.first = ww.mid; ww.last = ww.mid; }
+    st().saveChild(c.child, { ww: ww }).catch(handleErr);
+    delete S.plan[c.child];
+    closeSheet(); scheduleOutboxSync(800);
+    toast(ww.on ? 'Saved. Nap and bedtime windows now use your awake times.' : 'Back to automatic awake times.');
+  }
+  function savePlan() {
+    var c = makeCtx(), p = planState(c);
+    st().saveChild(c.child, { plan: { wake: hm(p.wake), bed: p.bed != null ? hm(p.bed) : null, naps: p.naps } }).catch(handleErr);
+    toast('Saved as your plan. It shows on both phones.');
+  }
+  function checkPushSub() {
+    if (S.checkedSub || !S.swReg || !S.swReg.pushManager || !S.store || !S.store.status.loaded || S.demo) return;
+    var d = snap(), mine = mySub(d);
+    if (!mine) return;
+    S.checkedSub = true;
+    S.swReg.pushManager.getSubscription().then(function (sub) {
+      var patch = { subs: {} };
+      if (!sub || Notification.permission !== 'granted') { patch.subs[me()] = null; st().savePush(patch).catch(function () {}); return; }
+      var j = sub.toJSON();
+      if (j.endpoint !== mine.endpoint) { patch.subs[me()] = { endpoint: j.endpoint, keys: { p256dh: j.keys.p256dh, auth: j.keys.auth }, at: Date.now(), ua: mine.ua }; st().savePush(patch).catch(function () {}); }
+      registerRelay();
+    }).catch(function () {});
+  }
+
+  /* ---------------- quick log: typed or spoken ---------------- */
+  function qlCtx(c) {
+    var d = c.d, running = {};
+    c.kids.forEach(function (k) {
+      var ev = E.live(eventsFor(d, k.id));
+      var rs = ev.filter(function (e) { return e.type === 'sleep' && e.end == null; }).sort(function (a, b) { return a.start - b.start; })[0];
+      var rf = ev.filter(function (e) { return e.type === 'feed' && e.method === 'breast' && e.end == null; })[0];
+      running[k.id] = { sleepStart: rs ? rs.start : null, feed: !!rf };
+    });
+    var fp = c.age.born ? E.predictFeed(c.events, c.now, c.profile, c.age) : null;
+    return { now: Date.now(), kids: c.multi ? c.kids.map(function (k) { return { id: k.id, name: k.name }; }) : [], child: c.child, feeding: c.profile.feeding,
+      suggestSide: fp && fp.suggestSide, lastMilk: lastMilk(c), running: running };
+  }
+  function qlParse() {
+    var el = document.getElementById('ql-text');
+    if (!el || !S.sheet || S.sheet.kind !== 'quicklog') return null;
+    var c = makeCtx();
+    S.sheet.text = el.value;
+    S.sheet.parsed = el.value.trim() ? QP.parse(el.value, qlCtx(c)) : { items: [], ok: 0 };
+    return S.sheet.parsed;
+  }
+  function qlDescribe(it, c) {
+    var who = c.multi ? '<span class="ql-kid">' + esc(kidLabel(kidById(c, it.child || c.child), c.kids)) + '</span> ' : '';
+    var when = function (t) { return dayLabel(t, c.now) === 'Today' ? fmtTime(t) : dayLabel(t, c.now) + ' ' + fmtTime(t); };
+    if (it.kind === 'event') return who + describe(Object.assign({ id: 'preview', note: '' }, it.ev), c).replace(/data-live="[^"]*"/g, '') + (it.ev.type === 'sleep' && it.ev.end != null ? (dayLabel(it.ev.start, c.now) === 'Today' ? '' : ' <span>· ' + dayLabel(it.ev.start, c.now) + '</span>') : ' <span>· ' + when(it.ev.start) + '</span>') + (it.guessedSide ? ' <span>(side guessed: say left or right)</span>' : '');
+    if (it.kind === 'start-sleep') return who + '<em>Sleep started</em> <span>at ' + when(it.ev.start) + ', timer running</span>';
+    if (it.kind === 'wake') return who + '<em>Woke up</em> <span>at ' + when(it.end) + (it.since ? ' · slept ' + fmtDur((it.end - it.since) / MIN) : '') + '</span>';
+    if (it.kind === 'timer') return who + '<em>Breastfeed timer</em> <span>starting on the ' + (it.side === 'L' ? 'left' : 'right') + ' now</span>';
+    if (it.kind === 'growth') { var g = it.g; return who + '<em>Measurement</em> <span>' + [g.weightKg != null ? fmtKg(g.weightKg) : '', g.lengthCm != null ? g.lengthCm + ' cm long' : '', g.headCm != null ? g.headCm + ' cm head' : ''].filter(Boolean).join(' · ') + '</span>'; }
+    if (it.kind === 'form') return who + '<em>' + esc(TYPE_TITLES[it.form] || (it.form === 'feed' ? 'Feed' : 'Entry')) + '</em> <span>at ' + when(it.ev ? it.ev.start : it.g ? it.g.at : c.now) + ' · needs details</span>';
+    if (it.kind === 'error') return '<em class="ql-err">' + esc(it.msg) + '</em> <span>“' + esc(it.src) + '”</span>';
+    return '<em class="ql-err">Didn’t catch this part</em> <span>“' + esc(it.src) + '”</span>';
+  }
+  function kidById(c, id) { for (var i = 0; i < c.kids.length; i++) if (c.kids[i].id === id) return c.kids[i]; return c.profile; }
+  function qlRender() {
+    var r = qlParse(); if (!r) return;
+    var c = makeCtx(), box = document.getElementById('ql-preview'), btn = document.getElementById('ql-save');
+    if (!r.items.length) { box.innerHTML = ''; btn.disabled = true; btn.textContent = 'Log it'; return; }
+    box.innerHTML = '<p class="tiny" style="margin:2px 0 4px">' + (r.ok ? 'Ready to log:' : 'Not quite:') + '</p><ul class="ql-list">' + r.items.map(function (it, i) {
+      var cls = it.kind === 'error' || it.kind === 'unknown' ? ' bad' : it.kind === 'form' ? ' part' : '';
+      return '<li class="ql-it' + cls + '">' + (it.kind === 'form' ? '' : glyphFor(it.ev || { type: it.kind === 'timer' ? 'feed' : it.kind === 'wake' ? 'sleep' : it.kind === 'growth' ? 'growth' : 'note' })) + '<span class="d">' + qlDescribe(it, c) + '</span>' +
+        (it.kind === 'form' ? '<button type="button" class="btn small" data-act="ql-form" data-i="' + i + '">Add details</button>' : '') + '</li>';
+    }).join('') + '</ul>';
+    btn.disabled = !r.ok;
+    btn.textContent = r.ok > 1 ? 'Log ' + r.ok + ' entries' : 'Log it';
+  }
+  function qlCommit(it, c) {
+    var cid = it.child || c.child, created = null;
+    if (it.kind === 'event') { var ev = newEvent(Object.assign({}, it.ev, { child: cid })); delete ev.firstSide; st().addEvent(ev).catch(handleErr); created = { ev: ev.id }; }
+    else if (it.kind === 'start-sleep') { var sv = newEvent(Object.assign({}, it.ev, { child: cid, end: null })); st().addEvent(sv).catch(handleErr); created = { ev: sv.id }; }
+    else if (it.kind === 'timer') { var tv = newEvent({ type: 'feed', method: 'breast', child: cid, start: Date.now(), segments: [{ side: it.side, start: Date.now(), end: null }] }); st().addEvent(tv).catch(handleErr); created = { ev: tv.id }; }
+    else if (it.kind === 'wake') {
+      var runs = E.live(eventsFor(c.d, cid)).filter(function (e) { return e.type === 'sleep' && e.end == null; });
+      var ids = runs.map(function (e) { return e.id; });
+      ids.forEach(function (id) { st().patchEvent(id, { end: it.end }).catch(handleErr); });
+      created = { woke: ids };
+    } else if (it.kind === 'growth') { var gid = B.uid(); st().addGrowth(Object.assign({ id: gid, child: cid, by: me() }, it.g)).catch(handleErr); created = { growth: gid }; }
+    return created;
+  }
+  function qlSave() {
+    var r = qlParse(); if (!r || !r.ok) return;
+    if (!guard()) return;
+    var c = makeCtx(), done = [], forms = [];
+    r.items.forEach(function (it) {
+      if (it.kind === 'form') forms.push(it);
+      else if (it.kind !== 'error' && it.kind !== 'unknown') { var x = qlCommit(it, c); if (x) done.push(x); }
+    });
+    var n = done.length;
+    stopDictation();
+    var undo = function () {
+      done.forEach(function (x) {
+        if (x.ev) st().removeEvent(x.ev).catch(handleErr);
+        if (x.growth) st().removeGrowth(x.growth).catch(handleErr);
+        if (x.woke) x.woke.forEach(function (id) { st().patchEvent(id, { end: null }).catch(handleErr); });
+      });
+    };
+    if (forms.length) { closeSheet(); qlOpenForm(forms[0]); toast(n + (n === 1 ? ' entry' : ' entries') + ' logged. Add the details for this one.'); return; }
+    closeSheet();
+    toast((n === 1 ? 'Logged' : n + ' entries logged') + (c.multi && r.items.every(function (i) { return !i.child; }) ? forKid(c) : ''), [{ label: 'Undo', fn: undo }]);
+  }
+  function qlOpenForm(it) {
+    var t = it.ev ? it.ev.start : it.g ? it.g.at : Date.now();
+    if (it.child && it.child !== curKid()) pickKid(it.child, true);
+    if (it.form === 'feed') { openSheet('feed', {}); return; }
+    if (it.form === 'growth') { openSheet('form', { type: 'growth', growth: null }); }
+    else openSheet('form', { type: it.form, ev: null });
+    var inp = document.getElementById('f-start'); if (inp) inp.value = toInput(floorMin(t));
+    if (it.form === 'breast' && it.ev && it.ev.firstSide) { var ch = document.querySelector('[data-field="first"] [data-v="' + it.ev.firstSide + '"]'); if (ch) { document.querySelectorAll('[data-field="first"] .chip').forEach(function (b2) { b2.setAttribute('aria-pressed', 'false'); }); ch.setAttribute('aria-pressed', 'true'); } }
+  }
+  function startDictation() {
+    var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    var hint = document.getElementById('ql-hint'), ta = document.getElementById('ql-text'), mic = document.getElementById('ql-mic');
+    if (S.recog) { stopDictation(); return; }
+    var fallback = function (msg) { if (hint) hint.textContent = msg; if (ta) { ta.focus(); } };
+    if (!SR) { fallback('Tap the microphone on your keyboard, then speak. Nightlight will read what you say.'); return; }
+    var r;
+    try { r = new SR(); } catch (e) { fallback('Tap the microphone on your keyboard to dictate instead.'); return; }
+    r.lang = 'en-AU'; r.interimResults = true; r.continuous = false; r.maxAlternatives = 1;
+    var before = ta.value ? ta.value.replace(/\s+$/, '') + ', ' : '';
+    r.onresult = function (e) {
+      var txt = ''; for (var i = 0; i < e.results.length; i++) txt += e.results[i][0].transcript;
+      ta.value = before + txt; qlRender();
+    };
+    r.onerror = function (e) {
+      var code = e && e.error;
+      if (code === 'not-allowed' || code === 'service-not-allowed') fallback('Voice isn’t available here. Tap the text box, then the microphone on your keyboard.');
+      else if (code === 'no-speech') fallback('Didn’t hear anything. Tap the microphone and try again.');
+      else if (code === 'network') fallback('Voice needs an internet connection. You can still type, or use the keyboard microphone.');
+      else if (code !== 'aborted') fallback('Voice stopped (' + (code || 'error') + '). Try again, or type.');
+    };
+    r.onend = function () { S.recog = null; if (mic) { mic.setAttribute('aria-pressed', 'false'); mic.classList.remove('on'); } };
+    try { r.start(); } catch (e2) { fallback('Tap the microphone on your keyboard to dictate instead.'); return; }
+    S.recog = r;
+    if (mic) { mic.setAttribute('aria-pressed', 'true'); mic.classList.add('on'); }
+    if (hint) hint.textContent = 'Listening… say it the way you’d tell your partner.';
+  }
+  function stopDictation() { if (S.recog) { try { S.recog.stop(); } catch (e) {} S.recog = null; } }
+
   function onClick(ev) {
     var el = ev.target.closest('[data-act]');
     if (!el) { if (ev.target.id === 'scrim') closeSheet(); return; }
     var act = el.getAttribute('data-act');
     var id = el.getAttribute('data-id');
-    if (act !== 'del' && act !== 'del-growth' && act !== 'feed-discard' && act !== 'ctr-clear' && act !== 'leave' && S.delArm) { S.delArm = null; }
+    if (act !== 'del' && act !== 'del-growth' && act !== 'feed-discard' && act !== 'ctr-clear' && act !== 'leave' && act !== 'remove-kid' && act !== 'rem-del' && S.delArm) { S.delArm = null; }
     switch (act) {
-      case 'tab': S.tab = el.getAttribute('data-tab'); location.hash = S.tab; render(); window.scrollTo(0, 0); break;
+      case 'tab': S.tab = el.getAttribute('data-tab'); location.hash = S.tab; if (S.tab === 'plan') refreshRelayStatus(); render(); window.scrollTo(0, 0); break;
+      case 'kids': if (S.needsSetup) break; openSheet('kids'); break;
+      case 'pick-kid': pickKid(id); break;
+      case 'add-kid': if (!guard()) break; openSheet('add-kid', { born: true }); break;
+      case 'kid-born': { var kn = strVal('k-name'), ks = strVal('k-surname'); S.sheet.born = el.getAttribute('data-v') === 'born'; renderSheet(); var a1 = document.getElementById('k-name'), a2 = document.getElementById('k-surname'); if (a1) a1.value = kn; if (a2) a2.value = ks; break; }
+      case 'save-kid': saveKid(); break;
+      case 'remove-kid': {
+        if (S.delArm !== 'remove-kid') { S.delArm = 'remove-kid'; renderSheet(); setTimeout(function () { if (S.delArm === 'remove-kid') { S.delArm = null; if (S.sheet) renderSheet(); } }, 4000); break; }
+        S.delArm = null; removeKid(); break;
+      }
+      case 'awake': if (!guard()) break; openSheet('awake'); break;
+      case 'ww-mode': S.sheet.draft.on = el.getAttribute('data-v') === 'own'; renderSheet(); break;
+      case 'ww-step': { var k0 = el.getAttribute('data-k'); S.sheet.draft[k0] = Math.max(15, Math.min(480, S.sheet.draft[k0] + Number(el.getAttribute('data-d')))); renderSheet(); break; }
+      case 'ww-save': saveWW(); break;
+      case 'plan-naps': { var c2 = makeCtx(), pst = planState(c2), cur0 = schedule(c2).naps; pst.naps = Math.max(0, Math.min(7, cur0 + Number(el.getAttribute('data-d')))); render(); break; }
+      case 'plan-auto': { planState(makeCtx()).naps = null; render(); break; }
+      case 'plan-today': { var c3 = makeCtx(), tw3 = todaysWake(c3); if (tw3 != null) { var ps3 = planState(c3); ps3.wake = E.minutesOfDay(tw3); ps3.fromToday = true; } render(); break; }
+      case 'plan-save': if (!guard()) break; savePlan(); break;
+      case 'plan-reset': delete S.plan[makeCtx().child]; render(); break;
+      case 'plan-copy': copyText(scheduleText(makeCtx()), 'Schedule copied'); break;
+      case 'quicklog': if (!guard()) break; openSheet('quicklog', {}); setTimeout(function () { var t0 = document.getElementById('ql-text'); if (t0) try { t0.focus(); } catch (e6) {} }, 260); break;
+      case 'ql-mic': startDictation(); break;
+      case 'ql-save': qlSave(); break;
+      case 'ql-try': { var tq = document.getElementById('ql-text'); if (tq) { tq.value = el.getAttribute('data-v'); qlRender(); } break; }
+      case 'ql-form': { var pr0 = S.sheet && S.sheet.parsed, item = pr0 && pr0.items[Number(el.getAttribute('data-i'))]; if (item) { stopDictation(); closeSheet(); qlOpenForm(item); } break; }
+      case 'reminders': openSheet('reminders'); break;
+      case 'relay': openSheet('relay'); break;
+      case 'relay-save': connectRelay(); break;
+      case 'relay-check': refreshRelayStatus(true); renderSheet(); break;
+      case 'push-on': enablePush(); break;
+      case 'push-off': disablePush(); setTimeout(function () { if (S.sheet) renderSheet(); }, 200); break;
+      case 'push-test': testPush(); break;
+      case 'pref-lead': { var pl = {}; pl[el.getAttribute('data-k')] = Number(el.getAttribute('data-v')); savePrefs(pl); setTimeout(function () { if (S.sheet) renderSheet(); }, 60); break; }
+      case 'rem-new': if (!guard()) break; openSheet('reminder', { rem: null }); break;
+      case 'rem-edit': { var rr = ((snap().alerts || {}).custom || []).filter(function (x) { return x.id === id; })[0]; if (rr) openSheet('reminder', { rem: rr }); break; }
+      case 'rem-preset': { var ti = document.getElementById('r-title'); if (ti) ti.value = el.getAttribute('data-v'); break; }
+      case 'rem-repeat': S.sheet.title = strVal('r-title'); S.sheet.repeat = el.getAttribute('data-v'); renderSheet(); break;
+      case 'rem-save': saveReminder(); break;
+      case 'rem-del': {
+        if (S.delArm !== 'rem-' + id) { S.delArm = 'rem-' + id; renderSheet(); setTimeout(function () { if (S.delArm === 'rem-' + id) { S.delArm = null; if (S.sheet) renderSheet(); } }, 4000); break; }
+        S.delArm = null; var dp = { custom: {} }; dp.custom[id] = { deleted: true, updatedAt: Date.now() }; st().saveAlerts(dp).catch(handleErr); scheduleOutboxSync(800); openSheet('reminders'); toast('Reminder deleted'); break;
+      }
       case 'settings': openSheet('settings'); break;
       case 'sync-info': openSheet('sync'); break;
       case 'close': closeSheet(); break;
@@ -2654,7 +4247,7 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
         break;
       }
       case 'edit': openEdit(id); break;
-      case 'edit-growth': { var g = (makeCtx().d.growth || []).filter(function (x) { return x.id === id; })[0]; if (g) { S.delArm = null; openSheet('form', { type: 'growth', growth: g }); } break; }
+      case 'edit-growth': { var g = (makeCtx().growth || []).filter(function (x) { return x.id === id; })[0]; if (g) { S.delArm = null; openSheet('form', { type: 'growth', growth: g }); } break; }
       case 'save': saveForm(); break;
       case 'save-settings': saveSettings(); break;
       case 'save-born': saveBorn(); break;
@@ -2701,7 +4294,7 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
       case 'install-dismiss': S.installDismissed = true; try { localStorage.setItem('nl-install-later', '1'); } catch (e4) {} render(); break;
       case 'leave': {
         if (S.delArm !== 'leave') { S.delArm = 'leave'; renderSheet(); setTimeout(function () { if (S.delArm === 'leave') { S.delArm = null; if (S.sheet) renderSheet(); } }, 4000); break; }
-        try { localStorage.removeItem('nl-family'); localStorage.removeItem('nl-member'); } catch (e5) {}
+        try { localStorage.removeItem('nl-family'); localStorage.removeItem('nl-member'); localStorage.removeItem('nl-child'); } catch (e5) {}
         location.hash = ''; location.reload(); break;
       }
       case 'download-csv': {
@@ -2730,12 +4323,14 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     }
   }
   function onKey(ev) {
-    if (ev.key === 'Escape' && S.sheet) { closeSheet(); return; }
+    if (ev.key === 'Escape' && S.sheet) { stopDictation(); closeSheet(); return; }
+    if (ev.key === 'Enter' && ev.target && ev.target.id === 'ql-text' && !ev.shiftKey) { ev.preventDefault(); qlSave(); return; }
     if ((ev.key === 'Enter' || ev.key === ' ') && ev.target && ev.target.getAttribute && ev.target.getAttribute('role') === 'button' && ev.target.tagName.toLowerCase() !== 'button') {
       ev.preventDefault(); onClick({ target: ev.target });
     }
   }
   function onInput(ev) {
+    if (ev.target && ev.target.id === 'ql-text') { clearTimeout(S.qlTimer); S.qlTimer = setTimeout(qlRender, 120); return; }
     if (ev.target && ev.target.id === 'f-c') {
       var v = Number(String(ev.target.value).replace(',', '.'));
       var box = document.getElementById('fever-live');
@@ -2807,14 +4402,22 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
   function start() {
     var h = (location.hash || '').replace('#', '');
     S.tab = TABS.indexOf(h) >= 0 ? h : 'today';
-    try { S.nightMode = localStorage.getItem('nl-nightlight') || 'auto'; S.installDismissed = !!localStorage.getItem('nl-install-later'); } catch (e) { S.nightMode = 'auto'; }
+    try { S.nightMode = localStorage.getItem('nl-nightlight') || 'auto'; S.installDismissed = !!localStorage.getItem('nl-install-later'); S.child = localStorage.getItem('nl-child'); } catch (e) { S.nightMode = 'auto'; }
     S.isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
     S.isStandalone = window.navigator.standalone === true || (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
     buildShell();
     document.addEventListener('click', onClick);
     document.addEventListener('keydown', onKey);
     document.addEventListener('input', onInput);
-    document.addEventListener('change', function (ev) { if (ev.target && ev.target.id === 'f-running') { var w = document.getElementById('end-wrap'); if (w) w.hidden = ev.target.checked; } });
+    document.addEventListener('change', function (ev) {
+      var t = ev.target;
+      if (!t) return;
+      if (t.id === 'f-running') { var w = document.getElementById('end-wrap'); if (w) w.hidden = t.checked; }
+      var pk = t.getAttribute && t.getAttribute('data-pref');
+      if (pk) { var pp = {}; pp[pk] = pk === 'only' ? (t.checked ? curKid() : null) : t.checked; savePrefs(pp); setTimeout(function () { if (S.sheet) renderSheet(); }, 60); }
+      var pl = t.getAttribute && t.getAttribute('data-plan');
+      if (pl) { var v = fromHM(t.value); if (v != null) { planState(makeCtx())[pl] = v; if (pl === 'wake') planState(makeCtx()).fromToday = false; render(); } }
+    });
     window.addEventListener('hashchange', function () {
       var t = (location.hash || '').replace('#', '');
       if (readJoinKey() && readJoinKey() !== S.family) { S.joinKey = readJoinKey(); S.needsSetup = true; render(); return; }
@@ -2825,10 +4428,14 @@ body.sheet-open .toast { top: calc(12px + env(safe-area-inset-top)); }
     window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); S.installEvt = e; renderSoon(); });
     window.addEventListener('appinstalled', function () { S.installEvt = null; renderSoon(); });
     setInterval(tick, 1000);
-    if ('serviceWorker' in navigator && window.isSecureContext && !/[?&]nosw=1/.test(location.search)) navigator.serviceWorker.register('sw.js').catch(function () {});
+    if ('serviceWorker' in navigator && window.isSecureContext && !/[?&]nosw=1/.test(location.search)) {
+      navigator.serviceWorker.register('sw.js').catch(function () {});
+      navigator.serviceWorker.ready.then(function (reg) { S.swReg = reg; checkPushSub(); }).catch(function () {});
+    }
+    setInterval(function () { if (!document.hidden) scheduleOutboxSync(0); }, 5 * 60000);
     connect();
   }
-  window.__bft = { S: S, render: render, enterDemo: enterDemo };
+  window.__bft = { S: S, render: render, enterDemo: enterDemo, reminderItems: reminderItems, snap: snap, syncOutbox: syncOutbox, qlParse: qlParse };
   start();
 })();
 
